@@ -1,0 +1,27 @@
+{
+  "name": "back-lab-soft",
+  "version": "1.0.0",
+  "main": "src/infra/http/server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node start",
+    "dev": "NODE_ENV=development nodemon --ignore node_modules src/infra/http/server.js",
+    "run:migration": "yarn sequelize-cli db:migrate",
+    "test": "jest"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.12",
+    "sequelize": "^6.6.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jest": "^27.1.0",
+    "sequelize-cli": "^6.2.0"
+  }
+}
