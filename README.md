@@ -6,13 +6,13 @@
 <ul>
     <li> 
         Caso não tenha instalado o mysql nativamente na máquina, você pode rodar o container da imagem do mesmo. Para isso é necessário que tenha instalado Docker e Docker Compose. Execute o comando: 
-        <code>docker-compose up</code> 
+        <code>docker-compose -f docker-compose.dev.yml up</code> 
     </li>
     <br>
     <li>
         Caso for a primeira vez iniciando a aplicação, será necessário a criação do banco.
         Se estiver subido o banco pela imagem do mysql com o docker compose rode o comando:
-        <code>docker exec -it mysql sh -c "mysql -u root -p"</code> <br>
+        <code>docker exec -it database sh -c "mysql -u root -p"</code> <br>
         Depois execute:
         <code>CREATE DATABASE lab_soft;</code> <br>
     </li>

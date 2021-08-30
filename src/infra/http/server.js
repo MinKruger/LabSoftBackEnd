@@ -9,4 +9,4 @@ dotenv.config({
   }[process.env.NODE_ENV || "development"],
 });
 
-app.listen(5555, () => console.log("Server running"));
+app.listen(5555, "0.0.0.0", () => console.log("Server running"));
