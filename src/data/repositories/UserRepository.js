@@ -1,6 +1,6 @@
 const {
   IUserRepository,
-} = require("../../domain/repositories/IUserRepository");
+} = require("../../domain/interfaces/repositories/IUserRepository");
 const { Models } = require("../../infra/database/models");
 
 class UserRepository extends IUserRepository {

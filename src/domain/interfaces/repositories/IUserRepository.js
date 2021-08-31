@@ -1,6 +1,6 @@
 const {
   NotImplementedException,
-} = require("../../presentation/errors/NotImplementedException");
+} = require("../../../presentation/errors/NotImplementedException");
 
 class IUserRepository {
   getAll() {
