@@ -1,5 +1,9 @@
-const { UserModel } = require("./UserModel");
+const { AtleticasModel } = require("./Atleticas");
+const { CursosModel } = require("./Cursos");
+const { AtleticasCursosModel } = require("./AtleticasCursos");
 
 exports.Models = {
-  UserModel,
+  AtleticasModel,
+  CursosModel,
+  AtleticasCursosModel,
 };

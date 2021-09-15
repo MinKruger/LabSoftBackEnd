@@ -183,12 +183,41 @@ module.exports = {
         type: Sequelize.BLOB,
         allowNull: false,
       },
+      created_at: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
+      },
+      updated_at: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal(
+          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
+        ),
+      },
+    });
+
+    await queryInterface.createTable("atleticas_cursos", {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
+      },
       id_curso: {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: {
             tableName: "cursos",
+          },
+          key: "id",
+        },
+      },
+      id_atletica: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "atleticas",
           },
           key: "id",
         },
@@ -608,6 +637,7 @@ module.exports = {
     await queryInterface.dropTable("postagens");
     await queryInterface.dropTable("dce");
     await queryInterface.dropTable("alunos");
+    await queryInterface.dropTable("atleticas_cursos");
     await queryInterface.dropTable("atleticas");
     await queryInterface.dropTable("cargos");
     await queryInterface.dropTable("modalidades");
