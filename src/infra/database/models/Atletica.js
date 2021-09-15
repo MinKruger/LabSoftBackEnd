@@ -1,6 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 
-class CursosModel extends Model {
+class AtleticaModel extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -14,21 +14,25 @@ class CursosModel extends Model {
           type: DataTypes.STRING(200),
           allowNull: false,
         },
+        logo: {
+          type: DataTypes.BLOB,
+          allowNull: false,
+        },
       },
       {
         sequelize,
-        modelName: "cursos",
+        modelName: "atleticas",
       }
     );
     return this;
   }
 
   static associate(models) {
-    this.belongsToMany(models.atleticas, {
+    this.belongsToMany(models.cursos, {
       through: "atleticas_cursos",
-      foreignKey: "id_curso",
+      foreignKey: "id_atletica",
     });
   }
 }
 
-exports.CursosModel = CursosModel;
+exports.AtleticaModel = AtleticaModel;

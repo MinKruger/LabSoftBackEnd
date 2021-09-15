@@ -180,7 +180,7 @@ module.exports = {
         allowNull: false,
       },
       logo: {
-        type: Sequelize.BLOB,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       created_at: {

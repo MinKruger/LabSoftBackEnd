@@ -2,9 +2,8 @@ const {
   BadRequestException,
 } = require("../../presentation/errors/BadRequestException");
 
-class AtleticasEntity {
+class CursoEntity {
   nome = null;
-  logo = null;
 
   constructor(data) {
     Object.assign(this, data);
@@ -16,11 +15,7 @@ class AtleticasEntity {
     if (!this.nome) {
       throw new BadRequestException("Property 'nome' is required.");
     }
-
-    if (!this.logo) {
-      throw new BadRequestException("Property 'logo' is required.");
-    }
   }
 }
 
-exports.AtleticasEntity = AtleticasEntity;
+exports.CursoEntity = CursoEntity;

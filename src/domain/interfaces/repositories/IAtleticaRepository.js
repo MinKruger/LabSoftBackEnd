@@ -2,7 +2,7 @@ const {
   NotImplementedException,
 } = require("../../../presentation/errors/NotImplementedException");
 
-class IUserRepository {
+class IAtleticaRepository {
   getAll() {
     throw new NotImplementedException("Method not implemented");
   }
@@ -12,4 +12,4 @@ class IUserRepository {
   }
 }
 
-exports.IUserRepository = IUserRepository;
+exports.IAtleticaRepository = IAtleticaRepository;

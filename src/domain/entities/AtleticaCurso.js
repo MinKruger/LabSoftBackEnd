@@ -2,7 +2,7 @@ const {
   BadRequestException,
 } = require("../../presentation/errors/BadRequestException");
 
-class AtleticasCursosEntity {
+class AtleticaCursoEntity {
   id_curso = null;
   id_atletica = null;
 
@@ -23,4 +23,4 @@ class AtleticasCursosEntity {
   }
 }
 
-exports.AtleticasCursosEntity = AtleticasCursosEntity;
+exports.AtleticaCursoEntity = AtleticaCursoEntity;

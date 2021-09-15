@@ -8,23 +8,23 @@ module.exports = {
       [
         {
           id: v4(),
-          nome: "Tubarões",
+          nome: "Ciência da Computação",
         },
         {
           id: v4(),
-          nome: "Leões",
+          nome: "Direito",
         },
         {
           id: v4(),
-          nome: "Onças",
+          nome: "Sistema da informação",
         },
         {
           id: v4(),
-          nome: "ADMonstros",
+          nome: "Medicina",
         },
         {
           id: v4(),
-          nome: "Águas",
+          nome: "Engenharia",
         },
       ],
       {}
