@@ -1,0 +1,201 @@
+{
+    "openapi":"3.0.0",
+    "info": {
+        "title": "Documentação da API",
+        "description": "API do back-end do projeto da matéria de Laboratório de Software"
+    },
+    "version": "1.0.0",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "tags": [
+        {
+          "name": "atleticas",
+          "description": "Rotas do domínio de atletica"
+        }
+      ],
+    "paths": {
+        "/atletica": {
+          "get": {
+            "tags": [
+              "atleticas"
+            ],
+            "summary": "Buscar todas as atleticas cadastradas",
+            "description": "",
+            "operationId": "getAllAtleticas",
+            "produces": [
+              "application/json"
+            ],
+            
+            "responses": {
+              "200": {
+                "description": "successful operation",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Atleticas"
+                            }
+                        }
+                    }
+                }
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
+        },
+        "/atletica/{id}": {
+          "get": {
+            "tags": [
+              "atleticas"
+            ],
+            "summary": "Buscar uma atletica pelo id",
+            "description": "",
+            "operationId": "findAtleticaById",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da atlética",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Atleticas"
+                        }
+                    }
+                }
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
+        },
+        "/atletica/create": {
+          "post": {
+            "tags": [
+              "atleticas"
+            ],
+            "summary": "Cria uma nova atletica",
+            "description": "",
+            "operationId": "createAtletica",
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/Atleticas"
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "201": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
+              }
+            }
+          }
+        },
+        "/atletica/update/{id}": {
+          "put": {
+            "tags": [
+              "atleticas"
+            ],
+            "summary": "Atualiza uma atletica existente",
+            "description": "",
+            "operationId": "updateAtletica",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da atlética",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/Atleticas"
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "200": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
+              }
+            }
+          }
+        },
+        "/atletica/delete/{id}": {
+            "delete": {
+              "tags": [
+                "atleticas"
+              ],
+              "summary": "Delete uma atlética existente pelo id",
+              "description": "",
+              "operationId": "deleteAtleticaById",
+              "produces": [
+                "application/json"
+              ],
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "description": "ID da atlética",
+                      "required": true,
+                      "type": "string"
+                  }
+              ],
+              "responses": {
+                "200": {
+                  "description": "successful operation"
+                },
+                "404": {
+                  "description": "Not found"
+                }
+              }
+            }
+          
+        }
+    },
+    "components": {
+        "schemas": {
+            "Atleticas": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

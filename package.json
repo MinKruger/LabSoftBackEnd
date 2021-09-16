@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node start",
     "dev": "NODE_ENV=development nodemon --ignore node_modules src/infra/http/server.js",
-    "generate:seed":"yarn sequelize-cli seed:generate --name",
-    "generate:migration":"yarn sequelize-cli migration:generate --name",
-    "run:seeds":"yarn sequelize-cli db:seed:all",
+    "generate:seed": "yarn sequelize-cli seed:generate --name",
+    "generate:migration": "yarn sequelize-cli migration:generate --name",
+    "run:seeds": "yarn sequelize-cli db:seed:all",
     "run:migration": "yarn sequelize-cli db:migrate",
     "undo:migration": "yarn sequelize-cli db:migrate:undo",
     "undo:seeds": "yarn sequelize-cli db:seed:undo:all",
@@ -22,6 +22,7 @@
     "mysql2": "^2.3.0",
     "nodemon": "^2.0.12",
     "sequelize": "^6.6.5",
+    "swagger-ui-express": "^4.1.6",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
