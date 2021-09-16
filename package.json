@@ -6,12 +6,12 @@
   "scripts": {
     "start": "node start",
     "dev": "NODE_ENV=development nodemon --ignore node_modules src/infra/http/server.js",
-    "generate:seed": "yarn sequelize-cli seed:generate --name",
-    "generate:migration": "yarn sequelize-cli migration:generate --name",
-    "run:seeds": "yarn sequelize-cli db:seed:all",
-    "run:migration": "yarn sequelize-cli db:migrate",
-    "undo:migration": "yarn sequelize-cli db:migrate:undo",
-    "undo:seeds": "yarn sequelize-cli db:seed:undo:all",
+    "generate:seed": "sequelize-cli seed:generate --name",
+    "generate:migration": "sequelize-cli migration:generate --name",
+    "run:seeds": "sequelize-cli db:seed:all",
+    "run:migration": "sequelize-cli db:migrate",
+    "undo:migration": "sequelize-cli db:migrate:undo",
+    "undo:seeds": "sequelize-cli db:seed:undo:all",
     "test": "jest"
   },
   "dependencies": {
