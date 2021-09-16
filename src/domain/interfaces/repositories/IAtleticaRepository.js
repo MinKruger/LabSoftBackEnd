@@ -7,6 +7,10 @@ class IAtleticaRepository {
     throw new NotImplementedException("Method not implemented");
   }
 
+  findById() {
+    throw new NotImplementedException("Method not implemented");
+  }
+
   create() {
     throw new NotImplementedException("Method not implemented");
   }

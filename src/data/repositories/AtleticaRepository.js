@@ -8,6 +8,10 @@ class AtleticaRepository extends IAtleticaRepository {
     return Models.AtleticaModel.findAll();
   }
 
+  findById(id) {
+    return Models.AtleticaModel.findByPk(id);
+  }
+
   create(data) {
     return Models.AtleticaModel.create(data);
   }

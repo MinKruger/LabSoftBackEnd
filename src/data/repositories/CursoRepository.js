@@ -4,8 +4,12 @@ const {
 const { Models } = require("../../infra/database/models");
 
 class CursoRepository extends ICursoRepository {
-  findById(id) {
-    return Models.CursoModel.findByPk(id);
+  findById(id, options) {
+    return Models.CursoModel.findByPk(id, options);
+  }
+
+  getAll(options) {
+    return Models.CursoModel.findAll(options);
   }
 
   create(data) {
