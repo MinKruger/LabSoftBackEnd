@@ -1,12 +1,12 @@
 class GetAtleticaByIdController {
-  constructor(getAtleticaUseCase) {
-    this.getAtleticaUseCase = getAtleticaUseCase;
+  constructor(getAtleticaByIdUseCase) {
+    this.getAtleticaByIdUseCase = getAtleticaByIdUseCase;
   }
 
   async handle(request, response) {
     const { id } = request.params;
 
-    const atletica = await this.getAtleticaUseCase.handle(id);
+    const atletica = await this.getAtleticaByIdUseCase.handle(id);
 
     response.status(200).json(atletica);
   }
