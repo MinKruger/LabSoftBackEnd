@@ -5,7 +5,7 @@ const { Models } = require("../../infra/database/models");
 
 class AtleticaRepository extends IAtleticaRepository {
   getAll(options) {
-    return Models.AtleticaModel.findAll();
+    return Models.AtleticaModel.findAll(options);
   }
 
   findById(id, options) {
@@ -18,6 +18,10 @@ class AtleticaRepository extends IAtleticaRepository {
 
   update(data, options) {
     return Models.AtleticaModel.update(data, options);
+  }
+
+  deleteById(id) {
+    return Models.AtleticaModel.destroy({ where: { id } });
   }
 }
 

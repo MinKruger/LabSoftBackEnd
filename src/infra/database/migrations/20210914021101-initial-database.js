@@ -214,7 +214,7 @@ module.exports = {
       },
       id_curso: {
         type: Sequelize.UUID,
-        allowNull: false,
+        onDelete: "SET NULL",
         references: {
           model: {
             tableName: "cursos",
@@ -224,7 +224,7 @@ module.exports = {
       },
       id_atletica: {
         type: Sequelize.UUID,
-        allowNull: false,
+        onDelete: "SET NULL",
         references: {
           model: {
             tableName: "atleticas",

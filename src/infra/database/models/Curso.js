@@ -29,6 +29,7 @@ class CursoModel extends Model {
     this.belongsToMany(models.atleticas, {
       through: "atleticas_cursos",
       foreignKey: "id_curso",
+      onDelete: "SET NULL",
     });
   }
 }
