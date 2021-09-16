@@ -4,16 +4,20 @@ const {
 const { Models } = require("../../infra/database/models");
 
 class AtleticaRepository extends IAtleticaRepository {
-  getAll() {
+  getAll(options) {
     return Models.AtleticaModel.findAll();
   }
 
-  findById(id) {
-    return Models.AtleticaModel.findByPk(id);
+  findById(id, options) {
+    return Models.AtleticaModel.findByPk(id, options);
   }
 
   create(data) {
     return Models.AtleticaModel.create(data);
+  }
+
+  update(data, options) {
+    return Models.AtleticaModel.update(data, options);
   }
 }
 

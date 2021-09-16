@@ -14,6 +14,10 @@ class IAtleticaRepository {
   create() {
     throw new NotImplementedException("Method not implemented");
   }
+
+  update() {
+    throw new NotImplementedException("Method not implemented");
+  }
 }
 
 exports.IAtleticaRepository = IAtleticaRepository;
