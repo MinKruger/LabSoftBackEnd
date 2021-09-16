@@ -18,6 +18,8 @@ class CursoModel extends Model {
       {
         sequelize,
         modelName: "cursos",
+        timestamps: true,
+        createdAt: "created_at",
       }
     );
     return this;

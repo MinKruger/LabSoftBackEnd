@@ -5,15 +5,21 @@ const {
   AtleticaRepository,
 } = require("../../../data/repositories/AtleticaRepository");
 const {
+  CursoRepository,
+} = require("../../../data/repositories/CursoRepository");
+const {
   CreateAtleticaUseCase,
 } = require("../../../data/useCases/create-atletica");
 
 const createAtleticaFactory = function () {
   const atleticaRepository = new AtleticaRepository();
   const atleticaCursoRepository = new AtleticaCursoRepository();
+  const cursoRepository = new CursoRepository();
+
   const createAtleticaUseCase = new CreateAtleticaUseCase(
     atleticaRepository,
-    atleticaCursoRepository
+    atleticaCursoRepository,
+    cursoRepository
   );
 
   return createAtleticaUseCase;
