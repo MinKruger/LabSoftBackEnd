@@ -188,6 +188,7 @@ module.exports = {
       nome: {
         type: Sequelize.STRING(200),
         allowNull: false,
+        unique: true,
       },
       logo: {
         type: Sequelize.TEXT,

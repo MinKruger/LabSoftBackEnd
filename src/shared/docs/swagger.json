@@ -97,7 +97,8 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref":  "#/components/schemas/Atleticas"
+                            "$ref":  "#/components/schemas/CreateAtletica"
+                            
                         }
                     }
                 }
@@ -185,14 +186,28 @@
             "Atleticas": {
                 "type": "object",
                 "properties": {
-                    "id": {
-                        "type": "string"
-                    },
                     "nome": {
                         "type": "string"
                     },
                     "logo": {
                         "type": "string"
+                    }
+                }
+            },
+            "CreateAtletica": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "ids_cursos": {
+                      "type":"array",
+                      "items":{
+                        "type": "string"
+                      }
                     }
                 }
             }
