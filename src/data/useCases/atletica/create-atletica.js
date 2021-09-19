@@ -1,8 +1,10 @@
-const { AtleticaEntity } = require("../../domain/entities/Atletica");
-const { AtleticaCursoEntity } = require("../../domain/entities/AtleticaCurso");
+const { AtleticaEntity } = require("../../../domain/entities/Atletica");
+const {
+  AtleticaCursoEntity,
+} = require("../../../domain/entities/AtleticaCurso");
 const {
   NotFoundException,
-} = require("../../presentation/errors/NotFoundException");
+} = require("../../../presentation/errors/NotFoundException");
 
 class CreateAtleticaUseCase {
   constructor(atleticaRepository, cursoAtleticaRepository, cursoRepository) {

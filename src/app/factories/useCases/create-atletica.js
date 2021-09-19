@@ -9,7 +9,7 @@ const {
 } = require("../../../data/repositories/CursoRepository");
 const {
   CreateAtleticaUseCase,
-} = require("../../../data/useCases/create-atletica");
+} = require("../../../data/useCases/atletica/create-atletica");
 
 const createAtleticaFactory = function () {
   const atleticaRepository = new AtleticaRepository();

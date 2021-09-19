@@ -3,7 +3,7 @@ const {
 } = require("../../../data/repositories/AtleticaRepository");
 const {
   UpdateAtleticaUseCase,
-} = require("../../../data/useCases/update-atletica");
+} = require("../../../data/useCases/atletica/update-atletica");
 
 const updateAtleticaFactory = function () {
   const atleticaRepository = new AtleticaRepository();

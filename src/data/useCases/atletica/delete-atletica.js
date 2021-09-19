@@ -1,6 +1,6 @@
 const {
   NotFoundException,
-} = require("../../presentation/errors/NotFoundException");
+} = require("../../../presentation/errors/NotFoundException");
 
 class DeleteAtleticaUseCase {
   constructor(atleticaRepository) {

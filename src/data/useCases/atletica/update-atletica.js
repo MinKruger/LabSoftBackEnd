@@ -1,7 +1,7 @@
-const { AtleticaEntity } = require("../../domain/entities/Atletica");
+const { AtleticaEntity } = require("../../../domain/entities/Atletica");
 const {
   NotFoundException,
-} = require("../../presentation/errors/NotFoundException");
+} = require("../../../presentation/errors/NotFoundException");
 
 class UpdateAtleticaUseCase {
   constructor(atleticaRepository) {

@@ -1,6 +1,6 @@
 const {
   UpdateAtleticasController,
-} = require("../../../presentation/controllers/update-atletica");
+} = require("../../../presentation/controllers/atletica/update-atletica");
 const { updateAtleticaFactory } = require("../useCases/update-atletica");
 
 const updateAtleticaControllerFactory = function () {

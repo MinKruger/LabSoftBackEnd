@@ -1,6 +1,6 @@
 const {
   CreateAtleticaController,
-} = require("../../../presentation/controllers/create-atletica");
+} = require("../../../presentation/controllers/atletica/create-atletica");
 const { createAtleticaFactory } = require("../useCases/create-atletica");
 
 const createAtleticaControllerFactory = function () {

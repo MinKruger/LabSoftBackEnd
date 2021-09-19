@@ -1,5 +1,5 @@
-const { AtleticaEntity } = require("../../domain/entities/Atletica");
-const { BadRequestException } = require("../errors/BadRequestException");
+const { AtleticaEntity } = require("../../../domain/entities/Atletica");
+const { BadRequestException } = require("../../errors/BadRequestException");
 
 class CreateAtleticaController {
   constructor(createAtleticaUseCase) {

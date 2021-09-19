@@ -3,7 +3,7 @@ const {
 } = require("../../../data/repositories/AtleticaRepository");
 const {
   DeleteAtleticaUseCase,
-} = require("../../../data/useCases/delete-atletica");
+} = require("../../../data/useCases/atletica/delete-atletica");
 
 const deleteAtleticaFactory = function () {
   const atleticaRepository = new AtleticaRepository();

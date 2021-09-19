@@ -1,6 +1,6 @@
 const {
   DeleteAtleticaController,
-} = require("../../../presentation/controllers/delete-atletica");
+} = require("../../../presentation/controllers/atletica/delete-atletica");
 const { deleteAtleticaFactory } = require("../useCases/delete-atletica");
 
 const deleteAtleticaControllerFactory = function () {

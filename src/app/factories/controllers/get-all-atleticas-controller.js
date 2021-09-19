@@ -1,6 +1,6 @@
 const {
   GetAllAtleticasController,
-} = require("../../../presentation/controllers/get-all-atleticas");
+} = require("../../../presentation/controllers/atletica/get-all-atleticas");
 const { getAllAtleticasFactory } = require("../useCases/get-all-atleticas");
 
 const getAllAtleticasControllerFactory = function () {

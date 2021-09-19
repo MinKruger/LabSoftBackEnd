@@ -1,4 +1,4 @@
-const { BadRequestException } = require("../errors/BadRequestException");
+const { BadRequestException } = require("../../errors/BadRequestException");
 
 class UpdateAtleticasController {
   constructor(updateAtleticaUseCase) {
