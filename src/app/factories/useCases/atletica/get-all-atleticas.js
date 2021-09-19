@@ -1,9 +1,9 @@
 const {
   AtleticaRepository,
-} = require("../../../data/repositories/AtleticaRepository");
+} = require("../../../../data/repositories/AtleticaRepository");
 const {
   GetAllAtleticasUseCase,
-} = require("../../../data/useCases/atletica/get-all-atleticas");
+} = require("../../../../data/useCases/atletica/get-all-atleticas");
 
 const getAllAtleticasFactory = function () {
   const atleticaRepository = new AtleticaRepository();

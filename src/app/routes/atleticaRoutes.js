@@ -1,19 +1,19 @@
 const { Router } = require("express");
 const {
   createAtleticaControllerFactory,
-} = require("../factories/controllers/create-atletica-controller");
+} = require("../factories/controllers/atletica/create-atletica-controller");
 const {
   deleteAtleticaControllerFactory,
-} = require("../factories/controllers/delete-atletica-controller");
+} = require("../factories/controllers/atletica/delete-atletica-controller");
 const {
   getAllAtleticasControllerFactory,
-} = require("../factories/controllers/get-all-atleticas-controller");
+} = require("../factories/controllers/atletica/get-all-atleticas-controller");
 const {
   getAtleticaByIdControllerFactory,
-} = require("../factories/controllers/get-atletica-by-id-controller");
+} = require("../factories/controllers/atletica/get-atletica-by-id-controller");
 const {
   updateAtleticaControllerFactory,
-} = require("../factories/controllers/update-atletica-controller");
+} = require("../factories/controllers/atletica/update-atletica-controller");
 
 const router = Router();
 

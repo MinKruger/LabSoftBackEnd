@@ -1,9 +1,9 @@
 const {
   AtleticaRepository,
-} = require("../../../data/repositories/AtleticaRepository");
+} = require("../../../../data/repositories/AtleticaRepository");
 const {
   DeleteAtleticaUseCase,
-} = require("../../../data/useCases/atletica/delete-atletica");
+} = require("../../../../data/useCases/atletica/delete-atletica");
 
 const deleteAtleticaFactory = function () {
   const atleticaRepository = new AtleticaRepository();

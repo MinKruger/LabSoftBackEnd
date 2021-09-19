@@ -1,15 +1,15 @@
 const {
   AtleticaCursoRepository,
-} = require("../../../data/repositories/AtleticaCursoRepository");
+} = require("../../../../data/repositories/AtleticaCursoRepository");
 const {
   AtleticaRepository,
-} = require("../../../data/repositories/AtleticaRepository");
+} = require("../../../../data/repositories/AtleticaRepository");
 const {
   CursoRepository,
-} = require("../../../data/repositories/CursoRepository");
+} = require("../../../../data/repositories/CursoRepository");
 const {
   CreateAtleticaUseCase,
-} = require("../../../data/useCases/atletica/create-atletica");
+} = require("../../../../data/useCases/atletica/create-atletica");
 
 const createAtleticaFactory = function () {
   const atleticaRepository = new AtleticaRepository();
