@@ -4,9 +4,7 @@ class GetAllAtleticasUseCase {
   }
 
   async handle() {
-    const cursoFinded = await this.atleticaRepository.getAll();
-
-    return cursoFinded;
+    return await this.atleticaRepository.getAll();
   }
 }
 
