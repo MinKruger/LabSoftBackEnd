@@ -8,9 +8,7 @@ const {
 const getAllAtleticasFactory = function () {
   const atleticaRepository = new AtleticaRepository();
 
-  const getAtleticaByIdUseCase = new GetAllAtleticasUseCase(atleticaRepository);
-
-  return getAtleticaByIdUseCase;
+  return new GetAllAtleticasUseCase(atleticaRepository);
 };
 
 exports.getAllAtleticasFactory = getAllAtleticasFactory;

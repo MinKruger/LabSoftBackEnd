@@ -8,9 +8,7 @@ const {
 const deleteAtleticaFactory = function () {
   const atleticaRepository = new AtleticaRepository();
 
-  const deleteAtleticaUseCase = new DeleteAtleticaUseCase(atleticaRepository);
-
-  return deleteAtleticaUseCase;
+  return new DeleteAtleticaUseCase(atleticaRepository);
 };
 
 exports.deleteAtleticaFactory = deleteAtleticaFactory;

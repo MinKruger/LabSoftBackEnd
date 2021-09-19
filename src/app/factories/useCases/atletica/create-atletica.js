@@ -16,13 +16,11 @@ const createAtleticaFactory = function () {
   const atleticaCursoRepository = new AtleticaCursoRepository();
   const cursoRepository = new CursoRepository();
 
-  const createAtleticaUseCase = new CreateAtleticaUseCase(
+  return new CreateAtleticaUseCase(
     atleticaRepository,
     atleticaCursoRepository,
     cursoRepository
   );
-
-  return createAtleticaUseCase;
 };
 
 exports.createAtleticaFactory = createAtleticaFactory;

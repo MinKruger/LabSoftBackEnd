@@ -8,9 +8,7 @@ const {
 const updateAtleticaFactory = function () {
   const atleticaRepository = new AtleticaRepository();
 
-  const updateAtleticaUseCase = new UpdateAtleticaUseCase(atleticaRepository);
-
-  return updateAtleticaUseCase;
+  return new UpdateAtleticaUseCase(atleticaRepository);
 };
 
 exports.updateAtleticaFactory = updateAtleticaFactory;
