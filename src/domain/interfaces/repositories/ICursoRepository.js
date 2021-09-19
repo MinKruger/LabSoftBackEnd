@@ -2,8 +2,8 @@ const {
   NotImplementedException,
 } = require("../../../presentation/errors/NotImplementedException");
 
-class IUserRepository {
-  getAll() {
+class ICursoRepository {
+  findById() {
     throw new NotImplementedException("Method not implemented");
   }
 
@@ -12,4 +12,4 @@ class IUserRepository {
   }
 }
 
-exports.IUserRepository = IUserRepository;
+exports.ICursoRepository = ICursoRepository;

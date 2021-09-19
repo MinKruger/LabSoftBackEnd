@@ -8,6 +8,7 @@ const handleErrorsMiddleware = (err, req, res, next) => {
     });
   }
 
+  console.log(err.message);
   return res.status(500).json({
     status: 500,
     message: "Unexpected error",

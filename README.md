@@ -30,5 +30,8 @@
     <li>
         Para rodar as migrations: <code>npx sequelize-cli db:migrate</code><br>
         Para rodar as seeds: <code>npx sequelize-cli db:seed:all</code>
+    </li><br>
+    <li>
+        Para ver a documentação da API(Swagger), acesse a rota <code>/docs</code><br>
     </li>
 </ul>
