@@ -3,8 +3,8 @@ class GetAllAtleticasUseCase {
     this.atleticaRepository = atleticaRepository;
   }
 
-  async handle() {
-    return await this.atleticaRepository.getAll();
+  handle() {
+    return this.atleticaRepository.getAll();
   }
 }
 
