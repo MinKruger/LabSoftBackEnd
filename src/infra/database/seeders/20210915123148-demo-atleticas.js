@@ -4,27 +4,22 @@ const { v4 } = require("uuid");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      "cursos",
+      "atleticas",
       [
         {
           id: v4(),
-          nome: "Ciência da Computação",
+          nome: "Tubarões",
+          logo: "asdasdasddadsa23213123asdasd",
         },
         {
           id: v4(),
-          nome: "Direito",
+          nome: "Águia",
+          logo: "asdasdq2313131",
         },
         {
           id: v4(),
-          nome: "Sistema da informação",
-        },
-        {
-          id: v4(),
-          nome: "Medicina",
-        },
-        {
-          id: v4(),
-          nome: "Engenharia",
+          nome: "ADMonstos",
+          logo: "dadasdasd23123123",
         },
       ],
       {}
@@ -32,6 +27,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("cursos", null, {});
+    await queryInterface.bulkDelete("atleticas", null, {});
   },
 };

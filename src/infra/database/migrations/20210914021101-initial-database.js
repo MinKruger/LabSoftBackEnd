@@ -63,6 +63,34 @@ module.exports = {
       },
     });
 
+    await queryInterface.createTable("atleticas", {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
+      },
+      nome: {
+        type: Sequelize.STRING(200),
+        allowNull: false,
+        unique: true,
+      },
+      logo: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
+      },
+      updated_at: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal(
+          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
+        ),
+      },
+    });
+
     await queryInterface.createTable("cursos", {
       id: {
         type: Sequelize.UUID,
@@ -73,6 +101,16 @@ module.exports = {
       nome: {
         type: Sequelize.STRING(200),
         allowNull: false,
+      },
+      id_atletica: {
+        type: Sequelize.UUID,
+        onDelete: "SET NULL",
+        references: {
+          model: {
+            tableName: "atleticas",
+          },
+          key: "id",
+        },
       },
       created_at: {
         type: Sequelize.DATE(3),
@@ -165,73 +203,6 @@ module.exports = {
       descricao: {
         type: Sequelize.STRING(200),
         allowNull: false,
-      },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
-      },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal(
-          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        ),
-      },
-    });
-
-    await queryInterface.createTable("atleticas", {
-      id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      nome: {
-        type: Sequelize.STRING(200),
-        allowNull: false,
-        unique: true,
-      },
-      logo: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
-      },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal(
-          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        ),
-      },
-    });
-
-    await queryInterface.createTable("atleticas_cursos", {
-      id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      id_curso: {
-        type: Sequelize.UUID,
-        onDelete: "SET NULL",
-        references: {
-          model: {
-            tableName: "cursos",
-          },
-          key: "id",
-        },
-      },
-      id_atletica: {
-        type: Sequelize.UUID,
-        onDelete: "SET NULL",
-        references: {
-          model: {
-            tableName: "atleticas",
-          },
-          key: "id",
-        },
       },
       created_at: {
         type: Sequelize.DATE(3),

@@ -28,8 +28,7 @@ class AtleticaModel extends Model {
   }
 
   static associate(models) {
-    this.belongsToMany(models.cursos, {
-      through: "atleticas_cursos",
+    this.hasMany(models.cursos, {
       foreignKey: "id_atletica",
       onDelete: "SET NULL",
     });

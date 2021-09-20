@@ -202,12 +202,6 @@
                     },
                     "logo": {
                         "type": "string"
-                    },
-                    "ids_cursos": {
-                      "type":"array",
-                      "items":{
-                        "type": "string"
-                      }
                     }
                 }
             }
