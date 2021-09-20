@@ -269,25 +269,6 @@ module.exports = {
       },
     });
 
-    await queryInterface.createTable("dce", {
-      id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
-      },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal(
-          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        ),
-      },
-    });
-
     await queryInterface.createTable("postagens", {
       id: {
         type: Sequelize.UUID,
@@ -546,7 +527,7 @@ module.exports = {
       },
     });
 
-    await queryInterface.createTable("diretorias", {
+    await queryInterface.createTable("dce", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -554,7 +535,7 @@ module.exports = {
         primaryKey: true,
       },
       nome: {
-        type: Sequelize.STRING(250),
+        type: Sequelize.STRING(200),
         allowNull: false,
       },
       id_cargo: {
@@ -567,32 +548,12 @@ module.exports = {
           key: "id",
         },
       },
-      id_atletica: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: "atleticas",
-          },
-          key: "id",
-        },
-      },
       id_usuario: {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: {
             tableName: "usuarios",
-          },
-          key: "id",
-        },
-      },
-      id_dce: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: "dce",
           },
           key: "id",
         },
@@ -611,14 +572,13 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("diretorias");
     await queryInterface.dropTable("jogos");
     await queryInterface.dropTable("campeonato_atletica");
     await queryInterface.dropTable("campeonatos");
     await queryInterface.dropTable("comentarios");
     await queryInterface.dropTable("postagens");
-    await queryInterface.dropTable("dce");
     await queryInterface.dropTable("alunos");
+    await queryInterface.dropTable("dce");
     await queryInterface.dropTable("cargos");
     await queryInterface.dropTable("modalidades");
     await queryInterface.dropTable("tipo_postagem");
