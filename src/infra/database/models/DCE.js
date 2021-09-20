@@ -37,6 +37,7 @@ class DCEModel extends Model {
       },
       {
         sequelize,
+        tableName: "dce",
         modelName: "DCE",
       }
     );

@@ -269,6 +269,49 @@ module.exports = {
       },
     });
 
+    await queryInterface.createTable("dce", {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
+      },
+      nome: {
+        type: Sequelize.STRING(200),
+        allowNull: false,
+      },
+      id_cargo: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "cargos",
+          },
+          key: "id",
+        },
+      },
+      id_usuario: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "usuarios",
+          },
+          key: "id",
+        },
+      },
+      created_at: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
+      },
+      updated_at: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal(
+          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
+        ),
+      },
+    });
+
     await queryInterface.createTable("postagens", {
       id: {
         type: Sequelize.UUID,
@@ -511,49 +554,6 @@ module.exports = {
         references: {
           model: {
             tableName: "campeonatos",
-          },
-          key: "id",
-        },
-      },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
-      },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal(
-          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        ),
-      },
-    });
-
-    await queryInterface.createTable("dce", {
-      id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      nome: {
-        type: Sequelize.STRING(200),
-        allowNull: false,
-      },
-      id_cargo: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: "cargos",
-          },
-          key: "id",
-        },
-      },
-      id_usuario: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: "usuarios",
           },
           key: "id",
         },
