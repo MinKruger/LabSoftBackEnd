@@ -26,8 +26,7 @@ class CursoModel extends Model {
   }
 
   static associate(models) {
-    this.belongsToMany(models.atleticas, {
-      through: "atleticas_cursos",
+    this.belongsTo(models.atleticas, {
       foreignKey: "id_curso",
       onDelete: "SET NULL",
     });
