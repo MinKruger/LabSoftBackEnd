@@ -18,9 +18,15 @@ class UsuarioModel extends Model {
           type: DataTypes.STRING(50),
           allowNull: false,
         },
-        tipoUsuario: {
-          type: DataTypes.STRING(200),
+        id_tipoUsuario: {
+          type: DataTypes.UUID,
           allowNull: false,
+          references: {
+            model: {
+              tableName: "tipo_usuario",
+            },
+            key: "id",
+          },
         },
       },
       {
