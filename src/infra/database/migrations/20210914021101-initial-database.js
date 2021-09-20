@@ -619,13 +619,12 @@ module.exports = {
     await queryInterface.dropTable("postagens");
     await queryInterface.dropTable("dce");
     await queryInterface.dropTable("alunos");
-    await queryInterface.dropTable("atleticas_cursos");
-    await queryInterface.dropTable("atleticas");
     await queryInterface.dropTable("cargos");
     await queryInterface.dropTable("modalidades");
     await queryInterface.dropTable("tipo_postagem");
     await queryInterface.dropTable("fases");
     await queryInterface.dropTable("cursos");
+    await queryInterface.dropTable("atleticas");
     await queryInterface.dropTable("usuarios");
     await queryInterface.dropTable("tipo_usuario");
   },
