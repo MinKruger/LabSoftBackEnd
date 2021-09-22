@@ -2,6 +2,7 @@ require("../infra/database/index");
 require("express-async-errors");
 
 const express = require("express");
+const cors = require("cors");
 const swaggerUI = require("swagger-ui-express");
 
 const swaggerDocs = require("../shared/docs/swagger.json");
@@ -12,6 +13,7 @@ const { AtleticaRouter } = require("./routes/atleticaRoutes");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
