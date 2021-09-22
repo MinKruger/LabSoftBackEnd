@@ -2,6 +2,34 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable("atleticas", {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
+      },
+      nome: {
+        type: Sequelize.STRING(200),
+        allowNull: false,
+        unique: true,
+      },
+      logo: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
+      },
+      updated_at: {
+        type: Sequelize.DATE(3),
+        defaultValue: Sequelize.literal(
+          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
+        ),
+      },
+    });
+
     await queryInterface.createTable("usuarios", {
       id: {
         type: Sequelize.UUID,
@@ -18,50 +46,19 @@ module.exports = {
         type: Sequelize.STRING(200),
         allowNull: false,
       },
-      tipo: {
-        type: Sequelize.STRING(200),
+      tipo_usuario: {
+        type: Sequelize.ENUM('atletica', 'dce'),
         allowNull: false,
-        validate: {
-          isIn: [['atletica', 'dce']],
-        }
       },
       id_atletica: {
         type: Sequelize.UUID,
         allowNull: true,
         references: {
           model: {
-            tableName: "atletica",
+            tableName: "atleticas",
           },
           key: "id",
         },
-      },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
-      },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal(
-          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        ),
-      },
-    });
-
-    await queryInterface.createTable("atleticas", {
-      id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      nome: {
-        type: Sequelize.STRING(200),
-        allowNull: false,
-        unique: true,
-      },
-      logo: {
-        type: Sequelize.TEXT,
-        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE(3),
@@ -524,8 +521,7 @@ module.exports = {
     await queryInterface.dropTable("tipo_postagem");
     await queryInterface.dropTable("fases");
     await queryInterface.dropTable("cursos");
-    await queryInterface.dropTable("atleticas");
     await queryInterface.dropTable("usuarios");
-    await queryInterface.dropTable("tipo_usuario");
+    await queryInterface.dropTable("atleticas");
   },
 };
