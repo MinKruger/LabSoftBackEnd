@@ -43,7 +43,7 @@ class UsuarioModel extends Model {
   }
 
   static associate(models) {
-    this.BelongsTo(models.atleticas, {
+    this.belongsTo(models.atleticas, {
       foreignKey: "id_atletica",
     });
   }
