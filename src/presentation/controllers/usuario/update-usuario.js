@@ -1,6 +1,6 @@
 const { BadRequestException } = require("../../errors/BadRequestException");
 
-class UpdateUsuariosController {
+class UpdateUsuarioController {
   constructor(updateUsuarioUseCase) {
     this.updateUsuarioUseCase = updateUsuarioUseCase;
   }
@@ -18,4 +18,4 @@ class UpdateUsuariosController {
   }
 }
 
-exports.UpdateUsuariosController = UpdateUsuariosController;
+exports.UpdateUsuarioController = UpdateUsuarioController;
