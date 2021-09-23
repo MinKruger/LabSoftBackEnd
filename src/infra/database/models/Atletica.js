@@ -15,7 +15,11 @@ class AtleticaModel extends Model {
           allowNull: false,
         },
         logo: {
-          type: DataTypes.BLOB,
+          type: DataTypes.TEXT,
+          allowNull: false,
+        },
+        data_criacao: {
+          type: DataTypes.STRING(30),
           allowNull: false,
         },
       },
