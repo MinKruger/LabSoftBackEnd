@@ -202,6 +202,10 @@
                     },
                     "logo": {
                         "type": "string"
+                    },
+                    "data_criacao": {
+                        "type": "string",
+                        "example": "01/01/2001"
                     }
                 }
             }
