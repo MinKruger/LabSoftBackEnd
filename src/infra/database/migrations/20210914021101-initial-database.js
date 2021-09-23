@@ -2,15 +2,20 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("tipo_usuario", {
+    await queryInterface.createTable("atleticas", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
         primaryKey: true,
       },
-      descricao: {
+      nome: {
         type: Sequelize.STRING(200),
+        allowNull: false,
+        unique: true,
+      },
+      logo: {
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       created_at: {
@@ -41,43 +46,19 @@ module.exports = {
         type: Sequelize.STRING(200),
         allowNull: false,
       },
-      id_tipoUsuario: {
-        type: Sequelize.UUID,
+      tipo_usuario: {
+        type: Sequelize.ENUM('atletica', 'dce'),
         allowNull: false,
+      },
+      id_atletica: {
+        type: Sequelize.UUID,
+        allowNull: true,
         references: {
           model: {
-            tableName: "tipo_usuario",
+            tableName: "atleticas",
           },
           key: "id",
         },
-      },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
-      },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal(
-          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        ),
-      },
-    });
-
-    await queryInterface.createTable("atleticas", {
-      id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      nome: {
-        type: Sequelize.STRING(200),
-        allowNull: false,
-        unique: true,
-      },
-      logo: {
-        type: Sequelize.TEXT,
-        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE(3),
@@ -269,25 +250,6 @@ module.exports = {
       },
     });
 
-    await queryInterface.createTable("dce", {
-      id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
-      },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal(
-          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        ),
-      },
-    });
-
     await queryInterface.createTable("postagens", {
       id: {
         type: Sequelize.UUID,
@@ -313,12 +275,12 @@ module.exports = {
           key: "id",
         },
       },
-      id_dce: {
+      id_usuario: {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: {
-            tableName: "dce",
+            tableName: "usuarios",
           },
           key: "id",
         },
@@ -545,87 +507,21 @@ module.exports = {
         ),
       },
     });
-
-    await queryInterface.createTable("diretorias", {
-      id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      nome: {
-        type: Sequelize.STRING(250),
-        allowNull: false,
-      },
-      id_cargo: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: "cargos",
-          },
-          key: "id",
-        },
-      },
-      id_atletica: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: "atleticas",
-          },
-          key: "id",
-        },
-      },
-      id_usuario: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: "usuarios",
-          },
-          key: "id",
-        },
-      },
-      id_dce: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: {
-            tableName: "dce",
-          },
-          key: "id",
-        },
-      },
-      created_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(3)"),
-      },
-      updated_at: {
-        type: Sequelize.DATE(3),
-        defaultValue: Sequelize.literal(
-          "CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)"
-        ),
-      },
-    });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("diretorias");
     await queryInterface.dropTable("jogos");
     await queryInterface.dropTable("campeonato_atletica");
     await queryInterface.dropTable("campeonatos");
     await queryInterface.dropTable("comentarios");
     await queryInterface.dropTable("postagens");
-    await queryInterface.dropTable("dce");
     await queryInterface.dropTable("alunos");
     await queryInterface.dropTable("cargos");
     await queryInterface.dropTable("modalidades");
     await queryInterface.dropTable("tipo_postagem");
     await queryInterface.dropTable("fases");
     await queryInterface.dropTable("cursos");
-    await queryInterface.dropTable("atleticas");
     await queryInterface.dropTable("usuarios");
-    await queryInterface.dropTable("tipo_usuario");
+    await queryInterface.dropTable("atleticas");
   },
 };

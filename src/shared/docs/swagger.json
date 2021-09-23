@@ -13,6 +13,10 @@
         {
           "name": "atleticas",
           "description": "Rotas do domínio de atletica"
+        },
+        {
+          "name": "usuarios",
+          "description": "Rotas do domínio de usuario"
         }
       ],
     "paths": {
@@ -179,6 +183,170 @@
               }
             }
           
+        },
+        "/usuario": {
+          "get": {
+            "tags": [
+              "usuarios"
+            ],
+            "summary": "Buscar todos os usuarios cadastrados",
+            "description": "",
+            "operationId": "getAllUsuarios",
+            "produces": [
+              "application/json"
+            ],
+            
+            "responses": {
+              "200": {
+                "description": "successful operation",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Usuarios"
+                            }
+                        }
+                    }
+                }
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
+        },
+        "/usuario/{id}": {
+          "get": {
+            "tags": [
+              "usuarios"
+            ],
+            "summary": "Buscar um usuario pelo id",
+            "description": "",
+            "operationId": "findUsuarioById",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do usuário",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Usuarios"
+                        }
+                    }
+                }
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
+        },
+        "/usuario/create": {
+          "post": {
+            "tags": [
+              "usuarios"
+            ],
+            "summary": "Cria um novo usuario",
+            "description": "",
+            "operationId": "createUsuario",
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/CreateUsuario"
+                            
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "201": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
+              }
+            }
+          }
+        },
+        "/usuario/update/{id}": {
+          "put": {
+            "tags": [
+              "usuarios"
+            ],
+            "summary": "Atualiza um usuario existente",
+            "description": "",
+            "operationId": "updateUsuario",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do usuário",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/Usuarios"
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "200": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
+              }
+            }
+          }
+        },
+        "/usuario/delete/{id}": {
+            "delete": {
+              "tags": [
+                "usuarios"
+              ],
+              "summary": "Delete um usuário existente pelo id",
+              "description": "",
+              "operationId": "deleteUsuarioById",
+              "produces": [
+                "application/json"
+              ],
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "description": "ID do usuário",
+                      "required": true,
+                      "type": "string"
+                  }
+              ],
+              "responses": {
+                "200": {
+                  "description": "successful operation"
+                },
+                "404": {
+                  "description": "Not found"
+                }
+              }
+            }
+          
         }
     },
     "components": {
@@ -204,7 +372,42 @@
                         "type": "string"
                     }
                 }
+            },
+            "Usuarios": {
+                "type": "object",
+                "properties": {
+                    "login": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    },
+                    "tipo_usuario": {
+                        "type": "string"
+                    },
+                    "": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateUsuario": {
+                "type": "object",
+                "properties": {
+                    "login": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    },
+                    "tipo_usuario": {
+                        "type": "string"
+                    },
+                    "id_atletica": {
+                        "type": "string"
+                    }
+                }
             }
+            
         }
     }
 }
