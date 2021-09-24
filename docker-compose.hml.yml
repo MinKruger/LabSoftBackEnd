@@ -1,0 +1,45 @@
+version: "3"
+
+networks:
+  app-connect:
+    driver: bridge
+
+services:
+  database:
+    image: mysql:latest
+    restart: always
+    container_name: database
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    volumes:
+      - ./.data/mysql:/var/lib/mysql
+    expose:
+      - "3306"
+    networks:
+      - app-connect
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    restart: always
+
+  app:
+    depends_on: 
+     - database
+    build:
+      context: .
+      dockerfile: Dockerfile.hml
+    container_name: app
+    environment:
+      DATABASE_HOST: "database"
+    volumes:
+      - ./:/usr/app
+    ports:
+      - "5555:5555"
+    restart: always
+    networks:
+      - app-connect
