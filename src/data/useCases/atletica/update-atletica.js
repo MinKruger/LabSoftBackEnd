@@ -15,6 +15,7 @@ class UpdateAtleticaUseCase {
       throw new NotFoundException("Atletica id not found.");
     }
 
+    delete data.ativo;
     const newAtletica = new AtleticaEntity({ ...atletica, ...data });
     delete newAtletica.id;
 
