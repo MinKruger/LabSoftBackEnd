@@ -359,7 +359,14 @@
                     },
                     "logo": {
                         "type": "string"
+                    },
+                    "data_criacao": {
+                        "type": "string"
+                    },
+                    "ativo": {
+                        "type": "boolean"
                     }
+
                 }
             },
             "CreateAtletica": {
