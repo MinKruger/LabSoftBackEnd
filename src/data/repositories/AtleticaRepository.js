@@ -9,7 +9,10 @@ class AtleticaRepository extends IAtleticaRepository {
   }
 
   findById(id, options) {
-    return Models.AtleticaModel.findByPk(id, options);
+    return Models.AtleticaModel.findOne({
+      where: { id: id, ativo: true },
+      ...options,
+    });
   }
 
   create(data) {
