@@ -4,7 +4,7 @@ class GetAllAtleticasUseCase {
   }
 
   handle() {
-    return this.atleticaRepository.getAll();
+    return this.atleticaRepository.getAll({ where: { ativo: true } });
   }
 }
 
