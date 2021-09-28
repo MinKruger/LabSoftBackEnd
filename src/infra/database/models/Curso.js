@@ -30,6 +30,11 @@ class CursoModel extends Model {
       foreignKey: "id_curso",
       onDelete: "SET NULL",
     });
+
+    this.belongsTo(models.atleticas, {
+      foreignKey: "id_curso",
+      onDelete: "SET NULL",
+    });
   }
 }
 
