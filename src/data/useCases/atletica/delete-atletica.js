@@ -14,7 +14,7 @@ class DeleteAtleticaUseCase {
       throw new NotFoundException("Atletica id not found.");
     }
 
-    await this.atleticaRepository.deleteById(id);
+    await this.atleticaRepository.update({ ativo: false }, { where: { id } });
   }
 }
 

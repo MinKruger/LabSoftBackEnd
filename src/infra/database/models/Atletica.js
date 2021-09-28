@@ -18,6 +18,11 @@ class AtleticaModel extends Model {
           type: DataTypes.TEXT,
           allowNull: false,
         },
+        ativo: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+          defaultValue: true,
+        },
         data_criacao: {
           type: DataTypes.STRING(30),
           allowNull: false,

@@ -6,7 +6,7 @@ class DeleteUsuarioController {
   }
 
   async handle(request, response) {
-    const { id, login, senha, tipo_usuario } = request.params;
+    const { id } = request.params;
 
     if (!id) {
       throw new BadRequestException("ID param is required.");

@@ -4,7 +4,7 @@
   "main": "src/infra/http/server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node start",
+    "start": "node src/infra/http/server.js",
     "dev": "NODE_ENV=development nodemon --ignore node_modules src/infra/http/server.js",
     "generate:seed": "sequelize-cli seed:generate --name",
     "generate:migration": "sequelize-cli migration:generate --name",

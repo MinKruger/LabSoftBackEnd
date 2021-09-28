@@ -138,7 +138,7 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref":  "#/components/schemas/Atleticas"
+                            "$ref":  "#/components/schemas/CreateAtletica"
                         }
                     }
                 }
@@ -359,7 +359,14 @@
                     },
                     "logo": {
                         "type": "string"
+                    },
+                    "data_criacao": {
+                        "type": "string"
+                    },
+                    "ativo": {
+                        "type": "boolean"
                     }
+
                 }
             },
             "CreateAtletica": {
