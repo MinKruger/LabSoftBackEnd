@@ -390,15 +390,10 @@
                     "login": {
                         "type": "string"
                     },
-                    "senha": {
-                        "type": "string"
-                    },
-                    "tipo_usuario": {
-                        "type": "string"
-                    },
-                    "": {
-                        "type": "string"
-                    }
+                    "foto": {
+                      "type": "string",
+                      "example": "base64 encoded image"
+                  }
                 }
             },
             "CreateUsuario": {
@@ -410,11 +405,9 @@
                     "senha": {
                         "type": "string"
                     },
-                    "tipo_usuario": {
-                        "type": "string"
-                    },
-                    "id_atletica": {
-                        "type": "string"
+                    "foto": {
+                        "type": "string",
+                        "example": "base64 encoded image"
                     }
                 }
             }
