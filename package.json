@@ -11,6 +11,7 @@
     "run:seeds": "sequelize-cli db:seed:all",
     "run:migration": "sequelize-cli db:migrate",
     "undo:migration": "sequelize-cli db:migrate:undo",
+    "undo:migration:all": "sequelize-cli db:migrate:undo:all",
     "undo:seeds": "sequelize-cli db:seed:undo:all",
     "test": "jest"
   },
