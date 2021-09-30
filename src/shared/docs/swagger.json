@@ -363,6 +363,9 @@
                     "data_criacao": {
                         "type": "string"
                     },
+                    "instagram": {
+                        "type": "string"
+                    },
                     "ativo": {
                         "type": "boolean"
                     }
@@ -377,6 +380,9 @@
                     },
                     "logo": {
                         "type": "string"
+                    },
+                    "instagram": {
+                      "type": "string"
                     },
                     "data_criacao": {
                         "type": "string",

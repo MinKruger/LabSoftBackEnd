@@ -18,6 +18,10 @@ class AtleticaModel extends Model {
           type: DataTypes.TEXT,
           allowNull: false,
         },
+        instagram: {
+          type: DataTypes.STRING(50),
+          allowNull: true,
+        },
         ativo: {
           type: DataTypes.BOOLEAN,
           allowNull: false,
