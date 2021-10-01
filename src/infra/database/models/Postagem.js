@@ -50,8 +50,8 @@ class PostagemModel extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.atleticas, {
-      foreignKey: "id_atletica",
+    this.belongsTo(models.usuarios, {
+      foreignKey: "id_usuario",
     });
   }
 }
