@@ -347,6 +347,37 @@
               }
             }
           
+        },
+        "/postagem/create": {
+          "post": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Cria uma nova postagem",
+            "description": "",
+            "operationId": "createPostagem",
+            "produces": [
+              "application/json"
+            ],
+            "requestBody": {
+              "content": {
+                  "application/json": {
+                      "schema": {
+                          "$ref":  "#/components/schemas/Postagens"
+                          
+                      }
+                  }
+              }
+          },
+          "responses": {
+            "201": {
+              "description": "successful operation"
+            },
+            "400": {
+              "description": "Bad request"
+            }
+          }
+          }
         }
     },
     "components": {
@@ -423,7 +454,33 @@
                         "type": "string"
                     }
                 }
-            }
+            },
+            "Postagens": {
+              "type": "object",
+              "properties": {
+                  "titulo": {
+                      "type": "string"
+                  },
+                  "id_usuario": {
+                      "type": "string"
+                  },
+                  "tipo": {
+                      "type": "string",
+                      "example": "NOTICIAS"
+                  },
+                  "imagem": {
+                      "type": "string"
+                  },
+                  "descricao": {
+                      "type": "string"
+                  },
+                  "data_evento": {
+                      "type": "string",
+                      "example": "01/01/2001"
+                  }
+
+              }
+          }
             
         }
     }

@@ -4,22 +4,6 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.sequelize.transaction(async (transaction) => {
       await queryInterface.addColumn(
-        "atleticas",
-        "id_usuario",
-        {
-          type: Sequelize.UUID,
-          allowNull: false,
-          references: {
-            model: {
-              tableName: "usuarios",
-            },
-            key: "id",
-          },
-        },
-        { transaction }
-      );
-
-      await queryInterface.addColumn(
         "alunos",
         "dataNascimento",
         {
@@ -89,9 +73,6 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.sequelize.transaction(async (transaction) => {
-      await queryInterface.removeColumn("atleticas", "id_usuario", {
-        transaction,
-      });
       await queryInterface.removeColumn("alunos", "dataNascimento", {
         transaction,
       });

@@ -15,7 +15,7 @@ class PostagemModel extends Model {
           allowNull: false,
         },
         tipo: {
-          type: DataTypes.STRING(200),
+          type: DataTypes.ENUM("EVENTOS", "NOTICIAS", "JOGOS"),
           allowNull: false,
         },
         imagem: {
@@ -43,7 +43,7 @@ class PostagemModel extends Model {
       },
       {
         sequelize,
-        modelName: "usuarios",
+        modelName: "postagens",
       }
     );
     return this;
