@@ -1,6 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 
-class CursoModel extends Model {
+class PostagemModel extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -10,16 +10,32 @@ class CursoModel extends Model {
           allowNull: false,
           primaryKey: true,
         },
-        nome: {
+        titulo: {
           type: DataTypes.STRING(200),
           allowNull: false,
         },
-        id_atletica: {
+        tipo: {
+          type: DataTypes.STRING(200),
+          allowNull: false,
+        },
+        imagem: {
+          type: DataTypes.TEXT,
+          allowNull: true,
+        },
+        descricao: {
+          type: DataTypes.STRING(300),
+          allowNull: false,
+        },
+        data_evento: {
+          type: DataTypes.STRING(30),
+          allowNull: true,
+        },
+        id_usuario: {
           type: DataTypes.UUID,
           allowNull: true,
           references: {
             model: {
-              tableName: "atleticas",
+              tableName: "usuarios",
             },
             key: "id",
           },
@@ -27,9 +43,7 @@ class CursoModel extends Model {
       },
       {
         sequelize,
-        modelName: "cursos",
-        timestamps: true,
-        createdAt: "created_at",
+        modelName: "usuarios",
       }
     );
     return this;
@@ -37,10 +51,9 @@ class CursoModel extends Model {
 
   static associate(models) {
     this.belongsTo(models.atleticas, {
-      foreignKey: "id_curso",
-      onDelete: "SET NULL",
+      foreignKey: "id_atletica",
     });
   }
 }
 
-exports.CursoModel = CursoModel;
+exports.PostagemModel = PostagemModel;
