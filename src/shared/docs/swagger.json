@@ -447,6 +447,42 @@
               }
             }
           }
+        },
+        "/postagem/update/{id}": {
+          "put": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Atualiza uma postagem existente",
+            "description": "",
+            "operationId": "updatePostagem",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da postagem",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/UpdatePostagem"
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "200": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
+              }
+            }
+          }
         }
     },
     "components": {
@@ -536,6 +572,25 @@
                   "tipo": {
                       "type": "string",
                       "example": "NOTICIAS"
+                  },
+                  "imagem": {
+                      "type": "string"
+                  },
+                  "descricao": {
+                      "type": "string"
+                  },
+                  "data_evento": {
+                      "type": "string",
+                      "example": "01/01/2001"
+                  }
+
+              }
+          },
+            "UpdatePostagem": {
+              "type": "object",
+              "properties": {
+                  "titulo": {
+                      "type": "string"
                   },
                   "imagem": {
                       "type": "string"

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/infra/http/server.js",
     "dev": "NODE_ENV=development nodemon --ignore node_modules src/infra/http/server.js",
+    "dev:debug": "NODE_ENV=development nodemon --inspect --ignore node_modules src/infra/http/server.js",
     "generate:seed": "sequelize-cli seed:generate --name",
     "generate:migration": "sequelize-cli migration:generate --name",
     "run:seeds": "sequelize-cli db:seed:all",
