@@ -410,6 +410,43 @@
               }
             }
           }
+        },
+        "/postagem/{id}": {
+          "get": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Buscar uma postagem pelo id",
+            "description": "",
+            "operationId": "findPostagemById",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da postagem",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Postagens"
+                        }
+                    }
+                }
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
         }
     },
     "components": {

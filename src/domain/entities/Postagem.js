@@ -26,6 +26,14 @@ class PostagemEntity {
       throw new BadRequestException("Property 'tipo' is required.");
     }
 
+    if (
+      this.tipo !== "NOTICIAS" &&
+      this.tipo !== "EVENTOS" &&
+      this.tipo !== "JOGOS"
+    ) {
+      throw new BadRequestException("Property 'tipo' is not allowed type.");
+    }
+
     if (!this.descricao) {
       throw new BadRequestException("Property 'descricao' is required.");
     }
