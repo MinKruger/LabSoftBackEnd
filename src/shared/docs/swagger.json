@@ -384,13 +384,35 @@
             "tags": [
               "postagens"
             ],
-            "summary": "Buscar todas as postagens cadastradas",
+            "summary": "Buscar todas as postagens cadastradas por paginação",
             "description": "",
             "operationId": "getAllPostagens",
             "produces": [
               "application/json"
             ],
-            
+            "parameters": [
+              {
+                  "name": "limit",
+                  "in": "query",
+                  "description": "Limit of items",
+                  "required": true,
+                  "type": "number"
+              },
+              {
+                "name": "page",
+                "in": "query",
+                "description": "Actual page",
+                "required": true,
+                "type": "number"
+              },
+              {
+                "name": "type",
+                "in": "query",
+                "description": "Type of Postagem",
+                "required": true,
+                "type": "string"
+              }
+            ],
             "responses": {
               "200": {
                 "description": "successful operation",

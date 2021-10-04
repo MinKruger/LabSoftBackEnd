@@ -8,6 +8,10 @@ class PostagemRepository extends IPostagemRepository {
     return Models.PostagemModel.findAll(options);
   }
 
+  count(options) {
+    return Models.PostagemModel.count(options);
+  }
+
   findById(id, options) {
     return Models.PostagemModel.findByPk(id, options);
   }
