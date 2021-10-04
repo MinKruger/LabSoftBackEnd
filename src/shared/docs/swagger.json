@@ -483,7 +483,38 @@
               }
             }
           }
-        }
+        },
+        "/postagem/delete/{id}": {
+          "delete": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Delete uma postagem existente pelo id",
+            "description": "",
+            "operationId": "deletePostagemById",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da postagem",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation"
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
+        
+      }
     },
     "components": {
         "schemas": {
