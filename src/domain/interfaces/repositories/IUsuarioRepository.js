@@ -4,19 +4,19 @@ const {
 
 class IUsuarioRepository {
   getAll() {
-    throw new NotImplementedException("Method getAll() not implemented");
+    throw new NotImplementedException();
   }
 
   findById() {
-    throw new NotImplementedException("Method findById() not implemented");
+    throw new NotImplementedException();
   }
 
   create() {
-    throw new NotImplementedException("Method create() not implemented");
+    throw new NotImplementedException();
   }
 
   update() {
-    throw new NotImplementedException("Method update() not implemented");
+    throw new NotImplementedException();
   }
 
   delete() {

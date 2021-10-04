@@ -8,8 +8,9 @@ class GetAllPostagensController {
   async handle(request, response) {
     const { limit, page, type } = request.query;
 
-    if (!limit || !page || !type)
+    if (!limit || !page || !type) {
       throw new BadRequestException("Query param is missing");
+    }
 
     const atletica = await this.getAllPostagensUseCase.handle({
       limit: +limit,

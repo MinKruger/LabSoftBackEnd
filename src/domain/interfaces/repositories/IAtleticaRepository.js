@@ -4,19 +4,19 @@ const {
 
 class IAtleticaRepository {
   getAll() {
-    throw new NotImplementedException("Method not implemented");
+    throw new NotImplementedException();
   }
 
   findById() {
-    throw new NotImplementedException("Method not implemented");
+    throw new NotImplementedException();
   }
 
   create() {
-    throw new NotImplementedException("Method not implemented");
+    throw new NotImplementedException();
   }
 
   update() {
-    throw new NotImplementedException("Method not implemented");
+    throw new NotImplementedException();
   }
 }
 

@@ -1,8 +1,8 @@
 const { AppError } = require("./AppError");
 
 class NotImplementedException extends AppError {
-  constructor(message = "Not found") {
-    super(501, message, "Nout Found Error");
+  constructor(message = "Not implemented") {
+    super(501, message, "Method not implemented");
   }
 }
 

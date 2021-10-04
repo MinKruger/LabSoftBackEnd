@@ -4,11 +4,11 @@ const {
 
 class IAtleticaCursoRepository {
   getAll() {
-    throw new NotImplementedException("Method not implemented");
+    throw new NotImplementedException();
   }
 
   create() {
-    throw new NotImplementedException("Method not implemented");
+    throw new NotImplementedException();
   }
 }
 
