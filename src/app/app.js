@@ -11,6 +11,7 @@ const {
 } = require("../presentation/middlewares/handleErrors");
 const { AtleticaRouter } = require("./routes/atleticaRoutes");
 const { UsuarioRouter } = require("./routes/usuarioRoutes");
+const { PostagemRouter } = require("./routes/postagemRoutes");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use("/atletica", AtleticaRouter);
 app.use("/usuario", UsuarioRouter);
+app.use("/postagem", PostagemRouter);
 
 app.use(handleErrorsMiddleware);
 

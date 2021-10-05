@@ -6,11 +6,13 @@
   "scripts": {
     "start": "node src/infra/http/server.js",
     "dev": "NODE_ENV=development nodemon --ignore node_modules src/infra/http/server.js",
+    "dev:debug": "NODE_ENV=development nodemon --inspect --ignore node_modules src/infra/http/server.js",
     "generate:seed": "sequelize-cli seed:generate --name",
     "generate:migration": "sequelize-cli migration:generate --name",
     "run:seeds": "sequelize-cli db:seed:all",
     "run:migration": "sequelize-cli db:migrate",
     "undo:migration": "sequelize-cli db:migrate:undo",
+    "undo:migration:all": "sequelize-cli db:migrate:undo:all",
     "undo:seeds": "sequelize-cli db:seed:undo:all",
     "test": "jest"
   },

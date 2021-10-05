@@ -14,6 +14,16 @@ class CursoModel extends Model {
           type: DataTypes.STRING(200),
           allowNull: false,
         },
+        id_atletica: {
+          type: DataTypes.UUID,
+          allowNull: true,
+          references: {
+            model: {
+              tableName: "atleticas",
+            },
+            key: "id",
+          },
+        },
       },
       {
         sequelize,

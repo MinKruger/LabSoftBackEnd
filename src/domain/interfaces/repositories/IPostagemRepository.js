@@ -2,7 +2,7 @@ const {
   NotImplementedException,
 } = require("../../../presentation/errors/NotImplementedException");
 
-class IAtleticaRepository {
+class IPostagemRepository {
   getAll() {
     throw new NotImplementedException();
   }
@@ -20,4 +20,4 @@ class IAtleticaRepository {
   }
 }
 
-exports.IAtleticaRepository = IAtleticaRepository;
+exports.IPostagemRepository = IPostagemRepository;

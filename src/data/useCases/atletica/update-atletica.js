@@ -9,15 +9,15 @@ class UpdateAtleticaUseCase {
   }
 
   async handle(id, data) {
-    const atletica = await this.atleticaRepository.findById(id);
+    const atletica = await this.atleticaRepository.findById(id, { raw: true });
 
     if (!atletica) {
       throw new NotFoundException("Atletica id not found.");
     }
 
     delete data.ativo;
+    delete data.id;
     const newAtletica = new AtleticaEntity({ ...atletica, ...data });
-    delete newAtletica.id;
 
     await this.atleticaRepository.update(newAtletica, { where: { id } });
   }

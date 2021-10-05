@@ -347,7 +347,196 @@
               }
             }
           
-        }
+        },
+        "/postagem/create": {
+          "post": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Cria uma nova postagem",
+            "description": "",
+            "operationId": "createPostagem",
+            "produces": [
+              "application/json"
+            ],
+            "requestBody": {
+              "content": {
+                  "application/json": {
+                      "schema": {
+                          "$ref":  "#/components/schemas/Postagens"
+                          
+                      }
+                  }
+              }
+          },
+          "responses": {
+            "201": {
+              "description": "successful operation"
+            },
+            "400": {
+              "description": "Bad request"
+            }
+          }
+          }
+        },
+        "/postagem": {
+          "get": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Buscar todas as postagens cadastradas por paginação",
+            "description": "",
+            "operationId": "getAllPostagens",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                  "name": "limit",
+                  "in": "query",
+                  "description": "Limit of items",
+                  "required": true,
+                  "type": "number"
+              },
+              {
+                "name": "page",
+                "in": "query",
+                "description": "Actual page",
+                "required": true,
+                "type": "number"
+              },
+              {
+                "name": "type",
+                "in": "query",
+                "description": "Type of Postagem",
+                "required": true,
+                "type": "string"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Postagens"
+                            }
+                        }
+                    }
+                }
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
+        },
+        "/postagem/{id}": {
+          "get": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Buscar uma postagem pelo id",
+            "description": "",
+            "operationId": "findPostagemById",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da postagem",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Postagens"
+                        }
+                    }
+                }
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
+        },
+        "/postagem/update/{id}": {
+          "put": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Atualiza uma postagem existente",
+            "description": "",
+            "operationId": "updatePostagem",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da postagem",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/UpdatePostagem"
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "200": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
+              }
+            }
+          }
+        },
+        "/postagem/delete/{id}": {
+          "delete": {
+            "tags": [
+              "postagens"
+            ],
+            "summary": "Delete uma postagem existente pelo id",
+            "description": "",
+            "operationId": "deletePostagemById",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da postagem",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation"
+              },
+              "404": {
+                "description": "Not found"
+              }
+            }
+          }
+        
+      }
     },
     "components": {
         "schemas": {
@@ -361,6 +550,9 @@
                         "type": "string"
                     },
                     "data_criacao": {
+                        "type": "string"
+                    },
+                    "instagram": {
                         "type": "string"
                     },
                     "ativo": {
@@ -377,6 +569,9 @@
                     },
                     "logo": {
                         "type": "string"
+                    },
+                    "instagram": {
+                      "type": "string"
                     },
                     "data_criacao": {
                         "type": "string",
@@ -410,7 +605,52 @@
                         "example": "base64 encoded image"
                     }
                 }
-            }
+            },
+            "Postagens": {
+              "type": "object",
+              "properties": {
+                  "titulo": {
+                      "type": "string"
+                  },
+                  "id_usuario": {
+                      "type": "string"
+                  },
+                  "tipo": {
+                      "type": "string",
+                      "example": "NOTICIAS"
+                  },
+                  "imagem": {
+                      "type": "string"
+                  },
+                  "descricao": {
+                      "type": "string"
+                  },
+                  "data_evento": {
+                      "type": "string",
+                      "example": "01/01/2001"
+                  }
+
+              }
+          },
+            "UpdatePostagem": {
+              "type": "object",
+              "properties": {
+                  "titulo": {
+                      "type": "string"
+                  },
+                  "imagem": {
+                      "type": "string"
+                  },
+                  "descricao": {
+                      "type": "string"
+                  },
+                  "data_evento": {
+                      "type": "string",
+                      "example": "01/01/2001"
+                  }
+
+              }
+          }
             
         }
     }
