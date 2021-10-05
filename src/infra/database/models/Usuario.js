@@ -19,20 +19,10 @@ class UsuarioModel extends Model {
           type: DataTypes.STRING(200),
           allowNull: false,
         },
-        tipo_usuario: {
-          type: DataTypes.ENUM('atletica', 'dce'),
-          allowNull: false,
-        },
-        id_atletica: {
-          type: DataTypes.UUID,
+        foto: {
+          type: DataTypes.TEXT,
           allowNull: true,
-          references: {
-            model: {
-              tableName: "atleticas",
-            },
-            key: "id",
-          },
-        },
+        }
       },
       {
         sequelize,
@@ -40,12 +30,6 @@ class UsuarioModel extends Model {
       }
     );
     return this;
-  }
-
-  static associate(models) {
-    this.belongsTo(models.atleticas, {
-      foreignKey: "id_atletica",
-    });
   }
 }
 
