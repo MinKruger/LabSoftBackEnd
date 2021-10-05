@@ -22,7 +22,7 @@ class CreatePostagemUseCase {
 
     const usuario = await this.usuarioRepository.findById(data.id_usuario);
     if (!usuario) {
-      throw new NotFoundException("Usuario not found");
+      throw new NotFoundException("id_usuario not found");
     }
 
     let newPostagem = new PostagemEntity(data);
