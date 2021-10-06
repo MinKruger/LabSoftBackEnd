@@ -24,13 +24,9 @@ const updateAtleticaController = updateAtleticaControllerFactory();
 const deleteAtleticaController = deleteAtleticaControllerFactory();
 
 router.get("/", (req, res) => getAllAtleticasController.handle(req, res));
+router.post("/", (req, res) => createAlteticaController.handle(req, res));
 router.get("/:id", (req, res) => getAtleticaByIdController.handle(req, res));
-router.post("/create", (req, res) => createAlteticaController.handle(req, res));
-router.put("/update/:id", (req, res) =>
-  updateAtleticaController.handle(req, res)
-);
-router.delete("/delete/:id", (req, res) =>
-  deleteAtleticaController.handle(req, res)
-);
+router.put("/:id", (req, res) => updateAtleticaController.handle(req, res));
+router.delete("/:id", (req, res) => deleteAtleticaController.handle(req, res));
 
 exports.AtleticaRouter = router;
