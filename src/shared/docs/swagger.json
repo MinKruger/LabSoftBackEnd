@@ -50,6 +50,32 @@
                 "description": "Not found"
               }
             }
+          },
+          "post": {
+            "tags": [
+              "atleticas"
+            ],
+            "summary": "Cria uma nova atletica",
+            "description": "",
+            "operationId": "createAtletica",
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/CreateAtletica"
+                            
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "201": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
+              }
+            }
           }
         },
         "/atletica/{id}": {
@@ -87,37 +113,7 @@
                 "description": "Not found"
               }
             }
-          }
-        },
-        "/atletica/create": {
-          "post": {
-            "tags": [
-              "atleticas"
-            ],
-            "summary": "Cria uma nova atletica",
-            "description": "",
-            "operationId": "createAtletica",
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":  "#/components/schemas/CreateAtletica"
-                            
-                        }
-                    }
-                }
-            },
-            "responses": {
-              "201": {
-                "description": "successful operation"
-              },
-              "400": {
-                "description": "Bad request"
-              }
-            }
-          }
-        },
-        "/atletica/update/{id}": {
+          },
           "put": {
             "tags": [
               "atleticas"
@@ -151,38 +147,35 @@
                 "description": "Bad request"
               }
             }
-          }
-        },
-        "/atletica/delete/{id}": {
-            "delete": {
-              "tags": [
-                "atleticas"
-              ],
-              "summary": "Delete uma atlética existente pelo id",
-              "description": "",
-              "operationId": "deleteAtleticaById",
-              "produces": [
-                "application/json"
-              ],
-              "parameters": [
-                  {
-                      "name": "id",
-                      "in": "path",
-                      "description": "ID da atlética",
-                      "required": true,
-                      "type": "string"
-                  }
-              ],
-              "responses": {
-                "200": {
-                  "description": "successful operation"
-                },
-                "404": {
-                  "description": "Not found"
+          },
+          "delete": {
+            "tags": [
+              "atleticas"
+            ],
+            "summary": "Delete uma atlética existente pelo id",
+            "description": "",
+            "operationId": "deleteAtleticaById",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da atlética",
+                    "required": true,
+                    "type": "string"
                 }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation"
+              },
+              "404": {
+                "description": "Not found"
               }
             }
-          
+          }
         },
         "/usuario": {
           "get": {
@@ -212,6 +205,32 @@
               },
               "404": {
                 "description": "Not found"
+              }
+            }
+          },
+          "post": {
+            "tags": [
+              "usuarios"
+            ],
+            "summary": "Cria um novo usuario",
+            "description": "",
+            "operationId": "createUsuario",
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/CreateUsuario"
+                            
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "201": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
               }
             }
           }
@@ -251,37 +270,7 @@
                 "description": "Not found"
               }
             }
-          }
-        },
-        "/usuario/create": {
-          "post": {
-            "tags": [
-              "usuarios"
-            ],
-            "summary": "Cria um novo usuario",
-            "description": "",
-            "operationId": "createUsuario",
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":  "#/components/schemas/CreateUsuario"
-                            
-                        }
-                    }
-                }
-            },
-            "responses": {
-              "201": {
-                "description": "successful operation"
-              },
-              "400": {
-                "description": "Bad request"
-              }
-            }
-          }
-        },
-        "/usuario/update/{id}": {
+          },
           "put": {
             "tags": [
               "usuarios"
@@ -315,40 +304,37 @@
                 "description": "Bad request"
               }
             }
-          }
-        },
-        "/usuario/delete/{id}": {
-            "delete": {
-              "tags": [
-                "usuarios"
-              ],
-              "summary": "Delete um usuário existente pelo id",
-              "description": "",
-              "operationId": "deleteUsuarioById",
-              "produces": [
-                "application/json"
-              ],
-              "parameters": [
-                  {
-                      "name": "id",
-                      "in": "path",
-                      "description": "ID do usuário",
-                      "required": true,
-                      "type": "string"
-                  }
-              ],
-              "responses": {
-                "200": {
-                  "description": "successful operation"
-                },
-                "404": {
-                  "description": "Not found"
+          },
+          "delete": {
+            "tags": [
+              "usuarios"
+            ],
+            "summary": "Delete um usuário existente pelo id",
+            "description": "",
+            "operationId": "deleteUsuarioById",
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do usuário",
+                    "required": true,
+                    "type": "string"
                 }
+            ],
+            "responses": {
+              "200": {
+                "description": "successful operation"
+              },
+              "404": {
+                "description": "Not found"
               }
             }
-          
+          }
         },
-        "/postagem/create": {
+        "/postagem": {
           "post": {
             "tags": [
               "postagens"
@@ -377,9 +363,7 @@
               "description": "Bad request"
             }
           }
-          }
-        },
-        "/postagem": {
+          },
           "get": {
             "tags": [
               "postagens"
@@ -468,9 +452,7 @@
                 "description": "Not found"
               }
             }
-          }
-        },
-        "/postagem/update/{id}": {
+          },
           "put": {
             "tags": [
               "postagens"
@@ -504,9 +486,7 @@
                 "description": "Bad request"
               }
             }
-          }
-        },
-        "/postagem/delete/{id}": {
+          },
           "delete": {
             "tags": [
               "postagens"
@@ -535,9 +515,8 @@
               }
             }
           }
-        
       }
-    },
+        },
     "components": {
         "schemas": {
             "Atleticas": {
