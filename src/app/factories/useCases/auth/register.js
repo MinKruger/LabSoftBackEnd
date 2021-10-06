@@ -5,10 +5,10 @@ const {
   RegisterUseCase,
 } = require("../../../../data/useCases/auth/register");
 
-const createUsuarioFactory = function () {
+const registerFactory = function () {
   const usuarioRepository = new UsuarioRepository();
 
   return new RegisterUseCase(usuarioRepository);
 };
 
-exports.createUsuarioFactory = createUsuarioFactory;
+exports.registerFactory = registerFactory;
