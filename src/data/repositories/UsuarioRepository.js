@@ -20,7 +20,7 @@ class UsuarioRepository extends IUsuarioRepository {
     return Models.UsuarioModel.update(data, options);
   }
 
-  delete(id) {
+  deleteById(id) {
     return Models.UsuarioModel.destroy({ where: { id } });
   }
 }

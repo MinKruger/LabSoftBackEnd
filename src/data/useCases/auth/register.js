@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { UsuarioEntity } = require("../../../domain/entities/Usuario");
 class RegisterUseCase {
   constructor(usuarioRepository) {
@@ -5,11 +6,12 @@ class RegisterUseCase {
   }
 
   async handle(data) {
-
-    if(!data.senha) data.senha = process.env.DEFAULT_USER_PASSWORD || 'password';
-
-    let newUsuario = new UsuarioEntity(data);
-    newUsuario = await this.usuarioRepository.create(newUsuario);
+    let newUsuario = await bcrypt.hash(data.senha, process.env.BCRYPT_HASH_ROUNDS || 10).then((hash) => {
+      data.senha = hash;
+      let newUsuario = new UsuarioEntity(data);
+      newUsuario = this.usuarioRepository.create(newUsuario);
+      return newUsuario;
+    });
 
     return newUsuario;
   }

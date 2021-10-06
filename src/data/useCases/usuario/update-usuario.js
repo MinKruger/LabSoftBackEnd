@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { UsuarioEntity } = require("../../../domain/entities/Usuario");
 const {
   NotFoundException,
@@ -15,10 +16,12 @@ class UpdateUsuarioUseCase {
       throw new NotFoundException("Usuario not found.");
     }
 
-    const newUsuario = new UsuarioEntity({ ...usuario, ...data });
-    delete newUsuario.id;
-
-    await this.usuarioRepository.update(newUsuario, { where: { id } });
+    await bcrypt.hash(data.senha, process.env.BCRYPT_HASH_ROUNDS || 10).then((hash) => {
+      data.senha = hash;
+      const updatedUsuario = new UsuarioEntity({ ...usuario, ...data });
+      delete updatedUsuario.id;
+      this.usuarioRepository.update(updatedUsuario, { where: { id } });
+    });
   }
 }
 

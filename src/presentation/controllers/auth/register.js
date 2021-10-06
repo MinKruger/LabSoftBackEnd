@@ -5,7 +5,7 @@ class RegisterController {
 
   async handle(request, response) {
     await this.registerUseCase.handle(request.body);
-
+    
     response.status(201).end();
   }
 }
