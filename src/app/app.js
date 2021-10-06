@@ -9,6 +9,7 @@ const swaggerDocs = require("../shared/docs/swagger.json");
 const {
   handleErrorsMiddleware,
 } = require("../presentation/middlewares/handleErrors");
+const { AuthRouter } = require("./routes/authRoutes");
 const { AtleticaRouter } = require("./routes/atleticaRoutes");
 const { UsuarioRouter } = require("./routes/usuarioRoutes");
 const { PostagemRouter } = require("./routes/postagemRoutes");
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
+app.use("/auth", AuthRouter);
 app.use("/atleticas", AtleticaRouter);
 app.use("/usuarios", UsuarioRouter);
 app.use("/postagens", PostagemRouter);
