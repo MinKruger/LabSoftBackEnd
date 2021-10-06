@@ -20,7 +20,7 @@
         }
       ],
     "paths": {
-        "/atletica": {
+        "/atleticas": {
           "get": {
             "tags": [
               "atleticas"
@@ -78,7 +78,7 @@
             }
           }
         },
-        "/atletica/{id}": {
+        "/atleticas/{id}": {
           "get": {
             "tags": [
               "atleticas"
@@ -177,7 +177,7 @@
             }
           }
         },
-        "/usuario": {
+        "/usuarios": {
           "get": {
             "tags": [
               "usuarios"
@@ -235,7 +235,7 @@
             }
           }
         },
-        "/usuario/{id}": {
+        "/usuarios/{id}": {
           "get": {
             "tags": [
               "usuarios"
@@ -334,7 +334,7 @@
             }
           }
         },
-        "/postagem": {
+        "/postagens": {
           "post": {
             "tags": [
               "postagens"
@@ -417,7 +417,7 @@
             }
           }
         },
-        "/postagem/{id}": {
+        "/postagens/{id}": {
           "get": {
             "tags": [
               "postagens"

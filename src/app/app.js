@@ -19,9 +19,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
-app.use("/atletica", AtleticaRouter);
-app.use("/usuario", UsuarioRouter);
-app.use("/postagem", PostagemRouter);
+app.use("/atleticas", AtleticaRouter);
+app.use("/usuarios", UsuarioRouter);
+app.use("/postagens", PostagemRouter);
 
 app.use(handleErrorsMiddleware);
 
