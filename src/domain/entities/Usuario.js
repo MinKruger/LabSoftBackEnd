@@ -13,10 +13,6 @@ class UsuarioEntity {
     if (!this.login) {
       throw new BadRequestException("Property 'login' is required.");
     }
-
-    if (!this.senha) {
-      throw new BadRequestException("Property 'senha' is required.");
-    }
   }
 }
 

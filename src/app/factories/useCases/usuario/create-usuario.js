@@ -2,13 +2,13 @@ const {
   UsuarioRepository,
 } = require("../../../../data/repositories/UsuarioRepository");
 const {
-  RegisterUseCase,
-} = require("../../../../data/useCases/auth/register");
+  CreateUsuarioUseCase,
+} = require("../../../../data/useCases/usuario/create-usuario");
 
 const createUsuarioFactory = function () {
   const usuarioRepository = new UsuarioRepository();
 
-  return new RegisterUseCase(usuarioRepository);
+  return new CreateUsuarioUseCase(usuarioRepository);
 };
 
 exports.createUsuarioFactory = createUsuarioFactory;

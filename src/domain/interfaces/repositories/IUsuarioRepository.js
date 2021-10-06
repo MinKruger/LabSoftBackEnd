@@ -11,6 +11,10 @@ class IUsuarioRepository {
     throw new NotImplementedException();
   }
 
+  findByUsername() {
+    throw new NotImplementedException();
+  }
+
   create() {
     throw new NotImplementedException();
   }
