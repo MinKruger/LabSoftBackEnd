@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const { UsuarioEntity } = require("../../../domain/entities/Usuario");
 const { BadRequestException } = require("../../../presentation/errors/BadRequestException");
 
-class CreateUsuarioUseCase {
+class RegisterUseCase {
   constructor(usuarioRepository) {
     this.usuarioRepository = usuarioRepository;
   }
@@ -17,7 +17,7 @@ class CreateUsuarioUseCase {
       }
     }
 
-    await bcrypt.hash(senha ? senha : (process.env.DEFAULT_USER_PASSWORD || 'password'), process.env.BCRYPT_HASH_ROUNDS || 10).then((hash) => {
+    await bcrypt.hash(senha, process.env.BCRYPT_HASH_ROUNDS || 10).then((hash) => {
       data.senha = hash;
     });
 
@@ -26,4 +26,4 @@ class CreateUsuarioUseCase {
   }
 }
 
-exports.CreateUsuarioUseCase = CreateUsuarioUseCase;
+exports.RegisterUseCase = RegisterUseCase;
