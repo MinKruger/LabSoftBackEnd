@@ -20,7 +20,7 @@ class IUsuarioRepository {
   }
 
   delete() {
-    throw new NotImplementedException("Method delete() not implemented");
+    throw new NotImplementedException();
   }
 }
 
