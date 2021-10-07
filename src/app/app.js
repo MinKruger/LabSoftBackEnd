@@ -17,7 +17,7 @@ const { PostagemRouter } = require("./routes/postagemRoutes");
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use("/auth", AuthRouter);
