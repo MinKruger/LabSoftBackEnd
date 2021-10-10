@@ -7,7 +7,7 @@ module.exports = {
       "usuarios",
       [
         {
-          id: '00000000-0000-0000-0000-000000000001',
+          id: '00000000-0000-0000-0000-000000000000',
           login: "admin",
           senha: "secret",
           tipo: "dce",
