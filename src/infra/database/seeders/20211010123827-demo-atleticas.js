@@ -10,6 +10,7 @@ module.exports = {
           id: v4(),
           nome: "Tubarões",
           logo: "asdasdasddadsa23213123asdasd",
+          id_usuario: '00000000-0000-0000-0000-000000000000'
         },
         {
           id: v4(),
