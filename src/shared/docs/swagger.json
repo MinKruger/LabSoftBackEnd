@@ -17,6 +17,10 @@
         {
           "name": "usuarios",
           "description": "Rotas do domínio de usuario"
+        },
+        {
+          "name": "auth",
+          "description": "Rotas do domínio de autenticação"
         }
       ],
     "paths": {
@@ -348,6 +352,34 @@
             }
           
         },
+        "/auth/register": {
+          "post": {
+            "tags": [
+              "auth"
+            ],
+            "summary": "Registra um novo usuário",
+            "description": "",
+            "operationId": "registerUsuario",
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref":  "#/components/schemas/RegisterUsuario"
+                            
+                        }
+                    }
+                }
+            },
+            "responses": {
+              "201": {
+                "description": "successful operation"
+              },
+              "400": {
+                "description": "Bad request"
+              }
+            }
+          }
+        },
         "/postagem/create": {
           "post": {
             "tags": [
@@ -583,15 +615,40 @@
                 "type": "object",
                 "properties": {
                     "login": {
-                        "type": "string"
+                      "type": "string"
                     },
                     "foto": {
                       "type": "string",
                       "example": "base64 encoded image"
-                  }
+                    },
+                    "tipo": {
+                      "type": "string",
+                      "enum": ["aluno", "atletica", "dce"],
+                      "example": "atletica"
+                    }
                 }
             },
             "CreateUsuario": {
+                "type": "object",
+                "properties": {
+                    "login": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    },
+                    "foto": {
+                        "type": "string",
+                        "example": "base64 encoded image"
+                    },
+                    "tipo": {
+                      "type": "string",
+                      "enum": ["aluno", "atletica", "dce"],
+                      "example": "atletica"
+                    }
+                }
+            },
+            "RegisterUsuario": {
                 "type": "object",
                 "properties": {
                     "login": {
