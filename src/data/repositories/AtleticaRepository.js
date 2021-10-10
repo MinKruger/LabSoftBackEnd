@@ -15,6 +15,13 @@ class AtleticaRepository extends IAtleticaRepository {
     });
   }
 
+  findByName(name, options) {
+    return Models.AtleticaModel.findOne({
+      where: { nome: name },
+      ...options,
+    });
+  }
+
   create(data) {
     return Models.AtleticaModel.create(data);
   }
