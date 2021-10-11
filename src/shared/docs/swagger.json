@@ -1,359 +1,386 @@
 {
-    "openapi":"3.0.0",
-    "info": {
-        "title": "Documentação da API",
-        "description": "API do back-end do projeto da matéria de Laboratório de Software"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentação da API",
+    "description": "API do back-end do projeto da matéria de Laboratório de Software"
+  },
+  "version": "1.0.0",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "tags": [
+    {
+      "name": "atleticas",
+      "description": "Rotas do domínio de atletica"
     },
-    "version": "1.0.0",
-    "schemes": [
-        "https",
-        "http"
-    ],
-    "tags": [
-        {
-          "name": "atleticas",
-          "description": "Rotas do domínio de atletica"
-        },
-        {
-          "name": "usuarios",
-          "description": "Rotas do domínio de usuario"
-        }
-      ],
-    "paths": {
-        "/atleticas": {
-          "get": {
-            "tags": [
-              "atleticas"
-            ],
-            "summary": "Buscar todas as atleticas cadastradas",
-            "description": "",
-            "operationId": "getAllAtleticas",
-            "produces": [
-              "application/json"
-            ],
-            
-            "responses": {
-              "200": {
-                "description": "successful operation",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/components/schemas/Atleticas"
-                            }
-                        }
-                    }
-                }
-              },
-              "404": {
-                "description": "Not found"
-              }
-            }
-          },
-          "post": {
-            "tags": [
-              "atleticas"
-            ],
-            "summary": "Cria uma nova atletica",
-            "description": "",
-            "operationId": "createAtletica",
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":  "#/components/schemas/CreateAtletica"
-                            
-                        }
-                    }
-                }
-            },
-            "responses": {
-              "201": {
-                "description": "successful operation"
-              },
-              "400": {
-                "description": "Bad request"
-              }
-            }
-          }
-        },
-        "/atleticas/{id}": {
-          "get": {
-            "tags": [
-              "atleticas"
-            ],
-            "summary": "Buscar uma atletica pelo id",
-            "description": "",
-            "operationId": "findAtleticaById",
-            "produces": [
-              "application/json"
-            ],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID da atlética",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
-            "responses": {
-              "200": {
-                "description": "successful operation",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Atleticas"
-                        }
-                    }
-                }
-              },
-              "404": {
-                "description": "Not found"
-              }
-            }
-          },
-          "put": {
-            "tags": [
-              "atleticas"
-            ],
-            "summary": "Atualiza uma atletica existente",
-            "description": "",
-            "operationId": "updateAtletica",
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID da atlética",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":  "#/components/schemas/CreateAtletica"
-                        }
-                    }
-                }
-            },
-            "responses": {
-              "200": {
-                "description": "successful operation"
-              },
-              "400": {
-                "description": "Bad request"
-              }
-            }
-          },
-          "delete": {
-            "tags": [
-              "atleticas"
-            ],
-            "summary": "Delete uma atlética existente pelo id",
-            "description": "",
-            "operationId": "deleteAtleticaById",
-            "produces": [
-              "application/json"
-            ],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID da atlética",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
-            "responses": {
-              "200": {
-                "description": "successful operation"
-              },
-              "404": {
-                "description": "Not found"
-              }
-            }
-          }
-        },
-        "/usuarios": {
-          "get": {
-            "tags": [
-              "usuarios"
-            ],
-            "summary": "Buscar todos os usuarios cadastrados",
-            "description": "",
-            "operationId": "getAllUsuarios",
-            "produces": [
-              "application/json"
-            ],
-            
-            "responses": {
-              "200": {
-                "description": "successful operation",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/components/schemas/Usuarios"
-                            }
-                        }
-                    }
-                }
-              },
-              "404": {
-                "description": "Not found"
-              }
-            }
-          },
-          "post": {
-            "tags": [
-              "usuarios"
-            ],
-            "summary": "Cria um novo usuario",
-            "description": "",
-            "operationId": "createUsuario",
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":  "#/components/schemas/CreateUsuario"
-                            
-                        }
-                    }
-                }
-            },
-            "responses": {
-              "201": {
-                "description": "successful operation"
-              },
-              "400": {
-                "description": "Bad request"
-              }
-            }
-          }
-        },
-        "/usuarios/{id}": {
-          "get": {
-            "tags": [
-              "usuarios"
-            ],
-            "summary": "Buscar um usuario pelo id",
-            "description": "",
-            "operationId": "findUsuarioById",
-            "produces": [
-              "application/json"
-            ],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID do usuário",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
-            "responses": {
-              "200": {
-                "description": "successful operation",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Usuarios"
-                        }
-                    }
-                }
-              },
-              "404": {
-                "description": "Not found"
-              }
-            }
-          },
-          "put": {
-            "tags": [
-              "usuarios"
-            ],
-            "summary": "Atualiza um usuario existente",
-            "description": "",
-            "operationId": "updateUsuario",
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID do usuário",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":  "#/components/schemas/Usuarios"
-                        }
-                    }
-                }
-            },
-            "responses": {
-              "200": {
-                "description": "successful operation"
-              },
-              "400": {
-                "description": "Bad request"
-              }
-            }
-          },
-          "delete": {
-            "tags": [
-              "usuarios"
-            ],
-            "summary": "Delete um usuário existente pelo id",
-            "description": "",
-            "operationId": "deleteUsuarioById",
-            "produces": [
-              "application/json"
-            ],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID do usuário",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
-            "responses": {
-              "200": {
-                "description": "successful operation"
-              },
-              "404": {
-                "description": "Not found"
-              }
-            }
-          }
-        },
-        "/postagens": {
-          "post": {
-            "tags": [
-              "postagens"
-            ],
-            "summary": "Cria uma nova postagem",
-            "description": "",
-            "operationId": "createPostagem",
-            "produces": [
-              "application/json"
-            ],
-            "requestBody": {
-              "content": {
-                  "application/json": {
-                      "schema": {
-                          "$ref":  "#/components/schemas/Postagens"
-                          
-                      }
+    {
+      "name": "usuarios",
+      "description": "Rotas do domínio de usuario"
+    },
+    {
+      "name": "auth",
+      "description": "Rotas do domínio de autenticação"
+    }
+  ],
+  "paths": {
+    "/atleticas": {
+      "get": {
+        "tags": [
+          "atleticas"
+        ],
+        "summary": "Buscar todas as atleticas cadastradas",
+        "description": "",
+        "operationId": "getAllAtleticas",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Atleticas"
                   }
+                }
               }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "atleticas"
+        ],
+        "summary": "Cria uma nova atletica",
+        "description": "",
+        "operationId": "createAtletica",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAtletica"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/atleticas/{id}": {
+      "get": {
+        "tags": [
+          "atleticas"
+        ],
+        "summary": "Buscar uma atletica pelo id",
+        "description": "",
+        "operationId": "findAtleticaById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da atlética",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Atleticas"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "atleticas"
+        ],
+        "summary": "Atualiza uma atletica existente",
+        "description": "",
+        "operationId": "updateAtletica",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da atlética",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAtletica"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "atleticas"
+        ],
+        "summary": "Delete uma atlética existente pelo id",
+        "description": "",
+        "operationId": "deleteAtleticaById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da atlética",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/usuarios": {
+      "get": {
+        "tags": [
+          "usuarios"
+        ],
+        "summary": "Buscar todos os usuarios cadastrados",
+        "description": "",
+        "operationId": "getAllUsuarios",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuarios"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "usuarios"
+        ],
+        "summary": "Cria um novo usuario",
+        "description": "",
+        "operationId": "createUsuario",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUsuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/usuarios/{id}": {
+      "get": {
+        "tags": [
+          "usuarios"
+        ],
+        "summary": "Buscar um usuario pelo id",
+        "description": "",
+        "operationId": "findUsuarioById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuarios"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "usuarios"
+        ],
+        "summary": "Atualiza um usuario existente",
+        "description": "",
+        "operationId": "updateUsuario",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuarios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "usuarios"
+        ],
+        "summary": "Delete um usuário existente pelo id",
+        "description": "",
+        "operationId": "deleteUsuarioById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Registra um novo usuário",
+        "description": "",
+        "operationId": "registerUsuario",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterUsuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/postagem/create": {
+      "/postagens": {
+        "post": {
+          "tags": [
+            "postagens"
+          ],
+          "summary": "Cria uma nova postagem",
+          "description": "",
+          "operationId": "createPostagem",
+          "produces": [
+            "application/json"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Postagens"
+                }
+              }
+            }
           },
           "responses": {
             "201": {
@@ -363,274 +390,304 @@
               "description": "Bad request"
             }
           }
-          },
-          "get": {
-            "tags": [
-              "postagens"
-            ],
-            "summary": "Buscar todas as postagens cadastradas por paginação",
-            "description": "",
-            "operationId": "getAllPostagens",
-            "produces": [
-              "application/json"
-            ],
-            "parameters": [
-              {
-                  "name": "limit",
-                  "in": "query",
-                  "description": "Limit of items",
-                  "required": true,
-                  "type": "number"
-              },
-              {
-                "name": "page",
-                "in": "query",
-                "description": "Actual page",
-                "required": true,
-                "type": "number"
-              },
-              {
-                "name": "type",
-                "in": "query",
-                "description": "Type of Postagem",
-                "required": true,
-                "type": "string"
-              }
-            ],
-            "responses": {
-              "200": {
-                "description": "successful operation",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/components/schemas/Postagens"
-                            }
-                        }
-                    }
-                }
-              },
-              "404": {
-                "description": "Not found"
-              }
-            }
-          }
         },
-        "/postagens/{id}": {
-          "get": {
-            "tags": [
-              "postagens"
-            ],
-            "summary": "Buscar uma postagem pelo id",
-            "description": "",
-            "operationId": "findPostagemById",
-            "produces": [
-              "application/json"
-            ],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID da postagem",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
-            "responses": {
-              "200": {
-                "description": "successful operation",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/Postagens"
-                        }
-                    }
-                }
-              },
-              "404": {
-                "description": "Not found"
-              }
-            }
-          },
-          "put": {
-            "tags": [
-              "postagens"
-            ],
-            "summary": "Atualiza uma postagem existente",
-            "description": "",
-            "operationId": "updatePostagem",
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID da postagem",
-                    "required": true,
-                    "type": "string"
-                }
-            ],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref":  "#/components/schemas/UpdatePostagem"
-                        }
-                    }
-                }
+        "get": {
+          "tags": [
+            "postagens"
+          ],
+          "summary": "Buscar todas as postagens cadastradas por paginação",
+          "description": "",
+          "operationId": "getAllPostagens",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Limit of items",
+              "required": true,
+              "type": "number"
             },
-            "responses": {
-              "200": {
-                "description": "successful operation"
-              },
-              "400": {
-                "description": "Bad request"
-              }
+            {
+              "name": "page",
+              "in": "query",
+              "description": "Actual page",
+              "required": true,
+              "type": "number"
+            },
+            {
+              "name": "type",
+              "in": "query",
+              "description": "Type of Postagem",
+              "required": true,
+              "type": "string"
             }
-          },
-          "delete": {
-            "tags": [
-              "postagens"
-            ],
-            "summary": "Delete uma postagem existente pelo id",
-            "description": "",
-            "operationId": "deletePostagemById",
-            "produces": [
-              "application/json"
-            ],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID da postagem",
-                    "required": true,
-                    "type": "string"
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Postagens"
+                    }
+                  }
                 }
-            ],
-            "responses": {
-              "200": {
-                "description": "successful operation"
-              },
-              "404": {
-                "description": "Not found"
               }
+            },
+            "404": {
+              "description": "Not found"
             }
           }
-      }
-        },
-    "components": {
-        "schemas": {
-            "Atleticas": {
-                "type": "object",
-                "properties": {
-                    "nome": {
-                        "type": "string"
-                    },
-                    "logo": {
-                        "type": "string"
-                    },
-                    "data_criacao": {
-                        "type": "string"
-                    },
-                    "instagram": {
-                        "type": "string"
-                    },
-                    "ativo": {
-                        "type": "boolean"
-                    }
-
-                }
-            },
-            "CreateAtletica": {
-                "type": "object",
-                "properties": {
-                    "nome": {
-                        "type": "string"
-                    },
-                    "logo": {
-                        "type": "string"
-                    },
-                    "instagram": {
-                      "type": "string"
-                    },
-                    "data_criacao": {
-                        "type": "string",
-                        "example": "01/01/2001"
-                    }
-                }
-            },
-            "Usuarios": {
-                "type": "object",
-                "properties": {
-                    "login": {
-                        "type": "string"
-                    },
-                    "foto": {
-                      "type": "string",
-                      "example": "base64 encoded image"
-                  }
-                }
-            },
-            "CreateUsuario": {
-                "type": "object",
-                "properties": {
-                    "login": {
-                        "type": "string"
-                    },
-                    "senha": {
-                        "type": "string"
-                    },
-                    "foto": {
-                        "type": "string",
-                        "example": "base64 encoded image"
-                    }
-                }
-            },
-            "Postagens": {
-              "type": "object",
-              "properties": {
-                  "titulo": {
-                      "type": "string"
-                  },
-                  "id_usuario": {
-                      "type": "string"
-                  },
-                  "tipo": {
-                      "type": "string",
-                      "example": "NOTICIAS"
-                  },
-                  "imagem": {
-                      "type": "string"
-                  },
-                  "descricao": {
-                      "type": "string"
-                  },
-                  "data_evento": {
-                      "type": "string",
-                      "example": "01/01/2001"
-                  }
-
-              }
-          },
-            "UpdatePostagem": {
-              "type": "object",
-              "properties": {
-                  "titulo": {
-                      "type": "string"
-                  },
-                  "imagem": {
-                      "type": "string"
-                  },
-                  "descricao": {
-                      "type": "string"
-                  },
-                  "data_evento": {
-                      "type": "string",
-                      "example": "01/01/2001"
-                  }
-
-              }
-          }
-            
         }
+      },
+      "/postagens/{id}": {
+        "get": {
+          "tags": [
+            "postagens"
+          ],
+          "summary": "Buscar uma postagem pelo id",
+          "description": "",
+          "operationId": "findPostagemById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID da postagem",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Postagens"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "postagens"
+          ],
+          "summary": "Atualiza uma postagem existente",
+          "description": "",
+          "operationId": "updatePostagem",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID da postagem",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatePostagem"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "successful operation"
+            },
+            "400": {
+              "description": "Bad request"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "postagens"
+          ],
+          "summary": "Delete uma postagem existente pelo id",
+          "description": "",
+          "operationId": "deletePostagemById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID da postagem",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation"
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        }
+      }
     }
+  },
+  "components": {
+    "schemas": {
+      "Atleticas": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "data_criacao": {
+            "type": "string"
+          },
+          "instagram": {
+            "type": "string"
+          },
+          "ativo": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CreateAtletica": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "instagram": {
+            "type": "string"
+          },
+          "data_criacao": {
+            "type": "string",
+            "example": "01/01/2001"
+          }
+        }
+      },
+      "Usuarios": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string"
+          },
+          "foto": {
+            "type": "string",
+            "example": "base64 encoded image"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "aluno",
+              "atletica",
+              "dce"
+            ],
+            "example": "atletica"
+          }
+        }
+      },
+      "CreateUsuario": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          },
+          "foto": {
+            "type": "string",
+            "example": "base64 encoded image"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "aluno",
+              "atletica",
+              "dce"
+            ],
+            "example": "atletica"
+          }
+        }
+      },
+      "RegisterUsuario": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          },
+          "foto": {
+            "type": "string",
+            "example": "base64 encoded image"
+          }
+        }
+      },
+      "Postagens": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "id_usuario": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string",
+            "example": "NOTICIAS"
+          },
+          "imagem": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "data_evento": {
+            "type": "string",
+            "example": "01/01/2001"
+          }
+        }
+      },
+      "UpdatePostagem": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "imagem": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "data_evento": {
+            "type": "string",
+            "example": "01/01/2001"
+          }
+        }
+      }
+    }
+  }
 }
