@@ -15,7 +15,7 @@ class AtleticaModel extends Model {
           allowNull: false,
         },
         logo: {
-          type: DataTypes.TEXT,
+          type: DataTypes.TEXT("medium"),
           allowNull: false,
         },
         instagram: {
@@ -31,6 +31,16 @@ class AtleticaModel extends Model {
           type: DataTypes.STRING(30),
           allowNull: false,
         },
+        id_usuario: {
+          type: DataTypes.UUID,
+          allowNull: true,
+          references: {
+            model: {
+              tableName: "usuarios",
+            },
+            key: "id",
+          },
+        },
       },
       {
         sequelize,
@@ -43,6 +53,13 @@ class AtleticaModel extends Model {
   static associate(models) {
     this.hasMany(models.cursos, {
       foreignKey: "id_atletica",
+      onDelete: "SET NULL",
+    });
+  }
+
+  static associate(models) {
+    this.belongsTo(models.usuarios, {
+      foreignKey: "id_usuario",
       onDelete: "SET NULL",
     });
   }

@@ -20,8 +20,13 @@ class UsuarioModel extends Model {
           allowNull: false,
         },
         foto: {
-          type: DataTypes.TEXT,
+          type: DataTypes.TEXT("medium"),
           allowNull: true,
+        },
+        tipo: {
+          type: DataTypes.ENUM('aluno', 'atletica', 'dce'),
+          allowNull: false,
+          defaultValue: 'aluno',
         }
       },
       {
