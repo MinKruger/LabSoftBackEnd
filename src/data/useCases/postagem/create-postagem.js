@@ -1,7 +1,6 @@
 const { PostagemEntity } = require("../../../domain/entities/Postagem");
 const createDOMPurify = require("dompurify");
 const fs = require("fs");
-const os = require("os");
 const path = require("path");
 const { v4 } = require("uuid");
 const { JSDOM } = require("jsdom");
