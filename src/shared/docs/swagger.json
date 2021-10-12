@@ -376,7 +376,7 @@
           "content": {
               "application/json": {
                   "schema": {
-                      "$ref":  "#/components/schemas/Postagens"
+                      "$ref":  "#/components/schemas/CreatePostagem"
                       
                   }
               }
@@ -573,7 +573,8 @@
             "type": "string"
           },
           "logo": {
-            "type": "string"
+            "type": "string",
+            "example":"base64 encoded image"
           },
           "instagram": {
             "type": "string"
@@ -669,6 +670,32 @@
           }
         }
       },
+      "CreatePostagem": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "id_usuario": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string",
+            "example": "NOTICIAS"
+          },
+          "imagem": {
+            "type": "string",
+            "example":"base64 encoded image"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "data_evento": {
+            "type": "string",
+            "example": "01/01/2001"
+          }
+        }
+      },
       "UpdatePostagem": {
         "type": "object",
         "properties": {
@@ -676,7 +703,8 @@
             "type": "string"
           },
           "imagem": {
-            "type": "string"
+            "type": "string",
+            "example":"base64 encoded image"
           },
           "descricao": {
             "type": "string"

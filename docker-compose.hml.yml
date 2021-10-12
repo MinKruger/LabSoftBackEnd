@@ -31,7 +31,7 @@ services:
      - database
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.hml
     container_name: app
     environment:
       DATABASE_HOST: "database"
