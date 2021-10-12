@@ -3,6 +3,7 @@ require("express-async-errors");
 
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const swaggerUI = require("swagger-ui-express");
 
 const swaggerDocs = require("../shared/docs/swagger.json");
@@ -18,6 +19,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
+app.use("/public", express.static(path.join(process.cwd(), "public")));
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use("/auth", AuthRouter);
