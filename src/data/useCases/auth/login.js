@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { AuthToken } = require('../../../app/providers/AuthToken');
 const { UsuarioEntity } = require("../../../domain/entities/Usuario");
 const { UnauthorizedException } = require("../../../presentation/errors/UnauthorizedException");
 
@@ -20,6 +21,8 @@ class LoginUseCase {
 
     if(!result)
       throw new UnauthorizedException("Password or User Not Found");
+
+    return AuthToken.generate({id: user.id})
   }
 }
 
