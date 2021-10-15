@@ -23,7 +23,7 @@ class UsuarioRepository extends IUsuarioRepository {
   update(data, options) {
     return Models.UsuarioModel.update(data, options);
   }
-  
+
   findOne(data, options) {
     return Models.UsuarioModel.findOne(data, options);
   }

@@ -9,18 +9,19 @@ class LoginUseCase {
   }
 
   async handle(data) {
-    let { login, senha } = data;
+    const { login, senha } = data;
 
     const user = await this.usuarioRepository.findOne({where: {login}});
-    
+
     if (!user) {
       throw new UnauthorizedException("Password or User Not Found");
     }
 
-    let result = bcrypt.compareSync(senha, user.senha);
+    const result = bcrypt.compareSync(senha, user.senha);
 
-    if(!result)
+    if(!result) {
       throw new UnauthorizedException("Password or User Not Found");
+    }
 
     return AuthToken.generate({id: user.id})
   }
