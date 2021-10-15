@@ -360,6 +360,39 @@
           }
         }
       }
+    },"/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Autenticação de usuário",
+        "description": "",
+        "operationId": "loginUsuario",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUsuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+                "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/LoginToken"
+                    }
+                }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
     },
     "/postagens": {
       "post": {
@@ -642,6 +675,26 @@
           "foto": {
             "type": "string",
             "example": "base64 encoded image"
+          }
+        }
+      },      
+      "LoginUsuario": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          }
+        }
+      },
+      "LoginToken": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "base64"
           }
         }
       },
