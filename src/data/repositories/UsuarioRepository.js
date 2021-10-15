@@ -24,6 +24,10 @@ class UsuarioRepository extends IUsuarioRepository {
     return Models.UsuarioModel.update(data, options);
   }
 
+  findOne(data, options) {
+    return Models.UsuarioModel.findOne(data, options);
+  }
+
   deleteById(id) {
     return Models.UsuarioModel.destroy({ where: { id } });
   }

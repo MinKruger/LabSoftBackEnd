@@ -31,10 +31,7 @@ class UsuarioModel extends Model {
       },
       {
         sequelize,
-        modelName: "usuarios",
-        defaultScope: {
-          attributes: { exclude: ['senha'] },
-        },
+        modelName: "usuarios"
       }
     );
     return this;
