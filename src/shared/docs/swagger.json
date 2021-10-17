@@ -591,9 +591,6 @@
           "data_criacao": {
             "type": "string"
           },
-          "instagram": {
-            "type": "string"
-          },
           "ativo": {
             "type": "boolean"
           }
@@ -608,9 +605,6 @@
           "logo": {
             "type": "string",
             "example":"base64 encoded image"
-          },
-          "instagram": {
-            "type": "string"
           },
           "data_criacao": {
             "type": "string",
