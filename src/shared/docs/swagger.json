@@ -265,11 +265,6 @@
                 }
               }
             }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "successful operation"
           },
           "404": {
             "description": "Not found"
@@ -390,7 +385,6 @@
                     "schema": {
                       "$ref": "#/components/schemas/LoginToken"
                     }
-                  }
                 }
             }
           },
