@@ -8,13 +8,11 @@ class CreateUsuarioUseCase {
   }
 
   async handle(data) {
-    const { login, senha } = data;
+    const { email, senha } = data;
 
-    if (login) {
-      const usernameTaken = await this.usuarioRepository.findByUsername(login);
-      if (usernameTaken) {
-        throw new BadRequestException("Username already taken");
-      }
+    const emailRegistered = await this.usuarioRepository.findOne({where: {email}});
+    if (emailRegistered) {
+      throw new BadRequestException("Email already registered");
     }
 
     await bcrypt.hash(senha ? senha : (process.env.DEFAULT_USER_PASSWORD || 'password'), process.env.BCRYPT_HASH_ROUNDS || 10).then((hash) => {

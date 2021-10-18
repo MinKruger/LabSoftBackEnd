@@ -12,10 +12,6 @@ class UsuarioRepository extends IUsuarioRepository {
     return Models.UsuarioModel.findByPk(id, options);
   }
 
-  findByUsername(username, options) {
-    return Models.UsuarioModel.findOne({ where: { login: username}}, options);
-  }
-
   create(data) {
     return Models.UsuarioModel.create(data);
   }

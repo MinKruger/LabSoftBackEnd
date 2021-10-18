@@ -1,13 +1,26 @@
+const { BadRequestException } = require("../../errors/BadRequestException");
 class CreateUsuarioController {
   constructor(createUsuarioUseCase) {
     this.createUsuarioUseCase = createUsuarioUseCase;
   }
 
   async handle(request, response) {
-    const { login } = request.body;
+    const { email, password, nome, permissao } = request.body;
 
-    if (!login) {
-      throw new BadRequestException("Login param is required.");
+    if (!email) {
+      throw new BadRequestException("Email param is required.");
+    }
+
+    if (!password) {
+      throw new BadRequestException("Password param is required.");
+    }
+
+    if (!nome) {
+      throw new BadRequestException("Nome param is required.");
+    }
+
+    if (!permissao) {
+      throw new BadRequestException("Permissao param is required.");
     }
 
     await this.createUsuarioUseCase.handle(request.body);

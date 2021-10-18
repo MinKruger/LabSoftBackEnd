@@ -10,19 +10,19 @@ class UpdateUsuarioUseCase {
 
   async handle(id, data) {
     const usuarioExists = await this.usuarioRepository.findById(id);
-    const { login, senha } = data;
+    const { email, senha } = data;
 
     if (!usuarioExists) {
       throw new NotFoundException("Usuario not found.");
     }
 
-    if (login) {
-      const usernameTaken = await this.usuarioRepository.findByUsername(login);
-      if (usernameTaken) {
-        throw new BadRequestException("Username already taken");
+    if (email) {
+      const emailRegistered = await this.usuarioRepository.findOne({where: {email}});
+      if (emailRegistered) {
+        throw new BadRequestException("Email already registered");
       }
     } else {
-      data.login = usuarioExists.login;
+      data.email = usuarioExists.email;
     }
 
     if (senha) {

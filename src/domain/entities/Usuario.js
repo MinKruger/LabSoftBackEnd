@@ -13,6 +13,10 @@ class UsuarioEntity {
     if (!this.login) {
       throw new BadRequestException("Property 'login' is required.");
     }
+
+    if (!this.nome) {
+      throw new BadRequestException("Property 'nome' is required.");
+    }
   }
 }
 
