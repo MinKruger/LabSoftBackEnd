@@ -35,7 +35,17 @@ class UsuarioModel extends Model {
           type: DataTypes.ENUM('aluno', 'atletica', 'dce1', 'dce2', 'dce3'),
           allowNull: false,
           defaultValue: 'aluno',
-        }
+        },
+        id_atletica: {
+          type: DataTypes.UUID,
+          allowNull: true,
+          references: {
+            model: {
+              tableName: "atleticas",
+            },
+            key: "id",
+          },
+        },
       },
       {
         sequelize,
@@ -43,6 +53,12 @@ class UsuarioModel extends Model {
       }
     );
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.atleticas, {
+      onDelete: "SET NULL",
+    });
   }
 }
 
