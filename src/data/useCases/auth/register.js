@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { AuthToken } = require('../../../app/providers/AuthToken');
 const fs = require("fs");
 const path = require("path");
 const { v4 } = require("uuid");
@@ -46,14 +47,14 @@ class RegisterUseCase {
       imagePath = `${data.host}/public/images/usuarios/${filename}`;
     }
 
-    newUsuario = this.usuarioRepository.create({
+    newUsuario = await this.usuarioRepository.create({
       ...newUsuario,
       senha: hashedPassword,
       foto: imagePath,
       permissao: 'aluno',
     });
 
-    return newUsuario;
+    return AuthToken.generate({id: newUsuario.id});
   }
 }
 

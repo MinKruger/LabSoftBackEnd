@@ -20,9 +20,9 @@ class RegisterController {
       throw new BadRequestException("Nome param is required.");
     }
 
-    await this.registerUseCase.handle(request.body);
+    const token = await this.registerUseCase.handle(request.body);
 
-    response.status(201).end();
+    response.status(200).json({token});
   }
 }
 

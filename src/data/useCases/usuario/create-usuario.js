@@ -60,7 +60,7 @@ class CreateUsuarioUseCase {
       imagePath = `${data.host}/public/images/usuarios/${filename}`;
     }
 
-    newUsuario = this.usuarioRepository.create({
+    newUsuario = await this.usuarioRepository.create({
       ...newUsuario,
       senha: hashedPassword,
       foto: imagePath,
