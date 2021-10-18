@@ -11,10 +11,6 @@ class CreateUsuarioController {
       throw new BadRequestException("Email param is required.");
     }
 
-    if (!password) {
-      throw new BadRequestException("Password param is required.");
-    }
-
     if (!nome) {
       throw new BadRequestException("Nome param is required.");
     }

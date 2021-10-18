@@ -20,10 +20,6 @@ class RegisterController {
       throw new BadRequestException("Nome param is required.");
     }
 
-    if (!matricula) {
-      throw new BadRequestException("Matricula param is required.");
-    }
-
     await this.registerUseCase.handle(request.body);
 
     response.status(201).end();

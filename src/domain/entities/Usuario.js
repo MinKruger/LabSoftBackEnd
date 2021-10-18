@@ -10,8 +10,8 @@ class UsuarioEntity {
   }
 
   #validate() {
-    if (!this.login) {
-      throw new BadRequestException("Property 'login' is required.");
+    if (!this.email) {
+      throw new BadRequestException("Property 'email' is required.");
     }
 
     if (!this.nome) {

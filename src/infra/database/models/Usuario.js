@@ -57,6 +57,7 @@ class UsuarioModel extends Model {
 
   static associate(models) {
     this.belongsTo(models.atleticas, {
+      foreignKey: "id_atletica",
       onDelete: "SET NULL",
     });
   }
