@@ -1,6 +1,6 @@
 <h3>ARQUITETURA</h3>
 <p>O projeto é baseado na Clean Architecture. Uma architetura que possibilita que diferentes partes do sistema, possuam um baixo grau de dependência, ou seja, baixo acoplamento, resultando em uma fácil manutenibilidade e testabilidade.</p>
-<img src="assets/CleanArchitecture.jpg">
+<img src="public/CleanArchitecture.jpg">
 <br><br>
 <h3> INSTRUÇÕES </h3>
 <ul>

@@ -1,5 +1,8 @@
 const { PostagemEntity } = require("../../../domain/entities/Postagem");
 const createDOMPurify = require("dompurify");
+const fs = require("fs");
+const path = require("path");
+const { v4 } = require("uuid");
 const { JSDOM } = require("jsdom");
 const {
   NotFoundException,
@@ -27,7 +30,26 @@ class CreatePostagemUseCase {
 
     let newPostagem = new PostagemEntity(data);
 
-    newPostagem = await this.postagemRepository.create(newPostagem);
+    const filename = `${v4()}.jpg`;
+
+    const filePath = path.resolve(
+      process.cwd(),
+      "public",
+      "images",
+      "postagens"
+    );
+    if (!fs.existsSync(filePath)) {
+      console.log("entrou");
+      fs.mkdirSync(filePath, { recursive: true });
+    }
+
+    fs.writeFileSync(path.resolve(filePath, filename), data.imagem, "base64");
+
+    const imagePath = `${data.host}/public/images/postagens/${filename}`;
+    newPostagem = await this.postagemRepository.create({
+      ...newPostagem,
+      imagem: imagePath,
+    });
 
     return newPostagem;
   }

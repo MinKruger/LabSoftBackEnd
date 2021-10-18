@@ -1,3 +1,7 @@
+const fs = require("fs");
+const path = require("path");
+const { v4 } = require("uuid");
+
 const { AtleticaEntity } = require("../../../domain/entities/Atletica");
 const {
   BadRequestException,
@@ -20,7 +24,25 @@ class CreateAtleticaUseCase {
       throw new BadRequestException("Atletica already exists");
     }
 
-    newAtletica = await this.atleticaRepository.create(newAtletica);
+    const filename = `${v4()}.jpg`;
+
+    const filePath = path.resolve(
+      process.cwd(),
+      "public",
+      "images",
+      "atleticas"
+    );
+    if (!fs.existsSync(filePath)) {
+      fs.mkdirSync(filePath, { recursive: true });
+    }
+
+    fs.writeFileSync(path.resolve(filePath, filename), data.logo, "base64");
+    const imagePath = `${data.host}/public/images/atleticas/${filename}`;
+
+    newAtletica = await this.atleticaRepository.create({
+      ...newAtletica,
+      logo: imagePath,
+    });
 
     return newAtletica;
   }
