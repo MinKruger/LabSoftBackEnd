@@ -352,8 +352,15 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "successful operation"
+          "200": {
+            "description": "successful operation",
+            "content": {
+                "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/LoginToken"
+                    }
+                }
+            }
           },
           "400": {
             "description": "Bad request"
@@ -615,67 +622,93 @@
       "Usuarios": {
         "type": "object",
         "properties": {
-          "login": {
-            "type": "string"
+          "email": {
+            "type": "string",
+            "example": "aluno@uvv.net"
+          },
+          "nome": {
+            "type": "string",
+            "example": "José Eugênio Soares"
           },
           "foto": {
             "type": "string",
             "example": "base64 encoded image"
           },
-          "tipo": {
+          "instagram": {
+            "type": "string"
+          },
+          "permissao": {
             "type": "string",
             "enum": [
               "aluno",
               "atletica",
-              "dce"
-            ],
-            "example": "atletica"
+              "dce1",
+              "dce2",
+              "dce3"
+            ]
           }
         }
       },
       "CreateUsuario": {
         "type": "object",
         "properties": {
-          "login": {
-            "type": "string"
+          "email": {
+            "type": "string",
+            "example": "aluno@uvv.net"
           },
           "senha": {
             "type": "string"
+          },
+          "nome": {
+            "type": "string",
+            "example": "José Eugênio Soares"
           },
           "foto": {
             "type": "string",
             "example": "base64 encoded image"
           },
-          "tipo": {
+          "instagram": {
+            "type": "string"
+          },
+          "permissao": {
             "type": "string",
             "enum": [
               "aluno",
               "atletica",
-              "dce"
-            ],
-            "example": "atletica"
+              "dce1",
+              "dce2",
+              "dce3"
+            ]
           }
         }
       },
       "RegisterUsuario": {
         "type": "object",
         "properties": {
-          "login": {
-            "type": "string"
+          "email": {
+            "type": "string",
+            "example": "aluno@uvv.net"
           },
           "senha": {
             "type": "string"
           },
+          "nome": {
+            "type": "string",
+            "example": "José Eugênio Soares"
+          },
           "foto": {
             "type": "string",
             "example": "base64 encoded image"
+          },
+          "instagram": {
+            "type": "string"
           }
         }
       },      
       "LoginUsuario": {
         "type": "object",
         "properties": {
-          "login": {
+          "email": {
             "type": "string"
           },
           "senha": {

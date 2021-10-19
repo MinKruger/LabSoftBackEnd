@@ -10,7 +10,7 @@ class UsuarioModel extends Model {
           allowNull: false,
           primaryKey: true,
         },
-        login: {
+        email: {
           type: DataTypes.STRING(200),
           allowNull: false,
           unique: true,
@@ -19,15 +19,33 @@ class UsuarioModel extends Model {
           type: DataTypes.STRING(200),
           allowNull: false,
         },
+        nome: {
+          type: DataTypes.STRING(200),
+          allowNull: false,
+        },
+        instagram: {
+          type: DataTypes.STRING(100),
+          allowNull: true,
+        },
         foto: {
           type: DataTypes.TEXT("medium"),
           allowNull: true,
         },
-        tipo: {
-          type: DataTypes.ENUM('aluno', 'atletica', 'dce'),
+        permissao: {
+          type: DataTypes.ENUM('aluno', 'atletica', 'dce1', 'dce2', 'dce3'),
           allowNull: false,
           defaultValue: 'aluno',
-        }
+        },
+        id_atletica: {
+          type: DataTypes.UUID,
+          allowNull: true,
+          references: {
+            model: {
+              tableName: "atleticas",
+            },
+            key: "id",
+          },
+        },
       },
       {
         sequelize,
@@ -35,6 +53,13 @@ class UsuarioModel extends Model {
       }
     );
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.atleticas, {
+      foreignKey: "id_atletica",
+      onDelete: "SET NULL",
+    });
   }
 }
 

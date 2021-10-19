@@ -6,19 +6,23 @@ class RegisterController {
   }
 
   async handle(request, response) {
-    const { login, senha } = request.body;
+    const { email, senha, nome, matricula } = request.body;
 
-    if (!login) {
-      throw new BadRequestException("Login param is required.");
+    if (!email) {
+      throw new BadRequestException("Email param is required.");
     }
 
     if (!senha) {
       throw new BadRequestException("Senha param is required.");
     }
 
-    await this.registerUseCase.handle(request.body);
+    if (!nome) {
+      throw new BadRequestException("Nome param is required.");
+    }
 
-    response.status(201).end();
+    const token = await this.registerUseCase.handle(request.body);
+
+    response.status(200).json({token});
   }
 }
 
