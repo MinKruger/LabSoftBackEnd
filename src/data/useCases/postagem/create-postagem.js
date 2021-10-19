@@ -32,7 +32,7 @@ class CreatePostagemUseCase {
     }
 
     if (!["dce1,dce2,dc3,atletica"].includes(usuario.permissao)) {
-      throw BadRequestException("User not authorized");
+      throw new BadRequestException("User not authorized");
     }
 
     let newPostagem = new PostagemEntity(data);

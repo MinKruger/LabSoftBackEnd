@@ -692,6 +692,10 @@
           "senha": {
             "type": "string"
           },
+          "permissao": {
+            "type": "string",
+            "example": "atletica"
+          },
           "nome": {
             "type": "string",
             "example": "José Eugênio Soares"
