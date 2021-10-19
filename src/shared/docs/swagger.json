@@ -714,7 +714,7 @@
       "LoginUsuario": {
         "type": "object",
         "properties": {
-          "login": {
+          "email": {
             "type": "string"
           },
           "senha": {
