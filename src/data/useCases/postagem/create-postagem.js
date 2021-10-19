@@ -10,6 +10,9 @@ const {
 const {
   BadRequestException,
 } = require("../../../presentation/errors/BadRequestException");
+const {
+  ForbiddenException,
+} = require("../../../presentation/errors/ForbiddenException");
 
 const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window);
@@ -32,7 +35,7 @@ class CreatePostagemUseCase {
     }
 
     if (!["dce1,dce2,dc3,atletica"].includes(usuario.permissao)) {
-      throw new BadRequestException("User not authorized");
+      throw new ForbiddenException("User not authorized");
     }
 
     let newPostagem = new PostagemEntity(data);
@@ -46,7 +49,6 @@ class CreatePostagemUseCase {
       "postagens"
     );
     if (!fs.existsSync(filePath)) {
-      console.log("entrou");
       fs.mkdirSync(filePath, { recursive: true });
     }
 
