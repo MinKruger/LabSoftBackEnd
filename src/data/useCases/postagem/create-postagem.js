@@ -7,6 +7,9 @@ const { JSDOM } = require("jsdom");
 const {
   NotFoundException,
 } = require("../../../presentation/errors/NotFoundException");
+const {
+  BadRequestException,
+} = require("../../../presentation/errors/BadRequestException");
 
 const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window);
@@ -26,6 +29,10 @@ class CreatePostagemUseCase {
     const usuario = await this.usuarioRepository.findById(data.id_usuario);
     if (!usuario) {
       throw new NotFoundException("id_usuario not found");
+    }
+
+    if (!["dce1,dce2,dc3,atletica"].includes(usuario.permissao)) {
+      throw BadRequestException("User not authorized");
     }
 
     let newPostagem = new PostagemEntity(data);
