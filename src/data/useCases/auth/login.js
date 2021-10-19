@@ -9,9 +9,9 @@ class LoginUseCase {
   }
 
   async handle(data) {
-    const { login, senha } = data;
+    const { email, senha } = data;
 
-    const user = await this.usuarioRepository.findOne({where: {login}});
+    const user = await this.usuarioRepository.findOne({where: {email}});
 
     if (!user) {
       throw new UnauthorizedException("Password or User Not Found");

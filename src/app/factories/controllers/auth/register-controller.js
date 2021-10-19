@@ -2,11 +2,11 @@ const {
   RegisterController,
 } = require("../../../../presentation/controllers/auth/register");
 const {
-  createUsuarioFactory,
-} = require("../../useCases/usuario/create-usuario");
+  registerFactory,
+} = require("../../useCases/auth/register");
 
 const registerControllerFactory = function () {
-  return new RegisterController(createUsuarioFactory());
+  return new RegisterController(registerFactory());
 };
 
 exports.registerControllerFactory = registerControllerFactory;

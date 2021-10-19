@@ -6,10 +6,10 @@ class LoginController {
   }
 
   async handle(request, response) {
-    const { login, senha } = request.body;
+    const { email, senha } = request.body;
 
-    if (!login) {
-      throw new BadRequestException("Login param is required.");
+    if (!email) {
+      throw new BadRequestException("Email param is required.");
     }
 
     if (!senha) {
