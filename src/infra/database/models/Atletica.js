@@ -18,10 +18,6 @@ class AtleticaModel extends Model {
           type: DataTypes.TEXT("medium"),
           allowNull: false,
         },
-        instagram: {
-          type: DataTypes.STRING(50),
-          allowNull: true,
-        },
         ativo: {
           type: DataTypes.BOOLEAN,
           allowNull: false,
@@ -30,16 +26,6 @@ class AtleticaModel extends Model {
         data_criacao: {
           type: DataTypes.STRING(30),
           allowNull: false,
-        },
-        id_usuario: {
-          type: DataTypes.UUID,
-          allowNull: true,
-          references: {
-            model: {
-              tableName: "usuarios",
-            },
-            key: "id",
-          },
         },
       },
       {
@@ -53,13 +39,6 @@ class AtleticaModel extends Model {
   static associate(models) {
     this.hasMany(models.cursos, {
       foreignKey: "id_atletica",
-      onDelete: "SET NULL",
-    });
-  }
-
-  static associate(models) {
-    this.belongsTo(models.usuarios, {
-      foreignKey: "id_usuario",
       onDelete: "SET NULL",
     });
   }
