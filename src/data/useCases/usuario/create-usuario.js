@@ -45,19 +45,14 @@ class CreateUsuarioUseCase {
     let imagePath = null;
     if (newUsuario.foto) {
       const filename = `${v4()}.jpg`;
-      const filePath = path.resolve(
-        process.cwd(),
-        "public",
-        "images",
-        "usuarios"
-      );
+      const filePath = path.resolve(process.cwd(), "public", "images", "usuarios");
 
       if (!fs.existsSync(filePath)) {
         fs.mkdirSync(filePath, { recursive: true });
       }
       fs.writeFileSync(path.resolve(filePath, filename), data.foto, "base64");
 
-      imagePath = `${data.host}/public/images/usuarios/${filename}`;
+      imagePath = `/public/images/usuarios/${filename}`;
     }
 
     newUsuario = await this.usuarioRepository.create({
