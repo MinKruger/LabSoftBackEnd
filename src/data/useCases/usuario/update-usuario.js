@@ -59,7 +59,7 @@ class UpdateUsuarioUseCase {
     }
 
     // Tratamento de imagem
-    let imagePath = usuarioExists.foto;
+    /* let imagePath = usuarioExists.foto;
     if (data.foto) {
       const filename = `${v4()}.jpg`;
       const filePath = path.resolve(process.cwd(), "public", "images", "usuarios");
@@ -70,7 +70,7 @@ class UpdateUsuarioUseCase {
       fs.writeFileSync(path.resolve(filePath, filename), data.foto, "base64");
 
       imagePath = `/public/images/usuarios/${filename}`;
-    }
+    } */
 
     const updatedUsuario = new UsuarioEntity({ ...data, foto: imagePath });
     delete updatedUsuario.id;
