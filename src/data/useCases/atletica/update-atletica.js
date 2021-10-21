@@ -1,4 +1,3 @@
-const { UV_FS_O_FILEMAP } = require("constants");
 const fs = require("fs");
 const path = require("path");
 const { v4 } = require("uuid");
@@ -47,7 +46,7 @@ class UpdateAtleticaUseCase {
 
     if (atletica.logo) {
       const oldPath = atletica.logo.replace(`${data.host}`, process.cwd());
-      if (!fs.existsSync(oldPath)) {
+      if (fs.existsSync(oldPath)) {
         fs.rmSync(oldPath);
       }
     }
