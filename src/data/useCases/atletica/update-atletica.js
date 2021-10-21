@@ -20,31 +20,34 @@ class UpdateAtleticaUseCase {
 
     delete data.ativo;
     delete data.id;
+    let imagePath;
 
-    const filename = `${v4()}.jpg`;
+    if (data.logo) {
+      const filename = `${v4()}.jpg`;
 
-    const filePath = path.resolve(
-      process.cwd(),
-      "public",
-      "images",
-      "atleticas"
-    );
-    if (!fs.existsSync(filePath)) {
-      fs.mkdirSync(filePath, { recursive: true });
+      const filePath = path.resolve(
+        process.cwd(),
+        "public",
+        "images",
+        "atleticas"
+      );
+      if (!fs.existsSync(filePath)) {
+        fs.mkdirSync(filePath, { recursive: true });
+      }
+
+      fs.writeFileSync(path.resolve(filePath, filename), data.logo, "base64");
+      imagePath = `${data.host}/public/images/atleticas/${filename}`;
     }
-
-    fs.writeFileSync(path.resolve(filePath, filename), data.logo, "base64");
-    const imagePath = `${data.host}/public/images/atleticas/${filename}`;
 
     const newAtletica = new AtleticaEntity({
       ...atletica,
       ...data,
-      logo: imagePath,
+      logo: data.logo ? imagePath : atletica.logo,
     });
 
     await this.atleticaRepository.update(newAtletica, { where: { id } });
 
-    if (atletica.logo) {
+    if (atletica.logo && data.logo) {
       const oldPath = atletica.logo.replace(`${data.host}`, process.cwd());
       if (fs.existsSync(oldPath)) {
         fs.rmSync(oldPath);

@@ -34,30 +34,32 @@ class CreatePostagemUseCase {
       throw new NotFoundException("id_usuario not found");
     }
 
-    if (!["dce1,dce2,dc3,atletica"].includes(usuario.permissao)) {
+    if (!["dce1", "dce2", "dc3", "atletica"].includes(usuario.permissao)) {
       throw new ForbiddenException("User not authorized");
     }
 
     let newPostagem = new PostagemEntity(data);
+    let imagePath;
+    if (data.imagem) {
+      const filename = `${v4()}.jpg`;
 
-    const filename = `${v4()}.jpg`;
+      const filePath = path.resolve(
+        process.cwd(),
+        "public",
+        "images",
+        "postagens"
+      );
+      if (!fs.existsSync(filePath)) {
+        fs.mkdirSync(filePath, { recursive: true });
+      }
 
-    const filePath = path.resolve(
-      process.cwd(),
-      "public",
-      "images",
-      "postagens"
-    );
-    if (!fs.existsSync(filePath)) {
-      fs.mkdirSync(filePath, { recursive: true });
+      fs.writeFileSync(path.resolve(filePath, filename), data.imagem, "base64");
+      imagePath = `${data.host}/public/images/postagens/${filename}`;
     }
 
-    fs.writeFileSync(path.resolve(filePath, filename), data.imagem, "base64");
-
-    const imagePath = `${data.host}/public/images/postagens/${filename}`;
     newPostagem = await this.postagemRepository.create({
       ...newPostagem,
-      imagem: imagePath,
+      imagem: data.imagem ? imagePath : null,
     });
 
     return newPostagem;

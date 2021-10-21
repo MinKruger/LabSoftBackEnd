@@ -17,30 +17,33 @@ class UpdatePostagemUseCase {
       throw new NotFoundException("Postagem id not found.");
     }
 
-    const filename = `${v4()}.jpg`;
+    let imagePath;
+    if (data.imagem) {
+      const filename = `${v4()}.jpg`;
 
-    const filePath = path.resolve(
-      process.cwd(),
-      "public",
-      "images",
-      "postagens"
-    );
-    if (!fs.existsSync(filePath)) {
-      fs.mkdirSync(filePath, { recursive: true });
+      const filePath = path.resolve(
+        process.cwd(),
+        "public",
+        "images",
+        "postagens"
+      );
+      if (!fs.existsSync(filePath)) {
+        fs.mkdirSync(filePath, { recursive: true });
+      }
+
+      fs.writeFileSync(path.resolve(filePath, filename), data.imagem, "base64");
+      imagePath = `${host}/public/images/postagens/${filename}`;
     }
-
-    fs.writeFileSync(path.resolve(filePath, filename), data.imagem, "base64");
-    const imagePath = `${host}/public/images/postagens/${filename}`;
 
     const newPostagem = new PostagemEntity({
       ...postagem,
       ...data,
-      imagem: imagePath,
+      imagem: data.imagem ? imagePath : postagem.imagem,
     });
 
     await this.postagemRepository.update(newPostagem, { where: { id } });
 
-    if (postagem.imagem) {
+    if (postagem.imagem && imagePath) {
       const oldPath = postagem.imagem.replace(`${data.host}`, process.cwd());
       if (fs.existsSync(oldPath)) {
         fs.rmSync(oldPath);
