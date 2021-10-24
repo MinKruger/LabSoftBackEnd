@@ -13,12 +13,16 @@ class UpdatePostagemController {
       throw new BadRequestException("Path param is required.");
     }
 
-    await this.updatePostagemUseCase.handle(id, {
-      titulo,
-      imagem,
-      descricao,
-      data_evento,
-    });
+    await this.updatePostagemUseCase.handle(
+      id,
+      {
+        titulo,
+        imagem,
+        descricao,
+        data_evento,
+      },
+      request.headers.host
+    );
 
     response.status(200).end();
   }

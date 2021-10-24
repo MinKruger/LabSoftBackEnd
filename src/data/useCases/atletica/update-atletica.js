@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+const { v4 } = require("uuid");
 const { AtleticaEntity } = require("../../../domain/entities/Atletica");
 const {
   NotFoundException,
@@ -17,9 +20,39 @@ class UpdateAtleticaUseCase {
 
     delete data.ativo;
     delete data.id;
-    const newAtletica = new AtleticaEntity({ ...atletica, ...data });
+    let imagePath;
+
+    if (data.logo) {
+      const filename = `${v4()}.jpg`;
+
+      const filePath = path.resolve(
+        process.cwd(),
+        "public",
+        "images",
+        "atleticas"
+      );
+      if (!fs.existsSync(filePath)) {
+        fs.mkdirSync(filePath, { recursive: true });
+      }
+
+      fs.writeFileSync(path.resolve(filePath, filename), data.logo, "base64");
+      imagePath = `${data.host}/public/images/atleticas/${filename}`;
+    }
+
+    const newAtletica = new AtleticaEntity({
+      ...atletica,
+      ...data,
+      logo: data.logo ? imagePath : atletica.logo,
+    });
 
     await this.atleticaRepository.update(newAtletica, { where: { id } });
+
+    if (atletica.logo && data.logo) {
+      const oldPath = atletica.logo.replace(`${data.host}`, process.cwd());
+      if (fs.existsSync(oldPath)) {
+        fs.rmSync(oldPath);
+      }
+    }
   }
 }
 
