@@ -1,5 +1,8 @@
 const { Router } = require("express");
 const {
+  middlewareAuthentication,
+} = require("../../presentation/middlewares/authentication");
+const {
   createUsuarioControllerFactory,
 } = require("../factories/controllers/usuario/create-usuario-controller");
 const {
@@ -23,7 +26,9 @@ const getAllUsuariosController = getAllUsuariosControllerFactory();
 const updateUsuarioController = updateUsuarioControllerFactory();
 const deleteUsuarioController = deleteUsuarioControllerFactory();
 
-router.get("/", (req, res) => getAllUsuariosController.handle(req, res));
+router.get("/", middlewareAuthentication, (req, res) =>
+  getAllUsuariosController.handle(req, res)
+);
 router.get("/:id", (req, res) => getUsuarioByIdController.handle(req, res));
 router.post("/", (req, res) => createUsuarioController.handle(req, res));
 router.put("/:id", (req, res) => updateUsuarioController.handle(req, res));

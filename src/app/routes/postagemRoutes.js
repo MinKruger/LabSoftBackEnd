@@ -1,4 +1,8 @@
 const { Router } = require("express");
+const { middlewareRoleAdmin } = require("../../presentation/middlewares/admin");
+const {
+  middlewareAuthentication,
+} = require("../../presentation/middlewares/authentication");
 const {
   createPostagemControllerFactory,
 } = require("../factories/controllers/postagem/create-postagem-controller");
@@ -23,10 +27,23 @@ const getPostagemByIdController = getPostagemByIdControllerFactory();
 const updatePostagemController = updatePostagemControllerFactory();
 const deletePostagemController = deletePostagemControllerFactory();
 
-router.post("/", (req, res) => createPostagemController.handle(req, res));
-router.get("/", (req, res) => getAllPostagensController.handle(req, res));
-router.get("/:id", (req, res) => getPostagemByIdController.handle(req, res));
-router.put("/:id", (req, res) => updatePostagemController.handle(req, res));
-router.delete("/:id", (req, res) => deletePostagemController.handle(req, res));
+router.post("/", middlewareAuthentication, (req, res) =>
+  createPostagemController.handle(req, res)
+);
+router.get("/", middlewareAuthentication, (req, res) =>
+  getAllPostagensController.handle(req, res)
+);
+router.get("/:id", middlewareAuthentication, (req, res) =>
+  getPostagemByIdController.handle(req, res)
+);
+router.put("/:id", middlewareAuthentication, (req, res) =>
+  updatePostagemController.handle(req, res)
+);
+router.delete(
+  "/:id",
+  middlewareAuthentication,
+  middlewareRoleAdmin,
+  (req, res) => deletePostagemController.handle(req, res)
+);
 
 exports.PostagemRouter = router;
