@@ -3,3 +3,5 @@ dist/
 coverage/
 .data/
 public/images/**
+package-lock.json
+yarn.lock
