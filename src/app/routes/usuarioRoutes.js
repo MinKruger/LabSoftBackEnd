@@ -26,9 +26,9 @@ const getAllUsuariosController = getAllUsuariosControllerFactory();
 const updateUsuarioController = updateUsuarioControllerFactory();
 const deleteUsuarioController = deleteUsuarioControllerFactory();
 
-router.get("/", middlewareAuthentication, (req, res) =>
-  getAllUsuariosController.handle(req, res)
-);
+router.use(middlewareAuthentication);
+
+router.get("/", (req, res) => getAllUsuariosController.handle(req, res));
 router.get("/:id", (req, res) => getUsuarioByIdController.handle(req, res));
 router.post("/", (req, res) => createUsuarioController.handle(req, res));
 router.put("/:id", (req, res) => updateUsuarioController.handle(req, res));

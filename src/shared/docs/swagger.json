@@ -9,6 +9,13 @@
     "https",
     "http"
   ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
   "tags": [
     {
       "name": "atleticas",
@@ -583,8 +590,18 @@
         }
       }
   }
-  },
+},
+  "security": [
+    {"auth-token": []}
+  ],
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"  
+      }
+    },
     "schemas": {
       "Atleticas": {
         "type": "object",
@@ -731,9 +748,6 @@
           "titulo": {
             "type": "string"
           },
-          "id_usuario": {
-            "type": "string"
-          },
           "tipo": {
             "type": "string",
             "example": "NOTICIAS"
@@ -754,9 +768,6 @@
         "type": "object",
         "properties": {
           "titulo": {
-            "type": "string"
-          },
-          "id_usuario": {
             "type": "string"
           },
           "tipo": {

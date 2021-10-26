@@ -1,5 +1,11 @@
 const { Router } = require("express");
 const {
+  middlewareAuthentication,
+} = require("../../presentation/middlewares/authentication");
+const {
+  middlewarePermissionAllDCE,
+} = require("../../presentation/middlewares/permissionAllDCE");
+const {
   createAtleticaControllerFactory,
 } = require("../factories/controllers/atletica/create-atletica-controller");
 const {
@@ -23,10 +29,18 @@ const getAllAtleticasController = getAllAtleticasControllerFactory();
 const updateAtleticaController = updateAtleticaControllerFactory();
 const deleteAtleticaController = deleteAtleticaControllerFactory();
 
+router.use(middlewareAuthentication);
+
 router.get("/", (req, res) => getAllAtleticasController.handle(req, res));
-router.post("/", (req, res) => createAlteticaController.handle(req, res));
+router.post("/", middlewarePermissionAllDCE, (req, res) =>
+  createAlteticaController.handle(req, res)
+);
 router.get("/:id", (req, res) => getAtleticaByIdController.handle(req, res));
-router.put("/:id", (req, res) => updateAtleticaController.handle(req, res));
-router.delete("/:id", (req, res) => deleteAtleticaController.handle(req, res));
+router.put("/:id", middlewarePermissionAllDCE, (req, res) =>
+  updateAtleticaController.handle(req, res)
+);
+router.delete("/:id", middlewarePermissionAllDCE, (req, res) =>
+  deleteAtleticaController.handle(req, res)
+);
 
 exports.AtleticaRouter = router;

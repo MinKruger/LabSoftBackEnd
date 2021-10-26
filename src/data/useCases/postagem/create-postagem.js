@@ -8,9 +8,6 @@ const {
   NotFoundException,
 } = require("../../../presentation/errors/NotFoundException");
 const {
-  BadRequestException,
-} = require("../../../presentation/errors/BadRequestException");
-const {
   ForbiddenException,
 } = require("../../../presentation/errors/ForbiddenException");
 
