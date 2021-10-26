@@ -3,3 +3,6 @@ dist/
 coverage/
 .data/
 public/images/**
+*.lock
+package-lock.json
+*.log
