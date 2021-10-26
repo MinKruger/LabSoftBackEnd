@@ -18,7 +18,9 @@ function encode(data, options) {
 
 function verify(token) {
   return verifyJWT(token, process.env.JWT_SECRET_KEY, (err, data) => {
-    if (err) throw new UnauthorizedException("Invalid token");
+    if (err) {
+      throw new UnauthorizedException("Invalid token");
+    }
 
     return data;
   });
