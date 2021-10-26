@@ -8,9 +8,6 @@ const {
   NotFoundException,
 } = require("../../../presentation/errors/NotFoundException");
 const {
-  BadRequestException,
-} = require("../../../presentation/errors/BadRequestException");
-const {
   ForbiddenException,
 } = require("../../../presentation/errors/ForbiddenException");
 
@@ -34,7 +31,7 @@ class CreatePostagemUseCase {
       throw new NotFoundException("id_usuario not found");
     }
 
-    if (!["dce1", "dce2", "dc3", "atletica"].includes(usuario.permissao)) {
+    if (!["dce1", "dce2", "dce3", "atletica"].includes(usuario.permissao)) {
       throw new ForbiddenException("User not authorized");
     }
 
