@@ -591,18 +591,15 @@
       }
   }
 },
-  "security": [
-    {"auth-token": []}
-  ],
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"  
-      }
-    },
-    "schemas": {
+"components": {
+  "securitySchemes": {
+    "JWT": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    }
+  },
+  "schemas": {
       "Atleticas": {
         "type": "object",
         "properties": {
@@ -807,5 +804,8 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {"JWT": []}
+  ]
 }
