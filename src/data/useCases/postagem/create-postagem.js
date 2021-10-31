@@ -1,5 +1,7 @@
 const { PostagemEntity } = require("../../../domain/entities/Postagem");
-const {EtiquetaPostagemEntity} = require("../../../domain/entities/EtiquetaPostagem");
+const {
+  EtiquetaPostagemEntity,
+} = require("../../../domain/entities/EtiquetaPostagem");
 const createDOMPurify = require("dompurify");
 const fs = require("fs");
 const path = require("path");
@@ -14,11 +16,17 @@ const {
 const {
   ForbiddenException,
 } = require("../../../presentation/errors/ForbiddenException");
+const { EtiquetaEntity } = require("../../../domain/entities/Etiqueta");
 
 const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window);
 class CreatePostagemUseCase {
-  constructor(postagemRepository, usuarioRepository,etiquetaRepository, etiquetaPostagemRepository) {
+  constructor(
+    postagemRepository,
+    usuarioRepository,
+    etiquetaRepository,
+    etiquetaPostagemRepository
+  ) {
     this.postagemRepository = postagemRepository;
     this.usuarioRepository = usuarioRepository;
     this.etiquetaRepository = etiquetaRepository;
@@ -64,11 +72,33 @@ class CreatePostagemUseCase {
       ...newPostagem,
       imagem: data.imagem ? imagePath : null,
     });
-    const etiquetaPostagem = new EtiquetaPostagemEntity({
-      id_postagem: newPostagem.id, 
-      id_etiqueta: data.id_etiqueta
+
+    data.ids_etiqueta?.forEach(async (id) => {
+      const etiqueta = await this.etiquetaPostagemRepository.findById(id);
+
+      if (etiqueta) {
+        const etiquetaPostagem = new EtiquetaPostagemEntity({
+          id_postagem: newPostagem.id,
+          id_etiqueta: id,
+        });
+
+        await this.etiquetaPostagemRepository.create(etiquetaPostagem);
+      }
     });
-    await this.etiquetaPostagemRepository.create(etiquetaPostagem);
+
+    data.novas_etiquetas?.forEach(async (descricao) => {
+      if (descricao) {
+        let newEtiqueta = new EtiquetaEntity({ descricao });
+        newEtiqueta = await this.etiquetaRepository.create(newEtiqueta);
+
+        const etiquetaPostagem = new EtiquetaPostagemEntity({
+          id_postagem: newPostagem.id,
+          id_etiqueta: newEtiqueta.id,
+        });
+        await this.etiquetaPostagemRepository.create(etiquetaPostagem);
+      }
+    });
+
     return newPostagem;
   }
 }
