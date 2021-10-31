@@ -759,6 +759,9 @@
           "id_usuario": {
             "type": "string"
           },
+          "id_etiqueta": {
+            "type": "string"
+          },
           "tipo": {
             "type": "string",
             "example": "NOTICIAS"

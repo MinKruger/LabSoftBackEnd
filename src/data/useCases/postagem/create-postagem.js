@@ -1,4 +1,5 @@
 const { PostagemEntity } = require("../../../domain/entities/Postagem");
+const {EtiquetaPostagemEntity} = require("../../../domain/entities/EtiquetaPostagem");
 const createDOMPurify = require("dompurify");
 const fs = require("fs");
 const path = require("path");
@@ -17,9 +18,11 @@ const {
 const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window);
 class CreatePostagemUseCase {
-  constructor(postagemRepository, usuarioRepository) {
+  constructor(postagemRepository, usuarioRepository,etiquetaRepository, etiquetaPostagemRepository) {
     this.postagemRepository = postagemRepository;
     this.usuarioRepository = usuarioRepository;
+    this.etiquetaRepository = etiquetaRepository;
+    this.etiquetaPostagemRepository = etiquetaPostagemRepository;
   }
 
   async handle(data) {
@@ -61,7 +64,11 @@ class CreatePostagemUseCase {
       ...newPostagem,
       imagem: data.imagem ? imagePath : null,
     });
-
+    const etiquetaPostagem = new EtiquetaPostagemEntity({
+      id_postagem: newPostagem.id, 
+      id_etiqueta: data.id_etiqueta
+    });
+    await this.etiquetaPostagemRepository.create(etiquetaPostagem);
     return newPostagem;
   }
 }
