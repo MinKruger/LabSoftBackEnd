@@ -1,5 +1,11 @@
 const { Router } = require("express");
 const {
+  middlewareAuthentication,
+} = require("../../presentation/middlewares/authentication");
+const {
+  middlewarePermissionAtleticaDCE,
+} = require("../../presentation/middlewares/permissionAtleticaDCE");
+const {
   createPostagemControllerFactory,
 } = require("../factories/controllers/postagem/create-postagem-controller");
 const {
@@ -23,10 +29,18 @@ const getPostagemByIdController = getPostagemByIdControllerFactory();
 const updatePostagemController = updatePostagemControllerFactory();
 const deletePostagemController = deletePostagemControllerFactory();
 
-router.post("/", (req, res) => createPostagemController.handle(req, res));
+router.use(middlewareAuthentication);
+
+router.post("/", middlewarePermissionAtleticaDCE, (req, res) =>
+  createPostagemController.handle(req, res)
+);
 router.get("/", (req, res) => getAllPostagensController.handle(req, res));
 router.get("/:id", (req, res) => getPostagemByIdController.handle(req, res));
-router.put("/:id", (req, res) => updatePostagemController.handle(req, res));
-router.delete("/:id", (req, res) => deletePostagemController.handle(req, res));
+router.put("/:id", middlewarePermissionAtleticaDCE, (req, res) =>
+  updatePostagemController.handle(req, res)
+);
+router.delete("/:id", middlewarePermissionAtleticaDCE, (req, res) =>
+  deletePostagemController.handle(req, res)
+);
 
 exports.PostagemRouter = router;

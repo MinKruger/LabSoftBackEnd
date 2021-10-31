@@ -4,7 +4,9 @@ class GetAllUsuariosUseCase {
   }
 
   handle() {
-    return this.usuarioRepository.getAll();
+    return this.usuarioRepository.getAll({
+      attributes: { exclude: ["senha"] },
+    });
   }
 }
 
