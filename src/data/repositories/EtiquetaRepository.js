@@ -17,7 +17,7 @@ class EtiquetaRepository extends IEtiquetaRepository {
   }
 
   findOne(data, options) {
-    return Models.EtiquetaModel.findOne(data, options);
+    return Models.EtiquetaModel.findOne(data);
   }
 
   create(data) {

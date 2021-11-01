@@ -42,10 +42,6 @@ class CreatePostagemUseCase {
       throw new NotFoundException("id_usuario not found");
     }
 
-    if (!["dce1", "dce2", "dce3", "atletica"].includes(usuario.permissao)) {
-      throw new ForbiddenException("User not authorized");
-    }
-
     let newPostagem = new PostagemEntity(data);
     let imagePath;
     if (data.imagem) {
@@ -71,7 +67,7 @@ class CreatePostagemUseCase {
     });
 
     data.ids_etiqueta?.forEach(async (id) => {
-      const etiqueta = await this.etiquetaPostagemRepository.findById(id);
+      const etiqueta = await this.etiquetaRepository.findById(id);
 
       if (etiqueta) {
         const etiquetaPostagem = new EtiquetaPostagemEntity({
@@ -85,12 +81,20 @@ class CreatePostagemUseCase {
 
     data.novas_etiquetas?.forEach(async (descricao) => {
       if (descricao) {
-        let newEtiqueta = new EtiquetaEntity({ descricao });
-        newEtiqueta = await this.etiquetaRepository.create(newEtiqueta);
+        let etiqueta = await this.etiquetaRepository.findOne({
+          where: {
+            descricao,
+          },
+        });
+
+        if (!etiqueta) {
+          let newEtiqueta = new EtiquetaEntity({ descricao });
+          etiqueta = await this.etiquetaRepository.create(newEtiqueta);
+        }
 
         const etiquetaPostagem = new EtiquetaPostagemEntity({
           id_postagem: newPostagem.id,
-          id_etiqueta: newEtiqueta.id,
+          id_etiqueta: etiqueta.id,
         });
         await this.etiquetaPostagemRepository.create(etiquetaPostagem);
       }
