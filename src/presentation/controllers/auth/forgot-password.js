@@ -12,9 +12,9 @@ class ForgotPasswordController {
       throw new BadRequestException("Email param is required.");
     }
 
-    const token = await this.forgotPasswordUseCase.handle(request.body);
+    await this.forgotPasswordUseCase.handle(request.body);
 
-    response.status(200).json({token});
+    response.status(200);
   }
 }
 
