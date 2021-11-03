@@ -11,9 +11,9 @@ class ResetPasswordUseCase {
   async handle(data) {
     let { senha } = data;
 
-    const { token } = data;
+    const { codigo } = data;
 
-    const { id } = AuthToken.authenticate(token);
+    const { id } = AuthToken.authenticate(codigo);
 
     const user = await this.usuarioRepository.findById(id);
     if (!user) {
