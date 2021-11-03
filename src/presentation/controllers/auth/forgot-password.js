@@ -14,7 +14,7 @@ class ForgotPasswordController {
 
     await this.forgotPasswordUseCase.handle(request.body);
 
-    response.status(200);
+    response.status(200).end();
   }
 }
 
