@@ -840,6 +840,14 @@
           "titulo": {
             "type": "string"
           },
+          "ids_etiqueta": {
+            "type": "array",
+            "items": {"type":"string"}
+          },
+          "novas_etiquetas": {
+            "type": "array",
+            "items": {"type":"string"}
+          },
           "tipo": {
             "type": "string",
             "example": "NOTICIAS"

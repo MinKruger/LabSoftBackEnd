@@ -3,6 +3,10 @@ dist/
 coverage/
 .data/
 public/images/**
+<<<<<<< HEAD
+package-lock.json
+yarn.lock
+=======
 *.lock
 package-lock.json
 *.log
@@ -10,3 +14,4 @@ package-lock.json
 .env.development
 .env.staging
 .env.production
+>>>>>>> ac4b928c2edcae7fbd77c9214f57142d967cb50f
