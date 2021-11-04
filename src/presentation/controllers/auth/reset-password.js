@@ -6,10 +6,10 @@ class ResetPasswordController {
   }
 
   async handle(request, response) {
-    const { token, senha } = request.body;
+    const { codigo, senha } = request.body;
 
-    if (!token) {
-      throw new BadRequestException("Token param is required.");
+    if (!codigo) {
+      throw new BadRequestException("Codigo param is required.");
     }
 
     if (!senha) {

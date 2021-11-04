@@ -408,6 +408,60 @@
         }
       }
     },
+    "/auth/forgot_password": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Faz uma solicitação de mudança de senha um novo usuário",
+        "description": "",
+        "operationId": "forgotPassword",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/auth/reset_password": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Altera a senha do usuário",
+        "description": "",
+        "operationId": "resetPassword",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
     "/postagens": {
       "post": {
         "tags": [
@@ -736,6 +790,25 @@
           "token": {
             "type": "string",
             "example": "base64"
+          }
+        }
+      },
+      "ForgotPassword": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "ResetPassword": {
+        "type": "object",
+        "properties": {
+          "senha": {
+            "type": "string"
+          },
+          "codigo": {
+            "type": "string"
           }
         }
       },
