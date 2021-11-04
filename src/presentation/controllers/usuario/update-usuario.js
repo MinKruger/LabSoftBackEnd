@@ -7,6 +7,7 @@ class UpdateUsuarioController {
 
   async handle(request, response) {
     const { id } = request.params;
+    request.body.host = request.headers.host;
 
     if (!id) {
       throw new BadRequestException("ID param is required.");

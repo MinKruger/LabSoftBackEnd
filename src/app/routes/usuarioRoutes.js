@@ -17,6 +17,9 @@ const {
 const {
   updateUsuarioControllerFactory,
 } = require("../factories/controllers/usuario/update-usuario-controller");
+const {
+  middlewarePermissionAtleticaDCE,
+} = require("../../presentation/middlewares/permissionAtleticaDCE");
 
 const router = Router();
 
@@ -28,18 +31,12 @@ const deleteUsuarioController = deleteUsuarioControllerFactory();
 
 router.use(middlewareAuthentication);
 
-router.get("/", middlewareAuthentication, (req, res) =>
-  getAllUsuariosController.handle(req, res)
+router.get("/", (req, res) => getAllUsuariosController.handle(req, res));
+router.get("/:id", (req, res) => getUsuarioByIdController.handle(req, res));
+router.post("/", middlewarePermissionAtleticaDCE, (req, res) =>
+  createUsuarioController.handle(req, res)
 );
-router.get("/:id", middlewareAuthentication, (req, res) =>
-  getUsuarioByIdController.handle(req, res)
-);
-router.post("/", (req, res) => createUsuarioController.handle(req, res));
-router.put("/:id", middlewareAuthentication, (req, res) =>
-  updateUsuarioController.handle(req, res)
-);
-router.delete("/:id", middlewareAuthentication, (req, res) =>
-  deleteUsuarioController.handle(req, res)
-);
+router.put("/:id", (req, res) => updateUsuarioController.handle(req, res));
+router.delete("/:id", (req, res) => deleteUsuarioController.handle(req, res));
 
 exports.UsuarioRouter = router;
