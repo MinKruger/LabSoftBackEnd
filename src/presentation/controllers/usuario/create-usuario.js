@@ -6,6 +6,7 @@ class CreateUsuarioController {
 
   async handle(request, response) {
     const { email, password, nome, permissao } = request.body;
+    request.body.host = request.headers.host;
 
     if (!email) {
       throw new BadRequestException("Email param is required.");
