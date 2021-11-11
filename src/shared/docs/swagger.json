@@ -643,7 +643,38 @@
           }
         }
       }
-  }
+    },
+    "/campeonatos": {
+      "post": {
+        "tags": [
+          "campeonatos"
+        ],
+        "summary": "Cria um novo campeonato",
+        "description": "",
+        "operationId": "createCampeonato",
+        "produces": [
+          "application/json"
+        ],
+        "requestBody": {
+          "content": {
+              "application/json": {
+                  "schema": {
+                      "$ref":  "#/components/schemas/CreateCampeonato"
+                      
+                  }
+              }
+          }
+      },
+      "responses": {
+        "201": {
+          "description": "successful operation"
+        },
+        "400": {
+          "description": "Bad request"
+        }
+      }
+      }
+    }
 },
 "components": {
   "securitySchemes": {
@@ -881,6 +912,29 @@
           "data_evento": {
             "type": "string",
             "example": "01/01/2001"
+          }
+        }
+      },
+      "CreateCampeonato": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "ano": {
+            "type": "number"
+          },
+          "modalidade": {
+            "type": "string"
+          },
+          "evento": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "id_vencedor": {
+            "type": "string"
           }
         }
       }
