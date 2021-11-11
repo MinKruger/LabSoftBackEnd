@@ -14,6 +14,7 @@ const { AuthRouter } = require("./routes/authRoutes");
 const { AtleticaRouter } = require("./routes/atleticaRoutes");
 const { UsuarioRouter } = require("./routes/usuarioRoutes");
 const { PostagemRouter } = require("./routes/postagemRoutes");
+const { CampeonatoRouter } = require("./routes/campeonatoRoutes");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use("/auth", AuthRouter);
 app.use("/atleticas", AtleticaRouter);
 app.use("/usuarios", UsuarioRouter);
 app.use("/postagens", PostagemRouter);
+app.use("/campeonatos", CampeonatoRouter);
 
 app.use(handleErrorsMiddleware);
 

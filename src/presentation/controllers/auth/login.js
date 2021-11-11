@@ -16,9 +16,9 @@ class LoginController {
       throw new BadRequestException("Senha param is required.");
     }
 
-    const token = await this.loginUseCase.handle(request.body);
+    const tokenAndUser = await this.loginUseCase.handle(request.body);
 
-    response.status(200).json({token});
+    response.status(200).json(tokenAndUser);
   }
 }
 

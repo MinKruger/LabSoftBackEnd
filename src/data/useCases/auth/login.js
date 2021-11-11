@@ -1,7 +1,9 @@
-const bcrypt = require('bcrypt');
-const { AuthToken } = require('../../../app/providers/AuthToken');
+const bcrypt = require("bcrypt");
+const { AuthToken } = require("../../../app/providers/AuthToken");
 const { UsuarioEntity } = require("../../../domain/entities/Usuario");
-const { UnauthorizedException } = require("../../../presentation/errors/UnauthorizedException");
+const {
+  UnauthorizedException,
+} = require("../../../presentation/errors/UnauthorizedException");
 
 class LoginUseCase {
   constructor(usuarioRepository) {
@@ -11,7 +13,10 @@ class LoginUseCase {
   async handle(data) {
     const { email, senha } = data;
 
-    const user = await this.usuarioRepository.findOne({where: {email}});
+    const user = await this.usuarioRepository.findOne({
+      where: { email },
+      raw: true,
+    });
 
     if (!user) {
       throw new UnauthorizedException("Password or User Not Found");
@@ -19,11 +24,16 @@ class LoginUseCase {
 
     const result = bcrypt.compareSync(senha, user.senha);
 
-    if(!result) {
+    if (!result) {
       throw new UnauthorizedException("Password or User Not Found");
     }
 
-    return AuthToken.generate({id: user.id})
+    const token = AuthToken.generate({ id: user.id });
+
+    delete user.id;
+    delete user.senha;
+
+    return { token, user };
   }
 }
 
