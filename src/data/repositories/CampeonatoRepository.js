@@ -15,6 +15,10 @@ class CampeonatoRepository extends ICampeonatoRepository {
   create(data) {
     return Models.CampeonatoModel.create(data);
   }
+
+  update(data, options) {
+    return Models.CampeonatoModel.update(data, options);
+  }
 }
 
 exports.CampeonatoRepository = CampeonatoRepository;

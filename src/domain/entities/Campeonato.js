@@ -27,6 +27,18 @@ class CampeonatoEntity {
     if (!this.evento) {
       throw new BadRequestException("Property 'evento' is required.");
     }
+    if (!this.status) {
+      throw new BadRequestException("Property 'status' is required.");
+    }
+    if (
+      !["ANDAMENTO", "ENCERRADO", "CANCELADO", "AGUARDANDO"].includes(
+        this.status
+      )
+    ) {
+      throw new BadRequestException(
+        "Property 'status' must be 'ANDAMENTO', 'ENCERRADO', 'CANCELADO', 'AGUARDANDO'"
+      );
+    }
   }
 }
 
