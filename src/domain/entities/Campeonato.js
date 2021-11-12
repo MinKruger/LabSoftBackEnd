@@ -7,6 +7,7 @@ class CampeonatoEntity {
   ano = null;
   modalidade = null;
   evento = null;
+  status = null;
 
   constructor(data) {
     Object.assign(this, data);

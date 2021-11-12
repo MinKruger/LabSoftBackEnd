@@ -5,6 +5,7 @@ const { PostagemModel } = require("./Postagem");
 const { EtiquetaModel } = require("./Etiqueta");
 const { EtiquetaPostagemModel } = require("./EtiquetaPostagem");
 const { CampeonatoModel } = require("./Campeonato");
+const { ParticipanteModel } = require("./Participante");
 
 exports.Models = {
   AtleticaModel,
@@ -14,4 +15,5 @@ exports.Models = {
   EtiquetaModel,
   EtiquetaPostagemModel,
   CampeonatoModel,
+  ParticipanteModel,
 };

@@ -6,7 +6,7 @@ class GetAllCampeonatosController {
   }
 
   async handle(request, response) {
-    const { limit, page, event, modality } = request.query;
+    const { limit, page, event, modality, status } = request.query;
 
     if (!limit || !page) {
       throw new BadRequestException("Query param is missing");
@@ -17,6 +17,7 @@ class GetAllCampeonatosController {
       page: +page,
       event,
       modality,
+      status,
     });
 
     response.status(200).json(atletica);
