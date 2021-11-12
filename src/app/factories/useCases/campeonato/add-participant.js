@@ -1,12 +1,12 @@
 const {
+  AtleticaRepository,
+} = require("../../../../data/repositories/AtleticaRepository");
+const {
   CampeonatoRepository,
 } = require("../../../../data/repositories/CampeonatoRepository");
 const {
   ParticipanteRepository,
 } = require("../../../../data/repositories/ParticipanteRepository");
-const {
-  UsuarioRepository,
-} = require("../../../../data/repositories/UsuarioRepository");
 const {
   AddParticipantUseCase,
 } = require("../../../../data/useCases/campeonato/add-participant");
@@ -14,10 +14,11 @@ const {
 const addParticipantFactory = function () {
   const participanteRepository = new ParticipanteRepository();
   const campeonatoRepository = new CampeonatoRepository();
-  const usuarioRepository = new UsuarioRepository();
+  const atleticaRepository = new AtleticaRepository();
+
   return new AddParticipantUseCase(
     participanteRepository,
-    usuarioRepository,
+    atleticaRepository,
     campeonatoRepository
   );
 };

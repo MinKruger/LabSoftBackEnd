@@ -642,6 +642,32 @@
           }
         }
       }
+    },
+    "/campeonatos/participantes": {
+      "post": {
+        "tags": ["campeonatos"],
+        "summary": "Adiciona um novo participante a um campeonato",
+        "description": "",
+        "operationId": "addParticipante",
+        "produces": ["application/json"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddParticipante"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -890,6 +916,20 @@
             "type": "string"
           },
           "id_vencedor": {
+            "type": "string"
+          }
+        }
+      },
+      "AddParticipante": {
+        "type": "object",
+        "properties": {
+          "pontuacao": {
+            "type": "string"
+          },
+          "id_atletica": {
+            "type": "string"
+          },
+          "id_campeonato": {
             "type": "string"
           }
         }

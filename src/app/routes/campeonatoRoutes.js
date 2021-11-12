@@ -29,7 +29,7 @@ router.post("/", middlewarePermissionDCE2AndDCE3, (req, res) =>
 router.put("/:id", middlewarePermissionDCE2AndDCE3, (req, res) =>
   updateCampeonatoController.handle(req, res)
 );
-router.put("/:participantes", middlewarePermissionDCE2AndDCE3, (req, res) =>
+router.post("/participantes", middlewarePermissionDCE2AndDCE3, (req, res) =>
   addParticipantController.handle(req, res)
 );
 

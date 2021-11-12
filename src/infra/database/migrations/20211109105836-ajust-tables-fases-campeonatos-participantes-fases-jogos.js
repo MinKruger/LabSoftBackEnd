@@ -40,10 +40,6 @@ module.exports = {
             type: Sequelize.STRING(250),
             allowNull: false,
           },
-          evento: {
-            type: Sequelize.STRING(250),
-            allowNull: false,
-          },
           status: {
             type: Sequelize.ENUM(
               "ANDAMENTO",

@@ -5,18 +5,18 @@ class ParticipanteModel extends Model {
     super.init(
       {
         id: {
-          type: Sequelize.UUID,
-          defaultValue: Sequelize.UUIDV4,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4,
           allowNull: false,
           primaryKey: true,
         },
         pontuacao: {
-          type: Sequelize.INTEGER,
+          type: DataTypes.INTEGER,
           allowNull: true,
           defaultValue: 0,
         },
         id_campeonato: {
-          type: Sequelize.UUID,
+          type: DataTypes.UUID,
           allowNull: false,
           references: {
             model: {
@@ -26,7 +26,7 @@ class ParticipanteModel extends Model {
           },
         },
         id_atletica: {
-          type: Sequelize.UUID,
+          type: DataTypes.UUID,
           allowNull: false,
           references: {
             model: {
