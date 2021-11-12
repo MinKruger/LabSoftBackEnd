@@ -14,12 +14,16 @@ const {
 const {
   updateCampeonatoControllerFactory,
 } = require("../factories/controllers/campeonato/update-campeonato-controller");
+const {
+  updateParticipanteControllerFactory,
+} = require("../factories/controllers/campeonato/update-participante-controller");
 
 const router = Router();
 
 const createCampeonatoController = createCampeonatoControllerFactory();
 const updateCampeonatoController = updateCampeonatoControllerFactory();
 const addParticipantController = addParticipantControllerFactory();
+const updateParticipanteController = updateParticipanteControllerFactory();
 
 router.use(middlewareAuthentication);
 
@@ -31,6 +35,9 @@ router.put("/:id", middlewarePermissionDCE2AndDCE3, (req, res) =>
 );
 router.post("/participantes", middlewarePermissionDCE2AndDCE3, (req, res) =>
   addParticipantController.handle(req, res)
+);
+router.put("/participantes/:id", middlewarePermissionDCE2AndDCE3, (req, res) =>
+  updateParticipanteController.handle(req, res)
 );
 
 exports.CampeonatoRouter = router;
