@@ -19,6 +19,10 @@ class ParticipanteRepository extends IParticipanteRepository {
   update(data, options) {
     return Models.ParticipanteModel.update(data, options);
   }
+
+  deleteById(id) {
+    return Models.ParticipanteModel.destroy({ where: { id } });
+  }
 }
 
 exports.ParticipanteRepository = ParticipanteRepository;

@@ -701,6 +701,30 @@
             "description": "Bad request"
           }
         }
+      },
+      "delete": {
+        "tags": ["campeonatos"],
+        "summary": "Deleta um participante existente pelo id",
+        "description": "",
+        "operationId": "deleteParticipanteById",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do participante",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
       }
     }
   },
