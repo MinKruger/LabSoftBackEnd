@@ -18,13 +18,23 @@ class CampeonatoModel extends Model {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
-        modalidade: {
-          type: DataTypes.STRING(250),
-          allowNull: false,
+        id_modalidade: {
+          type: DataTypes.UUID,
+          references: {
+            model: {
+              tableName: "modalidades",
+            },
+            key: "id",
+          },
         },
-        evento: {
-          type: DataTypes.STRING(250),
-          allowNull: false,
+        id_evento: {
+          type: DataTypes.UUID,
+          references: {
+            model: {
+              tableName: "eventos",
+            },
+            key: "id",
+          },
         },
         status: {
           type: DataTypes.ENUM(
@@ -56,8 +66,17 @@ class CampeonatoModel extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.etiquetas, {
+    this.belongsTo(models.atleticas, {
       foreignKey: "id_vencedor",
+      as: "vencedor",
+    });
+
+    this.belongsTo(models.modalidades, {
+      foreignKey: "id_modalidade",
+    });
+
+    this.belongsTo(models.eventos, {
+      foreignKey: "id_evento",
     });
   }
 }

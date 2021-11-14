@@ -9,11 +9,38 @@ class CampeonatoRepository extends ICampeonatoRepository {
   }
 
   getAll(options) {
-    return Models.CampeonatoModel.findAll(options);
+    return Models.CampeonatoModel.findAll({
+      ...options,
+      ...{
+        include: [
+          {
+            model: Models.ModalidadeModel,
+            attributes: ["nome", "descricao", "imagem"],
+          },
+          {
+            model: Models.EventoModel,
+            attributes: ["nome", "descricao", "imagem"],
+          },
+          {
+            model: Models.AtleticaModel,
+            attributes: ["nome"],
+            as: "vencedor",
+          },
+        ],
+      },
+    });
+  }
+
+  count(options) {
+    return Models.CampeonatoModel.count(options);
   }
 
   create(data) {
     return Models.CampeonatoModel.create(data);
+  }
+
+  update(data, options) {
+    return Models.CampeonatoModel.update(data, options);
   }
 }
 

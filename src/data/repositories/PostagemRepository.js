@@ -5,7 +5,15 @@ const { Models } = require("../../infra/database/models");
 
 class PostagemRepository extends IPostagemRepository {
   getAll(options) {
-    return Models.PostagemModel.findAll(options);
+    return Models.PostagemModel.findAll({
+      ...options,
+      include: [
+        {
+          model: Models.UsuarioModel,
+          attributes: ["nome", "foto"],
+        },
+      ],
+    });
   }
 
   count(options) {

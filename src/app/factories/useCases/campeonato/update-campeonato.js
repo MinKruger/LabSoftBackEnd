@@ -11,16 +11,16 @@ const {
   ModalidadeRepository,
 } = require("../../../../data/repositories/ModalidadeRepository");
 const {
-  CreateCampeonatoUseCase,
-} = require("../../../../data/useCases/campeonato/create-campeonato");
+  UpdateCampeonatoUseCase,
+} = require("../../../../data/useCases/campeonato/update-campeonato");
 
-const createCampeonatoFactory = function () {
+const updateCampeonatoFactory = function () {
   const campeonatoRepository = new CampeonatoRepository();
   const atleticaRepository = new AtleticaRepository();
   const eventoRepository = new EventoRepository();
   const modalidadeRepository = new ModalidadeRepository();
 
-  return new CreateCampeonatoUseCase(
+  return new UpdateCampeonatoUseCase(
     campeonatoRepository,
     atleticaRepository,
     eventoRepository,
@@ -28,4 +28,4 @@ const createCampeonatoFactory = function () {
   );
 };
 
-exports.createCampeonatoFactory = createCampeonatoFactory;
+exports.updateCampeonatoFactory = updateCampeonatoFactory;

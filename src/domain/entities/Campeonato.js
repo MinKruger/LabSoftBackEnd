@@ -7,6 +7,7 @@ class CampeonatoEntity {
   ano = null;
   modalidade = null;
   evento = null;
+  status = null;
 
   constructor(data) {
     Object.assign(this, data);
@@ -21,11 +22,23 @@ class CampeonatoEntity {
     if (!this.ano) {
       throw new BadRequestException("Property 'ano' is required.");
     }
-    if (!this.modalidade) {
-      throw new BadRequestException("Property 'modalidade' is required.");
+    if (!this.id_modalidade) {
+      throw new BadRequestException("Property 'id_modalidade' is required.");
     }
-    if (!this.evento) {
-      throw new BadRequestException("Property 'evento' is required.");
+    if (!this.id_evento) {
+      throw new BadRequestException("Property 'id_evento' is required.");
+    }
+    if (!this.status) {
+      throw new BadRequestException("Property 'status' is required.");
+    }
+    if (
+      !["ANDAMENTO", "ENCERRADO", "CANCELADO", "AGUARDANDO"].includes(
+        this.status
+      )
+    ) {
+      throw new BadRequestException(
+        "Property 'status' must be 'ANDAMENTO', 'ENCERRADO', 'CANCELADO', 'AGUARDANDO'"
+      );
     }
   }
 }

@@ -3,7 +3,7 @@ const {
   NotFoundException,
 } = require("../../../presentation/errors/NotFoundException");
 
-class CreateCampeonatoUseCase {
+class UpdateCampeonatoUseCase {
   constructor(
     campeonatoRepository,
     atleticaRepository,
@@ -16,8 +16,15 @@ class CreateCampeonatoUseCase {
     this.modalidadeRepository = modalidadeRepository;
   }
 
-  async handle(data) {
-    const campeonato = new CampeonatoEntity(data);
+  async handle(data, id) {
+    const campeonato = await this.campeonatoRepository.findById(id, {
+      raw: true,
+    });
+    if (!campeonato) {
+      throw new NotFoundException("Campeonato not found");
+    }
+
+    const campeonatoUpdated = new CampeonatoEntity({ ...campeonato, ...data });
 
     if (data.id_evento) {
       const evento = await this.eventoRepository.findById(data.id_evento);
@@ -45,8 +52,10 @@ class CreateCampeonatoUseCase {
       }
     }
 
-    await this.campeonatoRepository.create(campeonato);
+    await this.campeonatoRepository.update(campeonatoUpdated, {
+      where: { id },
+    });
   }
 }
 
-exports.CreateCampeonatoUseCase = CreateCampeonatoUseCase;
+exports.UpdateCampeonatoUseCase = UpdateCampeonatoUseCase;

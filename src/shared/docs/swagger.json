@@ -5,10 +5,7 @@
     "description": "API do back-end do projeto da matéria de Laboratório de Software"
   },
   "version": "1.0.0",
-  "schemes": [
-    "https",
-    "http"
-  ],
+  "schemes": ["https", "http"],
   "securityDefinitions": {
     "Bearer": {
       "type": "apiKey",
@@ -33,15 +30,11 @@
   "paths": {
     "/atleticas": {
       "get": {
-        "tags": [
-          "atleticas"
-        ],
+        "tags": ["atleticas"],
         "summary": "Buscar todas as atleticas cadastradas",
         "description": "",
         "operationId": "getAllAtleticas",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -62,9 +55,7 @@
         }
       },
       "post": {
-        "tags": [
-          "atleticas"
-        ],
+        "tags": ["atleticas"],
         "summary": "Cria uma nova atletica",
         "description": "",
         "operationId": "createAtletica",
@@ -89,15 +80,11 @@
     },
     "/atleticas/{id}": {
       "get": {
-        "tags": [
-          "atleticas"
-        ],
+        "tags": ["atleticas"],
         "summary": "Buscar uma atletica pelo id",
         "description": "",
         "operationId": "findAtleticaById",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -124,9 +111,7 @@
         }
       },
       "put": {
-        "tags": [
-          "atleticas"
-        ],
+        "tags": ["atleticas"],
         "summary": "Atualiza uma atletica existente",
         "description": "",
         "operationId": "updateAtletica",
@@ -158,15 +143,11 @@
         }
       },
       "delete": {
-        "tags": [
-          "atleticas"
-        ],
+        "tags": ["atleticas"],
         "summary": "Delete uma atlética existente pelo id",
         "description": "",
         "operationId": "deleteAtleticaById",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -188,15 +169,11 @@
     },
     "/usuarios": {
       "get": {
-        "tags": [
-          "usuarios"
-        ],
+        "tags": ["usuarios"],
         "summary": "Buscar todos os usuarios cadastrados",
         "description": "",
         "operationId": "getAllUsuarios",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -217,9 +194,7 @@
         }
       },
       "post": {
-        "tags": [
-          "usuarios"
-        ],
+        "tags": ["usuarios"],
         "summary": "Cria um novo usuario",
         "description": "",
         "operationId": "createUsuario",
@@ -244,15 +219,11 @@
     },
     "/usuarios/{id}": {
       "get": {
-        "tags": [
-          "usuarios"
-        ],
+        "tags": ["usuarios"],
         "summary": "Buscar um usuario pelo id",
         "description": "",
         "operationId": "findUsuarioById",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -279,9 +250,7 @@
         }
       },
       "put": {
-        "tags": [
-          "usuarios"
-        ],
+        "tags": ["usuarios"],
         "summary": "Atualiza um usuario existente",
         "description": "",
         "operationId": "updateUsuario",
@@ -313,15 +282,11 @@
         }
       },
       "delete": {
-        "tags": [
-          "usuarios"
-        ],
+        "tags": ["usuarios"],
         "summary": "Delete um usuário existente pelo id",
         "description": "",
         "operationId": "deleteUsuarioById",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -343,9 +308,7 @@
     },
     "/auth/register": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Registra um novo usuário",
         "description": "",
         "operationId": "registerUsuario",
@@ -362,11 +325,11 @@
           "200": {
             "description": "successful operation",
             "content": {
-                "application/json": {
-                    "schema": {
-                      "$ref": "#/components/schemas/LoginToken"
-                    }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginToken"
                 }
+              }
             }
           },
           "400": {
@@ -374,11 +337,10 @@
           }
         }
       }
-    },"/auth/login": {
+    },
+    "/auth/login": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Autenticação de usuário",
         "description": "",
         "operationId": "loginUsuario",
@@ -395,11 +357,11 @@
           "200": {
             "description": "successful operation",
             "content": {
-                "application/json": {
-                    "schema": {
-                      "$ref": "#/components/schemas/LoginToken"
-                    }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginToken"
                 }
+              }
             }
           },
           "401": {
@@ -410,9 +372,7 @@
     },
     "/auth/forgot_password": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Faz uma solicitação de mudança de senha um novo usuário",
         "description": "",
         "operationId": "forgotPassword",
@@ -437,9 +397,7 @@
     },
     "/auth/reset_password": {
       "post": {
-        "tags": [
-          "auth"
-        ],
+        "tags": ["auth"],
         "summary": "Altera a senha do usuário",
         "description": "",
         "operationId": "resetPassword",
@@ -464,51 +422,42 @@
     },
     "/postagens": {
       "post": {
-        "tags": [
-          "postagens"
-        ],
+        "tags": ["postagens"],
         "summary": "Cria uma nova postagem",
         "description": "",
         "operationId": "createPostagem",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "requestBody": {
           "content": {
-              "application/json": {
-                  "schema": {
-                      "$ref":  "#/components/schemas/CreatePostagem"
-                      
-                  }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePostagem"
               }
+            }
           }
-      },
-      "responses": {
-        "201": {
-          "description": "successful operation"
         },
-        "400": {
-          "description": "Bad request"
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
         }
-      }
       },
       "get": {
-        "tags": [
-          "postagens"
-        ],
+        "tags": ["postagens"],
         "summary": "Buscar todas as postagens cadastradas por paginação",
         "description": "",
         "operationId": "getAllPostagens",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
-              "name": "limit",
-              "in": "query",
-              "description": "Limit of items",
-              "required": true,
-              "type": "number"
+            "name": "limit",
+            "in": "query",
+            "description": "Limit of items",
+            "required": true,
+            "type": "number"
           },
           {
             "name": "page",
@@ -529,14 +478,14 @@
           "200": {
             "description": "successful operation",
             "content": {
-                "application/json": {
-                    "schema": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Postagens"
-                        }
-                    }
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Postagens"
+                  }
                 }
+              }
             }
           },
           "404": {
@@ -547,33 +496,29 @@
     },
     "/postagens/{id}": {
       "get": {
-        "tags": [
-          "postagens"
-        ],
+        "tags": ["postagens"],
         "summary": "Buscar uma postagem pelo id",
         "description": "",
         "operationId": "findPostagemById",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
-            {
-                "name": "id",
-                "in": "path",
-                "description": "ID da postagem",
-                "required": true,
-                "type": "string"
-            }
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da postagem",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
             "description": "successful operation",
             "content": {
-                "application/json": {
-                    "schema": {
-                        "$ref": "#/components/schemas/Postagens"
-                    }
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Postagens"
                 }
+              }
             }
           },
           "404": {
@@ -582,29 +527,27 @@
         }
       },
       "put": {
-        "tags": [
-          "postagens"
-        ],
+        "tags": ["postagens"],
         "summary": "Atualiza uma postagem existente",
         "description": "",
         "operationId": "updatePostagem",
         "parameters": [
-            {
-                "name": "id",
-                "in": "path",
-                "description": "ID da postagem",
-                "required": true,
-                "type": "string"
-            }
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da postagem",
+            "required": true,
+            "type": "string"
+          }
         ],
         "requestBody": {
-            "content": {
-                "application/json": {
-                    "schema": {
-                        "$ref":  "#/components/schemas/UpdatePostagem"
-                    }
-                }
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePostagem"
+              }
             }
+          }
         },
         "responses": {
           "200": {
@@ -616,23 +559,19 @@
         }
       },
       "delete": {
-        "tags": [
-          "postagens"
-        ],
+        "tags": ["postagens"],
         "summary": "Delete uma postagem existente pelo id",
         "description": "",
         "operationId": "deletePostagemById",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
-            {
-                "name": "id",
-                "in": "path",
-                "description": "ID da postagem",
-                "required": true,
-                "type": "string"
-            }
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da postagem",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -645,46 +584,313 @@
       }
     },
     "/campeonatos": {
-      "post": {
-        "tags": [
-          "campeonatos"
+      "get": {
+        "tags": ["campeonatos"],
+        "summary": "Buscar todas as campeonatos cadastradas por paginação",
+        "description": "",
+        "operationId": "getAllCampeonatos",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit of items",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Actual page",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "id_evento",
+            "in": "query",
+            "description": "ID of Event",
+            "type": "string"
+          },
+          {
+            "name": "id_modalidade",
+            "in": "query",
+            "description": "ID of Modality",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "description": "Status",
+            "in": "query",
+            "type": "string"
+          }
         ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Postagens"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["campeonatos"],
         "summary": "Cria um novo campeonato",
         "description": "",
         "operationId": "createCampeonato",
-        "produces": [
-          "application/json"
+        "produces": ["application/json"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCampeonato"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/campeonatos/{id}": {
+      "put": {
+        "tags": ["campeonatos"],
+        "summary": "Atualiza um campeonato existente",
+        "description": "",
+        "operationId": "updateCampeonato",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da campeonato",
+            "required": true,
+            "type": "string"
+          }
         ],
         "requestBody": {
           "content": {
-              "application/json": {
-                  "schema": {
-                      "$ref":  "#/components/schemas/CreateCampeonato"
-                      
-                  }
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCampeonato"
               }
+            }
           }
-      },
-      "responses": {
-        "201": {
-          "description": "successful operation"
         },
-        "400": {
-          "description": "Bad request"
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
         }
       }
+    },
+    "/campeonatos/participantes": {
+      "post": {
+        "tags": ["campeonatos"],
+        "summary": "Adiciona um novo participante a um campeonato",
+        "description": "",
+        "operationId": "addParticipante",
+        "produces": ["application/json"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddParticipante"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": ["campeonatos"],
+        "summary": "Buscar os participantes pelo id da atletica e/ou id do campeonato",
+        "description": "",
+        "operationId": "getAllParticipantes",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id_campeonato",
+            "in": "query",
+            "description": "ID do campeonato",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id_atletica",
+            "in": "query",
+            "description": "ID do campeonato",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AddParticipante"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/campeonatos/participantes/{id}": {
+      "put": {
+        "tags": ["campeonatos"],
+        "summary": "Atualiza um participante de um campeonato",
+        "description": "",
+        "operationId": "updateParticipante",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do participante",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddParticipante"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["campeonatos"],
+        "summary": "Deleta um participante existente pelo id",
+        "description": "",
+        "operationId": "deleteParticipanteById",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do participante",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/eventos": {
+      "get": {
+        "tags": ["eventos"],
+        "summary": "Buscar todos os eventos cadastrados",
+        "description": "",
+        "operationId": "getAllEventos",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Evento"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/modalidades": {
+      "get": {
+        "tags": ["modalidades"],
+        "summary": "Buscar todos as modalidades cadastrados",
+        "description": "",
+        "operationId": "getAllModalidades",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Modalidade"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
       }
     }
-},
-"components": {
-  "securitySchemes": {
-    "JWT": {
-      "type": "http",
-      "scheme": "bearer",
-      "bearerFormat": "JWT"
-    }
   },
-  "schemas": {
+  "components": {
+    "securitySchemes": {
+      "JWT": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
       "Atleticas": {
         "type": "object",
         "properties": {
@@ -710,7 +916,7 @@
           },
           "logo": {
             "type": "string",
-            "example":"base64 encoded image"
+            "example": "base64 encoded image"
           },
           "data_criacao": {
             "type": "string",
@@ -738,13 +944,7 @@
           },
           "permissao": {
             "type": "string",
-            "enum": [
-              "aluno",
-              "atletica",
-              "dce1",
-              "dce2",
-              "dce3"
-            ]
+            "enum": ["aluno", "atletica", "dce1", "dce2", "dce3"]
           }
         }
       },
@@ -771,13 +971,7 @@
           },
           "permissao": {
             "type": "string",
-            "enum": [
-              "aluno",
-              "atletica",
-              "dce1",
-              "dce2",
-              "dce3"
-            ]
+            "enum": ["aluno", "atletica", "dce1", "dce2", "dce3"]
           }
         }
       },
@@ -803,7 +997,7 @@
             "type": "string"
           }
         }
-      },      
+      },
       "LoginUsuario": {
         "type": "object",
         "properties": {
@@ -873,11 +1067,11 @@
           },
           "ids_etiqueta": {
             "type": "array",
-            "items": {"type":"string"}
+            "items": { "type": "string" }
           },
           "novas_etiquetas": {
             "type": "array",
-            "items": {"type":"string"}
+            "items": { "type": "string" }
           },
           "tipo": {
             "type": "string",
@@ -885,7 +1079,7 @@
           },
           "imagem": {
             "type": "string",
-            "example":"base64 encoded image"
+            "example": "base64 encoded image"
           },
           "descricao": {
             "type": "string"
@@ -904,7 +1098,7 @@
           },
           "imagem": {
             "type": "string",
-            "example":"base64 encoded image"
+            "example": "base64 encoded image"
           },
           "descricao": {
             "type": "string"
@@ -924,10 +1118,10 @@
           "ano": {
             "type": "number"
           },
-          "modalidade": {
+          "id_modalidade": {
             "type": "string"
           },
-          "evento": {
+          "id_evento": {
             "type": "string"
           },
           "status": {
@@ -937,10 +1131,50 @@
             "type": "string"
           }
         }
+      },
+      "AddParticipante": {
+        "type": "object",
+        "properties": {
+          "pontuacao": {
+            "type": "number"
+          },
+          "id_atletica": {
+            "type": "string"
+          },
+          "id_campeonato": {
+            "type": "string"
+          }
+        }
+      },
+      "Evento": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "imagem": {
+            "type": "string"
+          }
+        }
+      },
+      "Modalidade": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "imagem": {
+            "type": "string"
+          }
+        }
       }
     }
   },
-  "security": [
-    {"JWT": []}
-  ]
+  "security": [{ "JWT": [] }]
 }
