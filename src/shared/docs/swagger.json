@@ -767,6 +767,60 @@
           }
         }
       }
+    },
+    "/eventos": {
+      "get": {
+        "tags": ["eventos"],
+        "summary": "Buscar todos os eventos cadastrados",
+        "description": "",
+        "operationId": "getAllEventos",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Evento"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/modalidades": {
+      "get": {
+        "tags": ["modalidades"],
+        "summary": "Buscar todos as modalidades cadastrados",
+        "description": "",
+        "operationId": "getAllModalidades",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Modalidade"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1029,6 +1083,34 @@
             "type": "string"
           },
           "id_campeonato": {
+            "type": "string"
+          }
+        }
+      },
+      "Evento": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "imagem": {
+            "type": "string"
+          }
+        }
+      },
+      "Modalidade": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "imagem": {
             "type": "string"
           }
         }

@@ -1,6 +1,3 @@
-const {
-  ICursoRepository,
-} = require("../../domain/interfaces/repositories/ICursoRepository");
 const { Models } = require("../../infra/database/models");
 
 class ModalidadeRepository {
