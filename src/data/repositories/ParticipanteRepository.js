@@ -9,7 +9,13 @@ class ParticipanteRepository extends IParticipanteRepository {
   }
 
   getAll(options) {
-    return Models.ParticipanteModel.findAll(options);
+    return Models.ParticipanteModel.findAll({
+      ...options,
+    });
+  }
+
+  findOne(options) {
+    return Models.ParticipanteModel.findOne(options);
   }
 
   create(data) {

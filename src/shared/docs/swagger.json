@@ -667,6 +667,47 @@
             "description": "Bad request"
           }
         }
+      },
+      "get": {
+        "tags": ["campeonatos"],
+        "summary": "Buscar os participantes pelo id da atletica e/ou id do campeonato",
+        "description": "",
+        "operationId": "getAllParticipantes",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id_campeonato",
+            "in": "query",
+            "description": "ID do campeonato",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id_atletica",
+            "in": "query",
+            "description": "ID do campeonato",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AddParticipante"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
       }
     },
     "/campeonatos/participantes/{id}": {
@@ -982,7 +1023,7 @@
         "type": "object",
         "properties": {
           "pontuacao": {
-            "type": "string"
+            "type": "number"
           },
           "id_atletica": {
             "type": "string"

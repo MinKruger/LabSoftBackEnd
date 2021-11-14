@@ -1,5 +1,8 @@
 const { ParticipanteEntity } = require("../../../domain/entities/Participante");
 const {
+  NotAcceptableException,
+} = require("../../../presentation/errors/NotAcceptableException");
+const {
   NotFoundException,
 } = require("../../../presentation/errors/NotFoundException");
 
@@ -15,8 +18,8 @@ class AddParticipantUseCase {
   }
 
   async handle(data) {
-    const usuario = await this.atleticaRepository.findById(data.id_atletica);
-    if (!usuario) {
+    const atletica = await this.atleticaRepository.findById(data.id_atletica);
+    if (!atletica) {
       throw new NotFoundException("Usuário not found");
     }
 
@@ -25,6 +28,17 @@ class AddParticipantUseCase {
     );
     if (!campeonato) {
       throw new NotFoundException("Campeonato not found");
+    }
+
+    const participantExists = await this.participanteRepository.findOne({
+      where: {
+        id_atletica: data.id_atletica,
+        id_campeonato: data.id_campeonato,
+      },
+    });
+
+    if (participantExists) {
+      throw new NotAcceptableException("Participante already exist");
     }
 
     const participante = new ParticipanteEntity(data);

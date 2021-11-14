@@ -35,13 +35,6 @@ class AtleticaModel extends Model {
     );
     return this;
   }
-
-  static associate(models) {
-    this.hasMany(models.cursos, {
-      foreignKey: "id_atletica",
-      onDelete: "SET NULL",
-    });
-  }
 }
 
 exports.AtleticaModel = AtleticaModel;
