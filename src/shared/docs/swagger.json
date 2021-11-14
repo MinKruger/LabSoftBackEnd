@@ -1005,10 +1005,10 @@
           "ano": {
             "type": "number"
           },
-          "modalidade": {
+          "id_modalidade": {
             "type": "string"
           },
-          "evento": {
+          "id_evento": {
             "type": "string"
           },
           "status": {

@@ -18,13 +18,23 @@ class CampeonatoModel extends Model {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
-        modalidade: {
-          type: DataTypes.STRING(250),
-          allowNull: false,
+        id_modalidade: {
+          type: DataTypes.UUID,
+          references: {
+            model: {
+              tableName: "modalidades",
+            },
+            key: "id",
+          },
         },
-        evento: {
-          type: DataTypes.STRING(250),
-          allowNull: false,
+        id_evento: {
+          type: DataTypes.UUID,
+          references: {
+            model: {
+              tableName: "eventos",
+            },
+            key: "id",
+          },
         },
         status: {
           type: DataTypes.ENUM(
