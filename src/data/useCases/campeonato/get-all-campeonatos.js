@@ -6,9 +6,15 @@ class GetAllCampeonatosUseCase {
   async handle({ limit, page, id_evento, id_modalidade, status }) {
     const query = {};
 
-    if (id_evento) query.id_evento = id_evento;
-    if (id_modalidade) query.id_modalidade = id_modalidade;
-    if (status) query.status = status;
+    if (id_evento) {
+      query.id_evento = id_evento;
+    }
+    if (id_modalidade) {
+      query.id_modalidade = id_modalidade;
+    }
+    if (status) {
+      query.status = status;
+    }
 
     const totalItems = await this.campeonatoRepository.count({
       where: query,
