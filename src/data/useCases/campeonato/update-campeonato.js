@@ -17,7 +17,9 @@ class UpdateCampeonatoUseCase {
   }
 
   async handle(data, id) {
-    const campeonato = await this.campeonatoRepository.findById(id);
+    const campeonato = await this.campeonatoRepository.findById(id, {
+      raw: true,
+    });
     if (!campeonato) {
       throw new NotFoundException("Campeonato not found");
     }

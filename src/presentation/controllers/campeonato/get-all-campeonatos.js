@@ -6,7 +6,7 @@ class GetAllCampeonatosController {
   }
 
   async handle(request, response) {
-    const { limit, page, event, modality, status } = request.query;
+    const { limit, page, id_evento, id_modalidade, status } = request.query;
 
     if (!limit || !page) {
       throw new BadRequestException("Query param is missing");
@@ -15,8 +15,8 @@ class GetAllCampeonatosController {
     const atletica = await this.getAllCampeonatosUseCase.handle({
       limit: +limit,
       page: +page,
-      event,
-      modality,
+      id_evento,
+      id_modalidade,
       status,
     });
 

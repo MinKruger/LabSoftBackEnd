@@ -68,6 +68,15 @@ class CampeonatoModel extends Model {
   static associate(models) {
     this.belongsTo(models.atleticas, {
       foreignKey: "id_vencedor",
+      as: "vencedor",
+    });
+
+    this.belongsTo(models.modalidades, {
+      foreignKey: "id_modalidade",
+    });
+
+    this.belongsTo(models.eventos, {
+      foreignKey: "id_evento",
     });
   }
 }

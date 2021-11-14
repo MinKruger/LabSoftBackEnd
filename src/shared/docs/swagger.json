@@ -584,6 +584,65 @@
       }
     },
     "/campeonatos": {
+      "get": {
+        "tags": ["campeonatos"],
+        "summary": "Buscar todas as campeonatos cadastradas por paginação",
+        "description": "",
+        "operationId": "getAllCampeonatos",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit of items",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Actual page",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "id_evento",
+            "in": "query",
+            "description": "ID of Event",
+            "type": "string"
+          },
+          {
+            "name": "id_modalidade",
+            "in": "query",
+            "description": "ID of Modality",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "description": "Status",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Postagens"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
       "post": {
         "tags": ["campeonatos"],
         "summary": "Cria um novo campeonato",
