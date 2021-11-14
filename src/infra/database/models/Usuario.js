@@ -32,9 +32,9 @@ class UsuarioModel extends Model {
           allowNull: true,
         },
         permissao: {
-          type: DataTypes.ENUM('aluno', 'atletica', 'dce1', 'dce2', 'dce3'),
+          type: DataTypes.ENUM("aluno", "atletica", "dce1", "dce2", "dce3"),
           allowNull: false,
-          defaultValue: 'aluno',
+          defaultValue: "aluno",
         },
         id_atletica: {
           type: DataTypes.UUID,
@@ -49,7 +49,7 @@ class UsuarioModel extends Model {
       },
       {
         sequelize,
-        modelName: "usuarios"
+        modelName: "usuarios",
       }
     );
     return this;
@@ -59,6 +59,10 @@ class UsuarioModel extends Model {
     this.belongsTo(models.atleticas, {
       foreignKey: "id_atletica",
       onDelete: "SET NULL",
+    });
+
+    this.hasMany(models.postagens, {
+      foreignKey: "id_usuario",
     });
   }
 }
