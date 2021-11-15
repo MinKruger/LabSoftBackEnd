@@ -737,15 +737,13 @@
           {
             "name": "id_campeonato",
             "in": "query",
-            "description": "ID do campeonato",
-            "required": true,
+            "description": "ID de um campeonato",
             "type": "string"
           },
           {
             "name": "id_atletica",
             "in": "query",
-            "description": "ID do campeonato",
-            "required": true,
+            "description": "ID de uma atlética",
             "type": "string"
           }
         ],

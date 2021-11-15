@@ -35,6 +35,12 @@ class AtleticaModel extends Model {
     );
     return this;
   }
+
+  static associate(models) {
+    this.hasMany(models.participantes, {
+      foreignKey: "id_atletica",
+    });
+  }
 }
 
 exports.AtleticaModel = AtleticaModel;

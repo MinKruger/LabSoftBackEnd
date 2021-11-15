@@ -42,16 +42,14 @@ router.use(middlewareAuthentication);
 router.post("/", middlewarePermissionDCE2AndDCE3, (req, res) =>
   createCampeonatoController.handle(req, res)
 );
-router.get("/", middlewarePermissionDCE2AndDCE3, (req, res) =>
-  getAllCampeonatosController.handle(req, res)
-);
+router.get("/", (req, res) => getAllCampeonatosController.handle(req, res));
 router.put("/:id", middlewarePermissionDCE2AndDCE3, (req, res) =>
   updateCampeonatoController.handle(req, res)
 );
 router.post("/participantes", middlewarePermissionDCE2AndDCE3, (req, res) =>
   addParticipantController.handle(req, res)
 );
-router.get("/participantes", middlewarePermissionDCE2AndDCE3, (req, res) =>
+router.get("/participantes", (req, res) =>
   getParticipantesController.handle(req, res)
 );
 router.put("/participantes/:id", middlewarePermissionDCE2AndDCE3, (req, res) =>

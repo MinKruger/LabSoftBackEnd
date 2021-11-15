@@ -11,6 +11,14 @@ class ParticipanteRepository extends IParticipanteRepository {
   getAll(options) {
     return Models.ParticipanteModel.findAll({
       ...options,
+      ...{
+        include: [
+          {
+            model: Models.AtleticaModel,
+            attributes: ["logo", "nome"],
+          },
+        ],
+      },
     });
   }
 
