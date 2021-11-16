@@ -43,6 +43,12 @@ class ParticipanteModel extends Model {
     );
     return this;
   }
+
+  static associate(models) {
+    this.belongsTo(models.atleticas, {
+      foreignKey: "id_atletica",
+    });
+  }
 }
 
 exports.ParticipanteModel = ParticipanteModel;

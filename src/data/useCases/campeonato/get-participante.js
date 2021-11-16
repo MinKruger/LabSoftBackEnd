@@ -19,18 +19,6 @@ class GetParticipantesUseCase {
       raw: true,
     });
 
-    if (participantes.length) {
-      const atletica = await this.atleticaRepository.findOne({
-        where: { id: participante[0].id_atletica },
-        raw: true,
-      });
-
-      participantes.forEach((participante) => {
-        participante.nome = atletica.nome;
-        participante.logo = atletica.logo;
-      });
-    }
-
     return participantes;
   }
 }
