@@ -21,9 +21,8 @@ const createJogoController = createJogoControllerFactory();
 const getJogoByIdController = getJogoByIdControllerFactory();
 const getAllJogosController = getAllJogosControllerFactory();
 const updateJogoController = updateJogoControllerFactory();
-const deleteJogoController = deleteJogoControllerFactory();
 
-router.use(middlewareAuthentication);
+//router.use(middlewareAuthentication);
 
 router.get("/", (req, res) => getAllJogosController.handle(req, res));
 router.get("/:id", (req, res) => getJogoByIdController.handle(req, res));
