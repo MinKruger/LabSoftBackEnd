@@ -25,6 +25,10 @@
     {
       "name": "auth",
       "description": "Rotas do domínio de autenticação"
+    },
+    {
+      "name": "jogos",
+      "description": "Rotas do domínio de jogos"
     }
   ],
   "paths": {
@@ -878,6 +882,121 @@
           }
         }
       }
+    },
+    "/jogos": {
+      "get": {
+        "tags": ["jogos"],
+        "summary": "Buscar todos os jogos cadastrados",
+        "description": "",
+        "operationId": "getAllJogos",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Jogos"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["jogos"],
+        "summary": "Cria um novo jogo",
+        "description": "",
+        "operationId": "createJogo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Jogos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/jogos/{id}": {
+      "get": {
+        "tags": ["jogos"],
+        "summary": "Buscar um jogo pelo id",
+        "description": "",
+        "operationId": "findJogoById",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do jogo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Jogos"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "put": {
+        "tags": ["jogos"],
+        "summary": "Atualiza um jogo existente",
+        "description": "",
+        "operationId": "updateJogo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do jogo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Jogos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1168,6 +1287,34 @@
             "type": "string"
           },
           "imagem": {
+            "type": "string"
+          }
+        }
+      },
+      "Jogos": {
+        "type": "object",
+        "properties": {
+          "id_time1": {
+            "type": "string"
+          },
+          "id_time2": {
+            "type": "string"
+          },
+          "data_jogo": {
+            "type": "string",
+            "example": "06/07/2008"
+          },
+          "placar1": {
+            "type": "integer"
+          },
+          "placar2": {
+            "type": "integer"
+          },
+          "local": {
+            "type": "string",
+            "example": "Escolinha do professor Raimundo"
+          },
+          "id_fase": {
             "type": "string"
           }
         }
