@@ -17,6 +17,7 @@ const { PostagemRouter } = require("./routes/postagemRoutes");
 const { CampeonatoRouter } = require("./routes/campeonatoRoutes");
 const { EventoRouter } = require("./routes/eventoRoutes");
 const { ModalidadeRouter } = require("./routes/modalidadeRoutes");
+const { JogoRouter } = require("./routes/jogoRoutes");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use("/postagens", PostagemRouter);
 app.use("/campeonatos", CampeonatoRouter);
 app.use("/eventos", EventoRouter);
 app.use("/modalidades", ModalidadeRouter);
+app.use("/jogos", JogoRouter);
 
 app.use(handleErrorsMiddleware);
 

@@ -40,6 +40,14 @@ class AtleticaModel extends Model {
     this.hasMany(models.participantes, {
       foreignKey: "id_atletica",
     });
+
+    this.hasMany(models.jogos, {
+      foreignKey: "id_time1",
+    });
+
+    this.hasMany(models.jogos, {
+      foreignKey: "id_time2",
+    });
   }
 }
 
