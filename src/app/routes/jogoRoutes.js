@@ -22,7 +22,7 @@ const getJogoByIdController = getJogoByIdControllerFactory();
 const getAllJogosController = getAllJogosControllerFactory();
 const updateJogoController = updateJogoControllerFactory();
 
-//router.use(middlewareAuthentication);
+router.use(middlewareAuthentication);
 
 router.get("/", (req, res) => getAllJogosController.handle(req, res));
 router.get("/:id", (req, res) => getJogoByIdController.handle(req, res));
