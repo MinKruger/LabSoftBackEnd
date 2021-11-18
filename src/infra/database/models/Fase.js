@@ -34,7 +34,7 @@ class FaseModel extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.jogos, {
+    this.belongsTo(models.campeonatos, {
       foreignKey: "id_campeonato",
     });
   }
