@@ -39,13 +39,7 @@ class UsuarioModel extends Model {
         id_atletica: {
           type: DataTypes.UUID,
           allowNull: true,
-          references: {
-            model: {
-              tableName: "atleticas",
-            },
-            key: "id",
-          },
-        },
+        }
       },
       {
         sequelize,
