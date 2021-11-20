@@ -20,6 +20,10 @@ class RegisterController {
       throw new BadRequestException("Nome param is required.");
     }
 
+    if (!matricula) {
+      throw new BadRequestException("Matricula param is required.");
+    }
+
     const token = await this.registerUseCase.handle(request.body);
 
     response.status(200).json({token});
