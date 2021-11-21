@@ -34,6 +34,10 @@ class JogoModel extends Model {
           type: DataTypes.STRING(30),
           allowNull: false,
         },
+        hora_jogo: {
+          type: DataTypes.STRING(30),
+          allowNull: true,
+        },
         placar1: {
           type: DataTypes.INTEGER,
           allowNull: true,
@@ -52,6 +56,16 @@ class JogoModel extends Model {
           references: {
             model: {
               tableName: "fases",
+            },
+            key: "id",
+          },
+        },
+        id_campeonato: {
+          type: DataTypes.UUID,
+          allowNull: false,
+          references: {
+            model: {
+              tableName: "campeonatos",
             },
             key: "id",
           },
@@ -76,6 +90,10 @@ class JogoModel extends Model {
 
     this.belongsTo(models.fases, {
       foreignKey: "id_fase",
+    });
+
+    this.belongsTo(models.campeonatos, {
+      foreignKey: "id_campeonato",
     });
   }
 }
