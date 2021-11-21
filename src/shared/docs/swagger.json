@@ -1112,6 +1112,20 @@
           },
           "instagram": {
             "type": "string"
+          },
+          "id_atletica": {
+            "type": "string"
+          },
+          "matricula": {
+            "type": "string",
+            "example": "123456789"
+          },
+          "data_nascimento": {
+            "type": "string",
+            "example": "04/04/2000"
+          },
+          "id_curso": {
+            "type": "string"
           }
         }
       },

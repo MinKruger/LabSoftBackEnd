@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 
 const { AuthToken } = require('../../../app/providers/AuthToken');
 const { NotFoundException } = require("../../../presentation/errors/NotFoundException");
+const { UsuarioEntity } = require("../../../domain/entities/Usuario");
 
 class ResetPasswordUseCase {
   constructor(usuarioRepository) {
@@ -15,7 +16,7 @@ class ResetPasswordUseCase {
 
     const { id } = AuthToken.authenticate(codigo);
 
-    const user = await this.usuarioRepository.findById(id);
+    let user = await this.usuarioRepository.findById(id, { raw: true });
     if (!user) {
       throw new NotFoundException("Invalid token.");
     }
@@ -24,7 +25,14 @@ class ResetPasswordUseCase {
       senha = hash;
     });
 
-    await this.usuarioRepository.update(senha, { where: { id } });
+    console.log(user);
+
+    user = new UsuarioEntity({
+      ...user,
+      senha
+    });
+
+    await this.usuarioRepository.update(user, { where: { id } });
   }
 }
 

@@ -3,8 +3,9 @@ const {
 } = require("../../../presentation/errors/NotFoundException");
 
 class DeleteUsuarioUseCase {
-  constructor(usuarioRepository) {
+  constructor(usuarioRepository, alunoRepository) {
     this.usuarioRepository = usuarioRepository;
+    this.alunoRepository = alunoRepository;
   }
 
   async handle(id) {
@@ -12,6 +13,10 @@ class DeleteUsuarioUseCase {
 
     if (!usuario) {
       throw new NotFoundException("Usuario not found.");
+    }
+
+    if(usuario.permissao == "aluno") {
+      await this.alunoRepository.deleteByUserId(id);
     }
 
     await this.usuarioRepository.deleteById(id);

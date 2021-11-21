@@ -8,19 +8,15 @@ const {
   AlunoRepository,
 } = require("../../../../data/repositories/AlunoRepository");
 const {
-  CursoRepository,
-} = require("../../../../data/repositories/CursoRepository");
-const {
-  RegisterUseCase,
-} = require("../../../../data/useCases/auth/register");
+  UserDataUseCase,
+} = require("../../../../data/useCases/auth/user-data");
 
-const registerFactory = function () {
+const userDataFactory = function () {
   const usuarioRepository = new UsuarioRepository();
   const atleticaRepository = new AtleticaRepository();
   const alunoRepository = new AlunoRepository();
-  const cursoRepository = new CursoRepository();
 
-  return new RegisterUseCase(usuarioRepository, atleticaRepository, alunoRepository, cursoRepository);
+  return new UserDataUseCase(usuarioRepository, atleticaRepository, alunoRepository);
 };
 
-exports.registerFactory = registerFactory;
+exports.userDataFactory = userDataFactory;

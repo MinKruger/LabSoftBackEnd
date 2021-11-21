@@ -5,32 +5,60 @@ const path = require("path");
 const { v4 } = require("uuid");
 
 const { UsuarioEntity } = require("../../../domain/entities/Usuario");
+const { AlunoEntity } = require("../../../domain/entities/Aluno");
 const { BadRequestException } = require("../../../presentation/errors/BadRequestException");
 
 class RegisterUseCase {
-  constructor(usuarioRepository) {
+  constructor(usuarioRepository, atleticaRepository, alunoRepository, cursoRepository) {
     this.usuarioRepository = usuarioRepository;
+    this.atleticaRepository = atleticaRepository;
+    this.alunoRepository = alunoRepository;
+    this.cursoRepository = cursoRepository;
   }
 
   async handle(data) {
-    let newUsuario = new UsuarioEntity(data);
+    const { email, senha, nome, foto, instagram, id_atletica, matricula, data_nascimento, id_curso} = data;
+    const usuarioData = { email, senha, nome, foto, instagram, id_atletica };
+    const alunoData = { matricula, data_nascimento, id_curso };
 
     // Verifica se já existe usuário cadastrado com esse email
-    const emailRegistered = await this.usuarioRepository.findOne({ where: { email: newUsuario.email } });
+    const emailRegistered = await this.usuarioRepository.findOne({ where: { email } });
     if (emailRegistered) {
       throw new BadRequestException("Email already registered");
+    }
+
+    // Verifica se já existe aluno cadastrado com essa matrícula
+    const matriculaRegistered = await this.alunoRepository.findOne({ where: { matricula } });
+    if (matriculaRegistered) {
+      throw new BadRequestException("Matricula already registered");
+    }
+
+    // Tratamento para atlética
+    if (id_atletica) {
+      const atleticaExists = await this.atleticaRepository.findById(id_atletica);
+      if (!atleticaExists) {
+        throw new BadRequestException("Atletica with id_atletica not found");
+      }
+    }
+
+    // Tratamento para curso
+    if (id_curso) {
+      const cursoExists = await this.cursoRepository.findById(id_curso);
+      if (!cursoExists) {
+        throw new BadRequestException("Curso with id_curso not found");
+      }
     }
 
     // Faz o hash da senha
     let hashedPassword = null;
     const saltRounds = process.env.BCRYPT_HASH_ROUNDS ? parseInt(process.env.BCRYPT_HASH_ROUNDS) : 10;
-    await bcrypt.hash(newUsuario.senha, saltRounds).then((hash) => {
+    await bcrypt.hash(senha, saltRounds).then((hash) => {
       hashedPassword = hash;
     });
 
     // Tratamento de imagem
     let imagePath = null;
-    if (newUsuario.foto) {
+    if (foto) {
       const filename = `${v4()}.jpg`;
       const filePath = path.resolve(
         process.cwd(),
@@ -42,10 +70,12 @@ class RegisterUseCase {
       if (!fs.existsSync(filePath)) {
         fs.mkdirSync(filePath, { recursive: true });
       }
-      fs.writeFileSync(path.resolve(filePath, filename), data.foto, "base64");
+      fs.writeFileSync(path.resolve(filePath, filename), foto, "base64");
 
       imagePath = `${data.host}/public/images/usuarios/${filename}`;
     }
+
+    let newUsuario = new UsuarioEntity(usuarioData);
 
     newUsuario = await this.usuarioRepository.create({
       ...newUsuario,
@@ -54,7 +84,11 @@ class RegisterUseCase {
       permissao: 'aluno',
     });
 
-    return AuthToken.generate({id: newUsuario.id});
+    let newAluno = new AlunoEntity({...alunoData, id_usuario: newUsuario.id});
+
+    newAluno = await this.alunoRepository.create(newAluno);
+
+    return AuthToken.generate({ id: newUsuario.id });
   }
 }
 

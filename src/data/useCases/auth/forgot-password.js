@@ -17,8 +17,11 @@ class ForgotPasswordUseCase {
     }
 
     const token = AuthToken.generate({id: user.id});
+    const url = `http://${process.env.FRONT_END_HOST+process.env.FRONT_END_RESET_PASSWORD_ROUTE}?token=${encodeURIComponent(token)}`;
+    const title = "Recuperação de senha";
+    const body = `Acesse o link para cadastrar uma nova senha: ${url}`;
 
-    await Mailer.sendMail(`Token de recuperação: ${token}`, 'Recuperação de Senha', email);
+    await Mailer.sendMail(body, title, email);
   }
 }
 
