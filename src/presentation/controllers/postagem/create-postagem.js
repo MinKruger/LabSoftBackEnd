@@ -4,7 +4,7 @@ class CreatePostagemController {
   }
 
   async handle(request, response) {
-    request.body.host = request.headers.host;
+    request.body.host = env.process.HOST_PREFIX + request.headers.host;
     request.body.id_usuario = request.userID;
     await this.createPostagemUseCase.handle(request.body);
 

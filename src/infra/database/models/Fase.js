@@ -10,9 +10,19 @@ class FaseModel extends Model {
           allowNull: false,
           primaryKey: true,
         },
-        descricao: {
+        nome: {
           type: DataTypes.STRING(200),
           allowNull: false,
+        },
+        id_campeonato: {
+          type: DataTypes.UUID,
+          allowNull: false,
+          references: {
+            model: {
+              tableName: "campeonatos",
+            },
+            key: "id",
+          },
         },
       },
       {
@@ -24,8 +34,8 @@ class FaseModel extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.jogos, {
-      foreignKey: "id_fase",
+    this.belongsTo(models.campeonatos, {
+      foreignKey: "id_campeonato",
     });
   }
 }

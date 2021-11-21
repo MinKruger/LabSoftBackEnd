@@ -12,7 +12,7 @@ class UpdateAtleticasController {
       throw new BadRequestException("Path param is required.");
     }
 
-    request.body.host = request.headers.host;
+    request.body.host = env.process.HOST_PREFIX + request.headers.host;
     await this.updateAtleticaUseCase.handle(id, request.body);
 
     response.status(200).end();
