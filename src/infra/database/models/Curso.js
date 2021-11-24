@@ -34,13 +34,6 @@ class CursoModel extends Model {
     );
     return this;
   }
-
-  static associate(models) {
-    this.belongsTo(models.atleticas, {
-      foreignKey: "id_curso",
-      onDelete: "SET NULL",
-    });
-  }
 }
 
 exports.CursoModel = CursoModel;
