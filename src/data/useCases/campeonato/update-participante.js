@@ -24,6 +24,7 @@ class UpdateParticipanteUseCase {
     }
 
     if (data.id_atletica) {
+
       const atletica = await this.atleticaRepository.findById(data.id_atletica);
 
       if (!atletica) {

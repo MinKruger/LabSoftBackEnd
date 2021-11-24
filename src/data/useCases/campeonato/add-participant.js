@@ -18,11 +18,6 @@ class AddParticipantUseCase {
   }
 
   async handle(data) {
-    const atletica = await this.atleticaRepository.findById(data.id_atletica);
-    if (!atletica) {
-      throw new NotFoundException("Usuário not found");
-    }
-
     const campeonato = await this.campeonatoRepository.findById(
       data.id_campeonato
     );
@@ -30,20 +25,20 @@ class AddParticipantUseCase {
       throw new NotFoundException("Campeonato not found");
     }
 
-    const participantExists = await this.participanteRepository.findOne({
-      where: {
-        id_atletica: data.id_atletica,
-        id_campeonato: data.id_campeonato,
-      },
-    });
+    data.ids_atleticas.forEach(async (id) => {
+      const participantExists = await this.participanteRepository.findOne({
+        where: {
+          id_atletica: id,
+          id_campeonato: data.id_campeonato,
+        },
+      });
+  
+      if (!participantExists) {
+        const participante = new ParticipanteEntity({...data,id_atletica:id});
+        await this.participanteRepository.create(participante);
+      }
 
-    if (participantExists) {
-      throw new NotAcceptableException("Participante already exist");
-    }
-
-    const participante = new ParticipanteEntity(data);
-
-    await this.participanteRepository.create(participante);
+    })
   }
 }
 

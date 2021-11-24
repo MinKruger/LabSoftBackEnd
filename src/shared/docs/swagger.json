@@ -759,7 +759,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/AddParticipante"
+                    "$ref": "#/components/schemas/UpdateParticipante"
                   }
                 }
               }
@@ -790,7 +790,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddParticipante"
+                "$ref": "#/components/schemas/UpdateParticipante"
               }
             }
           }
@@ -1264,6 +1264,21 @@
         }
       },
       "AddParticipante": {
+        "type": "object",
+        "properties": {
+          "pontuacao": {
+            "type": "number"
+          },
+          "ids_atleticas": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "id_campeonato": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateParticipante": {
         "type": "object",
         "properties": {
           "pontuacao": {
