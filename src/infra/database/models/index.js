@@ -11,6 +11,7 @@ const { ModalidadeModel } = require("./Modalidade");
 const { JogoModel } = require("./Jogo");
 const { FaseModel } = require("./Fase");
 const { AlunoModel } = require("./Aluno");
+const { ParceiroModel } = require("./Parceiro");
 
 exports.Models = {
   AtleticaModel,
@@ -26,4 +27,5 @@ exports.Models = {
   JogoModel,
   FaseModel,
   AlunoModel,
+  ParceiroModel
 };

@@ -997,6 +997,56 @@
           }
         }
       }
+    },
+    "/parceiros": {
+      "get": {
+        "tags": ["parceiros"],
+        "summary": "Buscar todos os parceiros",
+        "description": "",
+        "operationId": "getAllParceiro",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Parceiro"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["parceiros"],
+        "summary": "Adiciona um novo parceiro",
+        "description": "",
+        "operationId": "createParceiro",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parceiro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1351,6 +1401,21 @@
             "type": "string"
           },
           "id_campeonato": {
+            "type": "string"
+          }
+        }
+      },
+      "Parceiro": {
+        "type": "object",
+        "properties": {
+          "logo": {
+            "type": "string",
+            "example": "base64 encoded image"
+          },
+          "titulo": {
+            "type": "string"
+          },
+          "descricao": {
             "type": "string"
           }
         }
