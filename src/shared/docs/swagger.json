@@ -1047,6 +1047,64 @@
           }
         }
       }
+    },
+    "/parceiros/{id}": {
+      "put": {
+        "tags": ["parceiros"],
+        "summary": "Atualiza uma parceiro existente",
+        "description": "",
+        "operationId": "updateParceiro",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do parceiro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parceiro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["parceiros"],
+        "summary": "Delete um parceiro existente pelo id",
+        "description": "",
+        "operationId": "deleteParceiroById",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do parceiro",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
     }
   },
   "components": {

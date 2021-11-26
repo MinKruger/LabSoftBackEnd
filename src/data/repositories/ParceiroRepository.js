@@ -20,6 +20,10 @@ class ParceiroRepository {
   update(data, options) {
     return Models.ParceiroModel.update(data, options);
   }
+
+  deleteById(id) {
+    return Models.ParceiroModel.destroy({ where: { id } });
+  }
 }
 
 exports.ParceiroRepository = ParceiroRepository;
