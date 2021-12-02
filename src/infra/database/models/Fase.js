@@ -14,6 +14,10 @@ class FaseModel extends Model {
           type: DataTypes.STRING(200),
           allowNull: false,
         },
+        peso: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
       },
       {
         sequelize,
@@ -21,12 +25,6 @@ class FaseModel extends Model {
       }
     );
     return this;
-  }
-
-  static associate(models) {
-    this.belongsTo(models.campeonatos, {
-      foreignKey: "id_campeonato",
-    });
   }
 }
 

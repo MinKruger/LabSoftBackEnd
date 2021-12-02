@@ -5,9 +5,9 @@ class GetFasesController {
 
   async handle(request, response) {
     const { id } = request.params;
-    await this.getFasesUseCase.handle(request.body, id);
+    const fases = await this.getFasesUseCase.handle(request.body, id);
 
-    response.status(201).end();
+    response.status(200).json(fases);
   }
 }
 

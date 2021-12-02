@@ -14,4 +14,4 @@ router.use(middlewareAuthentication);
 
 router.get("/", (req, res) => getFasesController.handle(req, res));
 
-exports.ParceiroRouter = router;
+exports.FaseRouter = router;
