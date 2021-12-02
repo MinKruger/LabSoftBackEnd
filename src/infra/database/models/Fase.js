@@ -14,16 +14,6 @@ class FaseModel extends Model {
           type: DataTypes.STRING(200),
           allowNull: false,
         },
-        id_campeonato: {
-          type: DataTypes.UUID,
-          allowNull: false,
-          references: {
-            model: {
-              tableName: "campeonatos",
-            },
-            key: "id",
-          },
-        },
       },
       {
         sequelize,
