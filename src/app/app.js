@@ -20,6 +20,7 @@ const { ModalidadeRouter } = require("./routes/modalidadeRoutes");
 const { JogoRouter } = require("./routes/jogoRoutes");
 const { ParceiroRouter } = require("./routes/parceiroRoute");
 const { FaseRouter } = require("./routes/faseRoutes");
+const { CursoRouter } = require("./routes/cursoRoutes");
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use("/modalidades", ModalidadeRouter);
 app.use("/jogos", JogoRouter);
 app.use("/parceiros", ParceiroRouter);
 app.use("/fases", FaseRouter);
+app.use("/cursos", CursoRouter);
 
 app.use(handleErrorsMiddleware);
 

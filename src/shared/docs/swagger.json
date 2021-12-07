@@ -1132,6 +1132,33 @@
           }
         }
       }
+    },
+    "/cursos": {
+      "get": {
+        "tags": ["cursos"],
+        "summary": "Busca todas as cursos",
+        "description": "",
+        "operationId": "getAllCursos",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Curso"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1513,6 +1540,14 @@
           },
           "peso": {
             "type": "number"
+          }
+        }
+      },
+      "Curso": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
           }
         }
       }
