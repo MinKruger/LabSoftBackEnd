@@ -1540,6 +1540,32 @@
             "type": "string"
           }
         }
+      },
+      "Parceiro": {
+        "type": "object",
+        "properties": {
+          "logo": {
+            "type": "string",
+            "example": "base64 encoded image"
+          },
+          "titulo": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          }
+        }
+      },
+      "Fase": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "peso": {
+            "type": "number"
+          }
+        }
       }
     }
   },
