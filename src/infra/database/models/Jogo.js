@@ -91,10 +91,6 @@ class JogoModel extends Model {
     this.belongsTo(models.fases, {
       foreignKey: "id_fase",
     });
-
-    this.belongsTo(models.campeonatos, {
-      foreignKey: "id_campeonato",
-    });
   }
 }
 

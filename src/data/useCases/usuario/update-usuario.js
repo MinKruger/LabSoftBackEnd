@@ -68,7 +68,7 @@ class UpdateUsuarioUseCase {
 
     // Tratamento de imagem
     let imagePath = usuarioExists.foto;
-    if (usuarioData.foto) {
+    if (usuarioData.foto && !usuarioData.foto.includes(data.host)) {
       const filename = `${v4()}.jpg`;
       const filePath = path.resolve(
         process.cwd(),

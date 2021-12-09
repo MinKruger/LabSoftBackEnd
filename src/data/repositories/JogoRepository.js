@@ -19,6 +19,10 @@ class JogoRepository extends IJogoRepository {
   update(data, options) {
     return Models.JogoModel.update(data, options);
   }
+
+  deleteById(id) {
+    return Models.JogoModel.destroy({ where: { id } });
+  }
 }
 
 exports.JogoRepository = JogoRepository;

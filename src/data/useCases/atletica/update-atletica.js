@@ -22,7 +22,7 @@ class UpdateAtleticaUseCase {
     delete data.id;
     let imagePath;
 
-    if (data.logo) {
+    if (data.logo && !data.logo.includes(data.host)) {
       const filename = `${v4()}.jpg`;
 
       const filePath = path.resolve(
