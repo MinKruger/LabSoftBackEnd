@@ -14,9 +14,15 @@ class FaseModel extends Model {
           type: DataTypes.STRING(200),
           allowNull: false,
         },
-        peso: {
-          type: DataTypes.INTEGER,
+        id_campeonato: {
+          type: DataTypes.UUID,
           allowNull: false,
+          references: {
+            model: {
+              tableName: "campeonatos",
+            },
+            key: "id",
+          },
         },
       },
       {
@@ -25,6 +31,12 @@ class FaseModel extends Model {
       }
     );
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.campeonatos, {
+      foreignKey: "id_campeonato",
+    });
   }
 }
 
