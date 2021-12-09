@@ -18,6 +18,10 @@ class IJogoRepository {
   update() {
     throw new NotImplementedException();
   }
+
+  delete() {
+    throw new NotImplementedException();
+  }
 }
 
 exports.IJogoRepository = IJogoRepository;
