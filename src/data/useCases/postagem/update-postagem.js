@@ -18,7 +18,7 @@ class UpdatePostagemUseCase {
     }
 
     let imagePath;
-    if (data.imagem) {
+    if (data.imagem && !data.imagem.includes(host)) {
       const filename = `${v4()}.jpg`;
 
       const filePath = path.resolve(
